@@ -30,22 +30,37 @@
 </style>
 <style>
 .carousel-control{position:absolute;z-index:3;top:50%;display:grid;place-items:center;width:25px;height:25px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#28322b;box-shadow:0 1px 5px rgba(0,0,0,.2);font-size:.95rem;line-height:1;transform:translateY(-50%)}.carousel-control:hover,.carousel-control:focus-visible{background:#fff;outline:2px solid var(--pineapple)}.carousel-prev{left:7px}.carousel-next{right:7px}.line-carousel,.threads-carousel{position:relative;overflow:hidden}.line-carousel{width:198px;height:132px}.threads-carousel{width:100%;height:150px;margin-top:10px;border-radius:10px}.line-carousel img,.threads-carousel img{display:block;width:100%;height:100%;object-fit:cover}.line-carousel .media-dots,.threads-carousel .media-dots{bottom:6px}.line-carousel .media-count,.threads-carousel .media-count{top:6px;right:6px}.media-dots .is-current{color:var(--pineapple)}
+.image-picker{width:100%;min-height:48px;padding:10px}.image-picker:focus-visible{outline:2px solid var(--forest);outline-offset:2px}.image-picker:disabled{cursor:default;opacity:.65}.image-preview-item{overflow:visible}.image-preview-item.is-main{outline:3px solid var(--forest);outline-offset:2px}.image-select{display:block;width:100%;height:100%;padding:0;border:0;background:transparent}.image-select:focus-visible{outline:3px solid var(--fruit);outline-offset:2px}.image-preview-item .remove-image{z-index:2;top:4px;right:4px;width:27px;height:27px;padding:0;border-radius:50%;font-size:1rem;line-height:1}.image-preview-item .remove-image:focus-visible{outline:2px solid var(--fruit);outline-offset:2px}.image-main-badge{position:absolute;left:5px;top:5px;padding:2px 5px;background:var(--forest);color:var(--paper);font-size:.62rem}.storage-usage{margin:8px 0 0;color:var(--muted);font-size:.68rem;line-height:1.5;white-space:pre-line}.storage-usage.is-error{color:var(--error);font-weight:700}.fb-image,.ig-image,.line-carousel,.threads-carousel{height:auto;aspect-ratio:var(--picture-ratio)}.fb-image{width:100%}.line-carousel{width:198px}.threads-carousel{width:100%}.line-photo-bubble{width:198px;overflow:hidden;border-radius:4px 13px 13px 13px;background:#fff}.line-text-bubble{margin-top:6px}.line-chat-content{display:flex;flex-direction:column;align-items:flex-start;max-width:198px}.line-carousel img,.threads-carousel img{object-fit:cover}
+.image-prompt-label{display:block;margin-top:14px}.image-prompt-input{width:100%;min-height:66px;margin-top:6px;padding:6px 8px;border:1px solid var(--rule);background:var(--paper);font-size:.78rem;line-height:1.6}.image-prompt-input:focus{border-color:var(--canopy);outline:2px solid var(--leaf);outline-offset:1px}.image-action-row{display:flex;gap:7px}.generate-image-button{flex:1;min-width:0;margin-top:9px;padding:9px 8px;border:1px solid var(--forest);background:var(--canopy);color:var(--paper);font-size:.72rem;font-weight:700;text-align:center}.generate-image-button:hover,.generate-image-button:focus-visible{background:var(--forest);outline:0}.generate-image-button:disabled{border-color:var(--disabled);background:var(--disabled);cursor:wait}.generate-image-status{min-height:1.2em;margin:7px 0 0;color:var(--muted);font-size:.7rem;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.generate-image-status.is-error{color:var(--error)}
 .ai-button{width:100%;margin-top:10px;padding:10px 12px;border:1px solid var(--forest);border-radius:0;background:var(--canopy);color:var(--paper);font-size:.8rem;font-weight:700;text-align:left}.ai-button:hover,.ai-button:focus-visible{background:var(--forest);outline:0}.ai-button:disabled{cursor:wait;border-color:var(--disabled);background:var(--disabled);color:var(--paper)}.ai-result{margin:8px 0 2px;padding:9px 10px;border-left:3px solid var(--pineapple);background:rgba(255,254,250,.72);color:var(--muted);font-size:.72rem;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}.ai-result.is-error{border-left-color:var(--error);color:var(--error)}.ai-result[hidden]{display:none}.modal-field input,.modal-field select{width:100%;min-height:42px;padding:8px 10px;border:1px solid var(--rule);border-radius:0;background:#fff;color:var(--ink);font:inherit}.modal-field input:focus,.modal-field select:focus{border-color:var(--canopy);outline:2px solid var(--leaf);outline-offset:1px}.ai-setting-group{margin-top:24px;padding-top:17px;border-top:1px solid var(--rule)}.ai-setting-group h3{margin:0;color:var(--forest);font-size:.97rem}.ai-setting-group .modal-field{margin-top:13px}.secret-note{margin:7px 0 0}.paste-back-area{margin-top:26px;padding-top:22px;border-top:1px solid var(--rule)}.paste-back-area .modal-field{margin-top:0}.paste-back-area textarea{min-height:150px}.paste-feedback{min-height:1.2em;margin:8px 0 0;color:var(--canopy);font-size:.72rem}
 .undo-button{margin-top:16px;padding:7px 0;border:0;border-bottom:1px solid var(--canopy);background:transparent;color:var(--canopy);font-size:.78rem;font-weight:700}.undo-button:disabled{border-color:var(--rule);color:var(--disabled);cursor:default}.undo-button:focus-visible,.assistant-quick button:focus-visible,.assistant-send:focus-visible{outline:2px solid var(--fruit);outline-offset:2px}.assistant-panel{margin-top:25px;padding-top:23px;border-top:1px solid var(--rule)}.assistant-panel h3{margin:0 0 15px;color:var(--forest);font-family:"Songti TC","Noto Serif TC",serif;font-size:1.15rem;font-weight:600}.assistant-log{display:grid;align-content:start;gap:8px;min-height:78px;max-height:280px;overflow:auto;padding:11px;border:1px solid var(--rule);background:var(--mist)}.assistant-empty{margin:9px 0;color:var(--muted);font-size:.78rem;line-height:1.6}.assistant-entry{padding:9px 11px;background:var(--paper);font-size:.8rem;line-height:1.65;overflow-wrap:anywhere;white-space:pre-wrap}.assistant-entry.is-user{border-left:3px solid var(--fruit)}.assistant-entry.is-assistant{border-left:3px solid var(--canopy)}.assistant-entry strong{display:block;margin-bottom:2px;color:var(--forest);font-size:.72rem}.assistant-quick{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}.assistant-quick button{padding:7px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--forest);font-size:.75rem}.assistant-quick button:hover{border-color:var(--canopy);background:var(--mist)}.assistant-quick button:disabled{opacity:.55;cursor:wait}.assistant-form label{display:block;margin-bottom:7px}.assistant-compose{display:flex;gap:9px}.assistant-compose input{min-width:0;min-height:39px;padding:7px 9px;border:1px solid var(--rule);background:#fff}.assistant-compose input:focus-visible{outline:2px solid var(--canopy);outline-offset:1px}.assistant-send{flex:0 0 auto;padding:7px 14px;border:1px solid var(--forest);background:var(--forest);color:var(--paper);font-size:.78rem;font-weight:700}.assistant-send:disabled{border-color:var(--disabled);background:var(--disabled);cursor:wait}.assistant-status{min-height:1.2em;margin:9px 0 0;color:var(--muted);font-size:.73rem;line-height:1.6;white-space:pre-wrap}.assistant-status.is-error{color:var(--error)}@media(max-width:520px){.assistant-compose{flex-direction:column}.assistant-send{align-self:flex-end}}
 .check-button{margin:16px 0 0 18px;padding:7px 11px;border:1px solid var(--canopy);background:var(--paper);color:var(--forest);font-size:.78rem;font-weight:700}.check-button:hover,.check-button:focus-visible{background:var(--mist);outline:2px solid var(--fruit);outline-offset:2px}.check-button:disabled{border-color:var(--disabled);color:var(--disabled);cursor:wait}.check-status{min-height:1.2em;margin:8px 0 0;color:var(--muted);font-size:.73rem;line-height:1.6;white-space:pre-wrap}.check-status.is-error{color:var(--error)}.check-report{display:grid;gap:5px;white-space:pre-wrap;overflow-wrap:anywhere}.check-line{padding:6px 9px;line-height:1.65}.check-line.is-error{background:var(--check-error-bg)}.check-line.is-warning{background:var(--check-warning-bg)}.check-line.is-heading{margin-top:9px;color:var(--forest);font-weight:700}
+</style>
+<style>
+/* 手機預覽僅模擬資訊層次；字標使用本機字體近似，不載入第三方字型或套件。 */
+.platform-phone{display:flex;flex-direction:column;min-height:466px}.preview-icon{display:block;flex:none}.preview-icon-row{gap:14px}.preview-appbar{height:47px;padding:0 12px;border-bottom:1px solid #eef0ee}.platform-avatar{display:grid;place-items:center;color:#fff;font-family:"Songti TC","Noto Serif TC",serif;font-size:.87rem;font-weight:700}.profile-copy{min-width:0}.platform-name{color:#1f2328;font-size:.72rem;font-weight:700;line-height:1.25}.platform-meta{margin-top:3px;color:#7d848b;font-size:.59rem;line-height:1.25}.preview-bottom-nav{display:flex;align-items:center;justify-content:space-around;min-height:40px;margin-top:auto;border-top:1px solid #ecefec;background:#fff;color:#252525}.preview-bottom-nav .preview-icon{stroke-width:1.9}
+.fb-appbar b{color:#0866ff;font-family:Arial,Helvetica,sans-serif;font-size:1.27rem;font-weight:800;letter-spacing:-.075em}.fb-appbar .preview-icon-row{color:#1f2933}.fb-post-head{display:flex;align-items:center;justify-content:space-between}.fb-post-head .platform-profile{padding:11px 12px 9px}.fb-head-more{margin-right:11px;color:#69727d}.fb-shell .platform-text{padding:3px 12px 11px}.fb-shell .fb-reactions{padding:8px 12px;color:#77818c}.fb-shell .fb-actions{display:flex;justify-content:space-around;gap:1px;margin:0 9px;padding:8px 0 9px;border-bottom:0}.fb-shell .fb-actions span{display:inline-flex;align-items:center;gap:4px;font-size:.64rem}.fb-shell .fb-actions .preview-icon{width:15px;height:15px}
+.ig-shell .preview-appbar{height:49px;font-family:"PingFang TC","Noto Sans TC",sans-serif}.ig-shell .ig-appbar .ig-wordmark{display:inline-block;color:#171717;font-family:"Snell Roundhand","Brush Script MT",cursive;font-size:1.48rem;font-style:normal;font-weight:800;letter-spacing:-.045em;line-height:1;transform:none}.ig-post-head{display:flex;align-items:center;justify-content:space-between;min-height:52px}.ig-post-head .platform-profile{padding:8px 11px}.ig-head-more{margin-right:11px;color:#333}.ig-shell .platform-avatar{width:34px;height:34px;border:2px solid transparent;background:linear-gradient(var(--forest),var(--forest)) padding-box,linear-gradient(145deg,#f6c55a,#df557a,#7d4dd1) border-box}.ig-shell .platform-name{font-size:.72rem}.ig-shell .platform-meta{color:#6f7680}.ig-shell .ig-actions{display:flex;gap:13px;align-items:center;padding:10px 12px 6px}.ig-save{margin-left:auto}.ig-caption{padding:1px 12px 2px;line-height:1.55;white-space:pre-line}.ig-caption b{color:#202020;font-size:.71rem}.ig-post-time{padding:0 12px 12px;color:#8a8a8a;font-size:.57rem}
+.line-shell{display:flex;flex-direction:column;background:#dce9f0}.line-shell .line-header{height:51px;padding:0 10px;border-bottom:1px solid #e4e8e9}.line-shell .line-header b{max-width:140px;overflow:hidden;color:#23292d;font-size:.82rem;text-overflow:ellipsis;white-space:nowrap}.line-header-actions{display:flex;gap:12px;align-items:center}.line-shell .line-chat{gap:7px;padding:11px 10px}.line-shell .platform-avatar{width:31px;height:31px;background:var(--forest)}.line-shell .line-bubble{padding:9px 10px;font-size:.72rem;line-height:1.55;white-space:pre-line}.line-shell .line-photo-bubble{box-shadow:0 1px 2px rgba(40,55,66,.16)}.line-shell .line-time{margin-left:0;color:#6f8795}.line-compose{display:flex;align-items:center;gap:9px;min-height:44px;margin-top:auto;padding:6px 10px;background:#fff;color:#717d82}.line-compose span{flex:1;padding:5px 8px;border:1px solid #e2e7e8;border-radius:16px;color:#a3abad;font-size:.62rem}
+.threads-top{height:45px}.threads-top b{font-family:Arial,Helvetica,sans-serif;font-size:1.04rem;font-style:italic;font-weight:800;letter-spacing:-.075em;transform:skew(-7deg)}.threads-preview{padding:12px 11px}.threads-preview .platform-avatar{width:35px;height:35px;background:var(--forest)}.threads-copy{min-width:0;padding-top:1px}.threads-copy:after{display:none}.threads-account{display:flex;align-items:center;gap:6px;margin-bottom:1px}.threads-account b{font-size:.72rem}.threads-account small{color:#8a8a8a;font-size:.62rem}.threads-more{margin-left:auto;color:#5d5d5d}.threads-display-name{margin:1px 0 8px;color:#767676;font-size:.61rem}.threads-post-text{font-size:.76rem;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere}.threads-actions{display:flex;align-items:center;gap:18px;margin-top:12px}.threads-replies{margin-top:8px}
+</style>
+<style>
+.image-text-controls{display:grid;gap:8px;margin-top:14px;padding-top:13px;border-top:1px solid var(--rule)}.image-text-controls>label,.image-text-selects label{display:grid;gap:5px;font-size:.73rem}.image-text-controls textarea,.image-text-controls select{width:100%;min-height:35px;padding:6px 8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font-size:.75rem}.image-text-controls textarea{min-height:55px}.image-text-selects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.image-text-selects select{font-size:.69rem}.download-image-button{width:100%;padding:9px 10px;border:1px solid var(--forest);background:var(--paper);color:var(--forest);font-size:.75rem;font-weight:700}.download-image-button:hover,.download-image-button:focus-visible{background:var(--mist)}.download-image-status{min-height:1em;margin:0;color:var(--error);font-size:.68rem}
 </style>
 </head>
 <body>
 <header class="site-header"><div class="brand-line"><p class="brand-mark" id="brand-mark">松風民宿｜LONTIAN, LUYE</p><div class="header-actions"><p class="brand-account" id="brand-account">帳號名稱｜❓待補</p><button class="setting-button" id="new-post" type="button">＋ 新的一篇</button><button class="setting-button" id="open-library" type="button">📁 我的貼文</button><button class="setting-button" id="open-settings" type="button">⚙ 設定</button></div></div><h1 class="top-title"><span id="brand-name">松風民宿</span>｜社群工作台</h1></header>
 <main class="workspace">
-<section class="material-panel" aria-labelledby="material-title"><p class="section-kicker">CAPTURE</p><h2 id="material-title">素材卡</h2><p class="material-intro">先留下今天看見的地方，再開始說故事。</p><form class="material-form" id="material-form" novalidate></form><div class="image-field"><div class="image-field-head"><span>貼文圖片</span><small>選填・最多 6 張</small></div><label class="image-picker" for="post-image-input"><span id="image-picker-label">＋ 選擇圖片（可多選）</span><input class="visually-hidden" id="post-image-input" type="file" accept="image/*" multiple></label><div class="image-preview-grid" id="image-preview-grid" hidden></div><p class="image-feedback" id="image-feedback" aria-live="polite">圖片會縮小後保存在這個瀏覽器。</p></div><button class="save-post-button" id="save-post" type="button">💾 存檔</button><p class="save-feedback" id="save-feedback" aria-live="polite"></p><button class="ai-button" id="ask-ai" type="button">✨ 讓 AI 寫</button><div class="ai-result" id="ai-result" aria-live="polite" hidden></div><button class="compose-button" id="compose-prompt" type="button">🧩 組好指令</button></section>
+<section class="material-panel" aria-labelledby="material-title"><p class="section-kicker">CAPTURE</p><h2 id="material-title">素材卡</h2><p class="material-intro">先留下今天看見的地方，再開始說故事。</p><form class="material-form" id="material-form" novalidate></form><div class="image-field"><div class="image-field-head"><span>🖼 這篇的圖</span><small>選填・最多 6 張</small></div><button class="image-picker" id="upload-images" type="button"><span id="image-picker-label">📤 上傳</span></button><input class="visually-hidden" id="post-image-input" type="file" accept="image/*" multiple aria-label="選擇這篇的圖片"><label class="image-prompt-label" for="image-prompt">圖片描述（要畫什麼）</label><textarea class="image-prompt-input" id="image-prompt" placeholder="例：鹿野茶田邊，風穿過樹葉的午後"></textarea><div class="image-action-row"><button class="generate-image-button" id="generate-image" type="button">🎨 生圖</button><button class="generate-image-button" id="imagine-image" type="button">🪄 AI 想圖再畫</button></div><p class="generate-image-status" id="generate-image-status" aria-live="polite"></p><div class="image-text-controls"><label for="image-text">加字｜圖上的字</label><textarea id="image-text" placeholder="想放在圖上的字，最多顯示 3 行"></textarea><div class="image-text-selects"><label for="image-text-position">位置<select id="image-text-position"><option value="top">上</option><option value="middle">中</option><option value="bottom" selected>下</option></select></label><label for="image-text-size">大小<select id="image-text-size"><option value="small">小</option><option value="medium" selected>中</option><option value="large">大</option></select></label><label for="image-text-style">樣式<select id="image-text-style"><option value="white">白底主色字</option><option value="black">黑底白字</option><option value="shadow">白字陰影</option></select></label></div><label for="download-size">下載尺寸<select id="download-size"></select></label><button class="download-image-button" id="download-image" type="button">⬇ 下載這張圖</button><p class="download-image-status" id="download-image-status" aria-live="polite"></p></div><div class="image-preview-grid" id="image-preview-grid" hidden></div><p class="storage-usage" id="storage-usage" aria-live="polite">瀏覽器的抽屜：已用 0 MB
+圖片倉庫：計算中…</p><p class="image-feedback" id="image-feedback" aria-live="polite">圖片會縮小後保存在這個瀏覽器。</p></div><button class="save-post-button" id="save-post" type="button">💾 存檔</button><p class="save-feedback" id="save-feedback" aria-live="polite"></p><button class="ai-button" id="ask-ai" type="button">✨ 讓 AI 寫</button><div class="ai-result" id="ai-result" aria-live="polite" hidden></div><button class="compose-button" id="compose-prompt" type="button">🧩 組好指令</button></section>
 <section class="editor-panel" aria-labelledby="editor-title"><div class="editor-top"><div><p class="section-kicker">DRAFT</p><h2 id="editor-title">貼文內容</h2></div><p class="editor-note">一句一件事，讓文字留有呼吸。</p></div><nav class="tabs" id="platform-tabs" aria-label="選擇平台"></nav><label class="editor-label" for="post-content">正在寫給 <span id="active-platform">FB</span></label><textarea class="post-content" id="post-content" aria-label="貼文內容" placeholder="從今天看見的一個畫面開始……"></textarea><div class="editor-footer"><span>內容會自動暫存在這個瀏覽器</span><span id="word-count">0 字</span></div><button class="undo-button" id="undo-post" type="button" disabled>↩ 復原上一版</button><button class="check-button" id="check-posts" type="button">🔍 檢查官</button><p class="check-status" id="check-status" aria-live="polite"></p><section class="assistant-panel" aria-labelledby="assistant-title"><h3 id="assistant-title">💬 AI 小幫手</h3><div class="assistant-log" id="assistant-log" role="log" aria-label="目前平台的小幫手對話紀錄"></div><div class="assistant-quick" aria-label="快捷修改"><button type="button" data-assistant-instruction="短一點">短一點</button><button type="button" data-assistant-instruction="換開頭">換開頭</button><button type="button" data-assistant-instruction="少一點 emoji">少一點 emoji</button><button type="button" data-assistant-instruction="更像範例">更像範例</button></div><form class="assistant-form" id="assistant-form"><label for="assistant-input">想怎麼改？</label><div class="assistant-compose"><input id="assistant-input" type="text" placeholder="例：最後一段再溫柔一點"><button class="assistant-send" id="assistant-send" type="submit">送出</button></div></form><p class="assistant-status" id="assistant-status" aria-live="polite"></p></section></section>
-<aside class="preview-panel" aria-labelledby="preview-title"><p class="section-kicker">PREVIEW</p><h2 id="preview-title">手機預覽</h2><div class="preview-panel-inner"><p class="preview-note">切換平台後，這裡會顯示相對應的貼文樣子，並隨輸入即時更新。</p><div class="phone" aria-label="手機貼文預覽"><div class="speaker"></div><div id="platform-preview"></div></div></div></aside>
+<aside class="preview-panel" aria-labelledby="preview-title"><p class="section-kicker">PREVIEW</p><h2 id="preview-title">手機預覽</h2><div class="preview-panel-inner"><p class="preview-note">切換平台後即時預覽貼文。介面為近似示意，實際畫面可能因 App 版本而不同。</p><div class="phone" aria-label="手機貼文預覽"><div class="speaker"></div><div id="platform-preview"></div></div></div></aside>
 </main>
 <div class="modal-backdrop" id="settings-modal" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
   <section class="modal"><button class="modal-close" type="button" data-close="settings-modal" aria-label="關閉設定">×</button><h2 id="settings-title">設定</h2><p class="modal-note">內容只保存在這個瀏覽器裡，重新開啟網頁後仍會保留。</p><label class="modal-field" for="brand-spec"><span>品牌規格</span><textarea id="brand-spec" placeholder="貼上品牌規格全文"></textarea></label><label class="modal-field" for="checklist"><span>檢查清單</span><textarea id="checklist" placeholder="貼上寫完後要檢查的清單"></textarea></label>
     <div class="ai-setting-group"><h3>第一組｜OpenRouter</h3><label class="modal-field" for="ai-key"><span>AI 金鑰</span><input id="ai-key" type="password" autocomplete="off" placeholder="貼上 OpenRouter API 金鑰"></label><label class="modal-field" for="openrouter-model"><span>模型</span><select id="openrouter-model"><optgroup label="DeepSeek"><option value="deepseek/deepseek-v4.1-flash">deepseek/deepseek-v4.1-flash</option><option value="deepseek/deepseek-v4-pro">deepseek/deepseek-v4-pro</option><option value="deepseek/deepseek-v3.2">deepseek/deepseek-v3.2</option></optgroup><optgroup label="Kimi"><option value="moonshotai/kimi-k2.6">moonshotai/kimi-k2.6</option><option value="moonshotai/kimi-k2.5">moonshotai/kimi-k2.5</option><option value="moonshotai/kimi-k3">moonshotai/kimi-k3</option></optgroup><optgroup label="MiniMax"><option value="minimax/minimax-m3">minimax/minimax-m3</option><option value="minimax/minimax-m2.7">minimax/minimax-m2.7</option><option value="minimax/minimax-m2.5">minimax/minimax-m2.5</option></optgroup></select></label><label class="modal-field" for="openrouter-custom-model"><span>或自己打模型名稱</span><input id="openrouter-custom-model" type="text" spellcheck="false" placeholder="有填就使用這個模型"></label><label class="modal-field" for="openrouter-reasoning"><span>思考</span><select id="openrouter-reasoning"><option value="low">少想一點 low</option><option value="medium">多想一點 medium</option><option value="high">想很久 high</option></select></label></div>
     <div class="ai-setting-group"><h3>第二組｜Gemini</h3><label class="modal-field" for="gemini-key"><span>Gemini 金鑰</span><input id="gemini-key" type="password" autocomplete="off" placeholder="貼上 Gemini API 金鑰"></label><label class="modal-field" for="gemini-model"><span>Gemini 模型</span><select id="gemini-model"><option value="gemini-3.8-flash">gemini-3.8-flash</option><option value="gemini-3.6-flash">gemini-3.6-flash</option><option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option><option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite</option></select></label></div>
+    <div class="ai-setting-group"><h3>生圖｜OpenRouter</h3><label class="modal-field" for="image-model"><span>生圖模型</span><select id="image-model"><option value="bytedance-seed/seedream-5-0-flash">bytedance-seed/seedream-5-0-flash</option><option value="qwen/qwen-image-2.1-turbo">qwen/qwen-image-2.1-turbo</option><option value="qwen/qwen-image-3">qwen/qwen-image-3</option><option value="bytedance-seed/seedream-5-0-pro">bytedance-seed/seedream-5-0-pro</option><option value="google/gemini-3.1-flash-lite-image">google/gemini-3.1-flash-lite-image</option></select></label><label class="modal-field" for="image-custom-model"><span>或自己打生圖模型名稱</span><input id="image-custom-model" type="text" spellcheck="false" placeholder="有填就使用這個模型"></label><label class="modal-field" for="image-spec"><span>圖片規格</span><textarea id="image-spec" placeholder="例：自然光、保留地方生活感，不加文字或標誌"></textarea></label><p class="modal-note secret-note">使用第一組 OpenRouter 的金鑰，不用另外填。</p></div>
     <div class="ai-setting-group"><label class="modal-field" for="ai-order"><span>先用哪一組</span><select id="ai-order"><option value="openrouter-then-gemini">先用 OpenRouter，失敗了自動換 Gemini</option><option value="gemini-only">只用 Gemini</option><option value="openrouter-only">只用 OpenRouter</option></select></label></div><p class="modal-note secret-note">金鑰只會保存在這個瀏覽器，送出 AI 請求時才使用。</p><div class="modal-actions"><button class="modal-button primary" id="save-settings" type="button">儲存</button></div></section>
 </div>
 <div class="modal-backdrop" id="prompt-modal" hidden role="dialog" aria-modal="true" aria-labelledby="prompt-title">
@@ -57,36 +72,276 @@
 <div class="modal-backdrop" id="check-modal" hidden role="dialog" aria-modal="true" aria-labelledby="check-title">
   <section class="modal"><button class="modal-close" type="button" data-close="check-modal" aria-label="關閉檢查報告">×</button><h2 id="check-title">檢查報告</h2><p class="modal-note">有 ⚠️ 的地方，請再由你確認。</p><div class="check-report" id="check-report"></div></section>
 </div>
+<script type="text/plain" id="brand-spec-default">
+# 松風民宿｜品牌規格
+
+> 這份規格用於松風民宿的 FB、IG、LINE 貼文。寫作時以「住進鹿野的生活節奏」為核心：不把松風寫成一應俱全的飯店，而是讓適合的旅客看見自然、木質空間與在地日常。
+
+## 基本資料
+
+| 項目 | 內容 |
+| --- | --- |
+| 品牌名稱 | 松風民宿 |
+| 帳號名稱 | ❓待補 |
+| 主色 | `#90674c` |
+| 使用平台 | Facebook、Instagram、LINE 官方帳號 |
+
+## 1. 品牌口氣（寫具體）
+
+像民宿主人和懂得旅行的人聊天：安靜、有主見、誠實，不過度招攬。具體來說：
+
+- 用「你／你們」，不用「您」、「親愛的旅客」或過度服務式稱呼。
+- 一句只寫一件事；一句以 8～25 個中文字為原則，避免太長的介紹句。
+- 每段 1～3 句；讓文字像散步一樣，有停下來看風景的空間。
+- 驚嘆號一篇最多 1 個，能不用就不用。
+- emoji：FB 最多 2 個、IG 最多 1 個、LINE 不使用 emoji；沒有必要就不放。
+- 先寫一個能看見的畫面：風、樹葉、木頭、草地、茶田、閱讀、茶、咖啡，或地方店家與小農的日常。
+- 講住宿時，說「住進鹿野的生活」、「回到松風後可以如何度過」；不把它寫成設備齊全的飯店。
+- 講熱氣球季時，重點放在旅程前後如何在鹿野停留與放慢，不寫成大型活動式的口號。
+- 可以用「慢慢住進鹿野」、「把時間留給自然」，但同一句概念一篇只用一次，不能每段都講慢活。
+- 不寫「快來」、「要訂要快」、「錯過可惜」、「限時搶訂」等催促話。
+- 若要說松風的取捨，可以直接但不排斥人：松風適合想親近自然與地方生活的人；主要期待室內娛樂的人，可能不適合這裡。
+
+## 2. 不能用的字
+
+- **指定禁用：** 狂歡、慶祝、熱鬧。
+- **催促與誇張字：** 必住、必去、爆滿、錯過可惜、限時搶訂、最後機會、秒殺、最強。
+- **不符合松風定位的說法：** 一應俱全、飯店級享受、派對住宿、打卡聖地。
+- **不確定的服務用語：** 不要自行寫設備、房型、早餐、接送、停車、價格、折扣、旅遊行程或熱氣球相關安排。
+
+## 3. 不准自己加的東西
+
+主人沒有明確提供的資訊，**一個字都不要加**：
+
+- 地址、聯絡方式、帳號名稱、訂房連結與詢問方式。
+- 房型名稱、房價、房況、入住／退房時間、營業／接待時間。
+- 空間設備、餐飲、接送、停車、寵物、無障礙或任何未確認服務。
+- 熱氣球季的日期、場次、地點、交通與活動規則。
+- 與店家、小農或景點的合作關係、名稱與優惠。
+- 得獎、評價、旅客數、訂房數等數字或成效。
+
+不確定時，先標「❓待補」或向主人確認；不要用看似合理的資訊補上。
+
+## 4. 三個平台的規則＋骨架＋範例
+
+### Facebook
+
+- **看的人：** 正在規劃台東行程、想多了解民宿主人與地方故事的旅客；也包含較習慣看完整文字的族群。
+- **多長：** 4～6 段，每段 1～3 句；全篇約 180～350 字。
+- **第一行寫什麼：** `【松風日常】` 或 `【住進鹿野】`，接著是一個鹿野當下的自然或生活畫面。
+- **中間寫什麼：** 說松風對旅行、空間或在地生活的想法，再帶出旅客能如何度過一天。若有已確認的入住／訂房資訊，最後再寫。
+- **最後一行固定寫什麼：** 無固定署名；若有要放地址、聯絡或訂房方式，一律使用確認過的資料，否則不放。
+- **其他規則：** emoji 最多 2 個；不放 hashtag；不可自行寫地址、營業時間或價格。
+
+**骨架（照這個格子填）：**
+
+```text
+【松風日常】／【住進鹿野】
+
+（第 1 段：鹿野的一個自然或地方畫面，1～2 句）
+
+（第 2 段：松風主人對旅行、空間或在地生活的想法，1～2 句）
+
+（第 3 段：旅客可以如何在這裡度過一天，1～2 句）
+
+（若資訊已確認：入住／訂房／日期相關資訊；未確認就不寫）
+```
+
+**範例（照這篇的感覺寫）：**
+
+```text
+【住進鹿野】
+
+來到鹿野，不一定要把行程排得很滿。
+走進龍田的草地與茶田，看看店家與小農各自忙著的日常，就已經是一段旅行。
+
+回到松風以後，可以讀幾頁書，泡一壺茶，或只是坐著聽風。
+我們想留給旅客的，不只是過夜的地方，而是靠近這裡生活節奏的一點時間。
+
+如果你也想暫時離開城市，慢慢住進鹿野，松風等你來。
+```
+
+### Instagram
+
+- **看的人：** 先被照片吸引、喜歡自然與文青氛圍，正在尋找台東慢旅行靈感的旅客。
+- **多長：** 內文不超過 8 行（hashtag 不算）；一行只放一個畫面或想法。
+- **第一行寫什麼：** 一句短的自然或空間畫面；可加 1 個 emoji，但不是每篇都要加。
+- **中間寫什麼：** 2～4 行描述今天在鹿野的小事，以及回到松風後的生活節奏；用「．」單獨成行留白。
+- **最後一行固定寫什麼：** 最後一組 hashtag 必須包含 `#松風民宿 #鹿野 #台東旅行 #慢活旅行`；帳號標記為 `❓待補`，未確認前不寫。
+- **其他規則：** emoji 最多 1 個；hashtag 共 3～6 個，放文末；不寫未確認的日期、價格、設施或活動安排。
+
+**骨架（照這個格子填）：**
+
+```text
+（第 1 行：一句自然／空間的畫面；可選 1 個 emoji）
+
+（第 2～3 行：今天在鹿野發生的小事，一行一件事）
+（第 4 行：回到松風後的生活節奏）
+．
+（第 5 行：一句安靜的邀請）
+．
+#松風民宿 #鹿野 #台東旅行 #慢活旅行 ＋0～2 個本篇相關 hashtag
+```
+
+**範例（照這篇的感覺寫）：**
+
+```text
+風穿過樹葉的下午。
+
+在鹿野走一段路，
+回到松風喝杯茶。
+今天不用完成太多事。
+．
+把時間留給自然，也留給自己。
+．
+#松風民宿 #鹿野 #台東旅行 #慢活旅行
+```
+
+### LINE 官方帳號
+
+- **看的人：** 已加好友、正考慮入住或需要確認住宿安排的旅客。
+- **多長：** 手機一個畫面內讀完，約 6～8 行。
+- **第一行寫什麼：** `【松風通知】` 加上一句已確認的重點，例如入住提醒、日期或安排；不寫長篇抒情。
+- **中間寫什麼：** 用 `✔` 列出最多 3 點，清楚說明旅客需要知道的安排或條件。
+- **最後一行固定寫什麼：** `松風民宿`。
+- **其他規則：** 不使用 emoji；一定要有下一步。回覆關鍵字、連結或聯絡方式尚未提供時，寫 `👉 訂房或詢問方式：❓待補`，不要自行發明。
+
+**骨架（照這個格子填）：**
+
+```text
+【松風通知】（一句已確認的通知重點）
+
+✔ （重點一）
+✔ （重點二）
+✔ （重點三，最多 3 點）
+
+👉 （已確認的訂房或詢問方式；沒有就寫：❓待補）
+
+松風民宿
+```
+
+**範例（照這篇的感覺寫）：**
+
+```text
+【松風通知】熱氣球季前，為自己留一段鹿野的慢時光。
+
+✔ 適合想親近自然、放慢腳步的旅客
+✔ 入住前可先向我們確認日期與安排
+
+👉 訂房或詢問方式：❓待補
+
+松風民宿
+```
+
+## 5. 平台限定的規則（寫具體）
+
+- 主人說「只在 LINE 講」的訂房、房況、價格或安排，**不寫到 FB、IG**。
+- 主人說「先不要講」「還沒確定」的內容，三個平台都不寫。
+- FB、IG 可以講地方生活、自然畫面與松風理念；LINE 優先講已確認、能讓旅客採取行動的通知。
+- 同一件事要發三個平台時：FB 多說一段故事，IG 留下畫面與短句，LINE 只保留必要資訊與下一步。
+- 若未來有官方帳號名稱、訂房方式或地址，只在主人確認後新增到相應平台的固定欄位。
+
+## 6. 寫之前一定要檢查
+
+- 有沒有使用禁用字，或寫出過度催促、喧鬧、飯店式全能的語氣？
+- 內容是否讓人感覺到「住進鹿野的生活」，而不只是被要求訂房？
+- 地址、價格、房況、日期、熱氣球資訊與聯絡方式，是否都是主人最後確認的版本？
+- 日期若附星期，星期是否正確？
+- 有沒有自行加上房型、設備、交通、店家、小農或優惠資訊？有就刪除或改成 `❓待補`。
+- 三平台內容是否各自符合長度、第一行與固定結尾的規則？
+</script>
 <script>
 // 品牌、平台與素材卡欄位：之後可直接從這裡修改。
 const BRAND={name:"松風民宿",accountName:"songfung2025",primaryColor:"#314A35",platforms:["FB","IG","LINE","Threads"],materialFields:[{label:"日期",required:true,type:"text",placeholder:"例：2026/10/15"},{label:"在地生活片段",required:false,type:"textarea",placeholder:"例：風穿過樹葉；龍田的草地與茶田"},{label:"活動名稱",required:false,type:"text",placeholder:"例：地方深度旅遊 工作坊"},{label:"民宿主人想說的話",required:false,type:"textarea",placeholder:"例：我們不是飯店；希望旅客住進鹿野的生活節奏"},{label:"松風裡的時刻",required:false,type:"textarea",placeholder:"例：回到松風後，坐著讀幾頁書、泡一壺茶"},{label:"❓待確認資訊",required:false,type:"textarea",placeholder:"例：熱氣球季日期、房況、訂房方式、聯絡資訊"}]};
-const DEFAULT_OPENROUTER_MODEL="deepseek/deepseek-v4.1-flash",DEFAULT_GEMINI_MODEL="gemini-3.8-flash",AI_TIMEOUT_MS=60000;
+const PIC_SIZE={FB:[1080,1080],IG:[1080,1350],LINE:[1040,1040],Threads:[1080,1350]};
+const SIZES={platform:{label:"跟著平台"},square:{label:"方形",width:1080,height:1080},portrait:{label:"直式",width:1080,height:1350},story:{label:"限動",width:1080,height:1920},lineAvatar:{label:"LINE 大頭貼",width:640,height:640},lineBroadcast:{label:"LINE 群發圖",width:1040,height:1040}};
+const DEFAULT_OPENROUTER_MODEL="deepseek/deepseek-v4.1-flash",DEFAULT_GEMINI_MODEL="gemini-3.8-flash",DEFAULT_IMAGE_MODEL="bytedance-seed/seedream-5-0-flash",AI_TIMEOUT_MS=60000,IMAGE_TIMEOUT_MS=120000;
 const DEFAULT_CHECKLIST=["日期價格對不對","有沒有多加的事","只能在某平台講的有沒有跑掉","先不要講的有沒有出現","有沒有不能用的字","有沒有簡體字或大陸用語"];
 const materialForm=document.getElementById("material-form"),platformTabs=document.getElementById("platform-tabs"),postContent=document.getElementById("post-content"),wordCount=document.getElementById("word-count"),activePlatform=document.getElementById("active-platform"),platformPreview=document.getElementById("platform-preview"),settingsModal=document.getElementById("settings-modal"),promptModal=document.getElementById("prompt-modal"),libraryModal=document.getElementById("library-modal"),savedList=document.getElementById("saved-list"),brandSpecInput=document.getElementById("brand-spec"),checklistInput=document.getElementById("checklist"),aiKeyInput=document.getElementById("ai-key"),openrouterModelInput=document.getElementById("openrouter-model"),openrouterCustomModelInput=document.getElementById("openrouter-custom-model"),openrouterReasoningInput=document.getElementById("openrouter-reasoning"),geminiKeyInput=document.getElementById("gemini-key"),geminiModelInput=document.getElementById("gemini-model"),aiOrderInput=document.getElementById("ai-order"),promptOutput=document.getElementById("prompt-output"),pasteResponse=document.getElementById("paste-response"),pasteFeedback=document.getElementById("paste-feedback"),aiButton=document.getElementById("ask-ai"),aiResult=document.getElementById("ai-result"),saveFeedback=document.getElementById("save-feedback"),imageInput=document.getElementById("post-image-input"),imagePreviewGrid=document.getElementById("image-preview-grid"),imagePickerLabel=document.getElementById("image-picker-label"),imageFeedback=document.getElementById("image-feedback");
 const undoButton=document.getElementById("undo-post"),assistantLog=document.getElementById("assistant-log"),assistantForm=document.getElementById("assistant-form"),assistantInput=document.getElementById("assistant-input"),assistantSend=document.getElementById("assistant-send"),assistantStatus=document.getElementById("assistant-status"),assistantQuickButtons=[...document.querySelectorAll("[data-assistant-instruction]")];
 const checkButton=document.getElementById("check-posts"),checkStatus=document.getElementById("check-status"),checkModal=document.getElementById("check-modal"),checkReport=document.getElementById("check-report");
-const STORAGE_KEYS={brandSpec:"songfeng-workbench-brand-spec",checklist:"songfeng-workbench-checklist",aiKey:"songfeng-workbench-ai-key",openrouterModel:"songfeng-workbench-openrouter-model",openrouterCustomModel:"songfeng-workbench-openrouter-custom-model",openrouterReasoning:"songfeng-workbench-openrouter-reasoning",geminiKey:"songfeng-workbench-gemini-key",geminiModel:"songfeng-workbench-gemini-model",aiOrder:"songfeng-workbench-ai-order",aiDailyUsage:"songfeng-workbench-ai-daily-usage",savedPosts:"songfeng-workbench-saved-posts",draft:"songfeng-workbench-current-draft"};
-const posts=Object.fromEntries(BRAND.platforms.map(platform=>[platform,""])),assistantHistory=Object.fromEntries(BRAND.platforms.map(platform=>[platform,[]]));let currentPlatform=BRAND.platforms[0],currentSavedId=null,postImages=[],currentImageIndex=0,previousPosts=null,showingPrevious=false,assistantBusy=false,workRevision=0;const materialInputs=[];const MAX_IMAGES=6;
+const storageUsage=document.getElementById("storage-usage");
+const uploadButton=document.getElementById("upload-images");
+const imagePromptInput=document.getElementById("image-prompt"),generateImageButton=document.getElementById("generate-image"),imagineImageButton=document.getElementById("imagine-image"),generateImageStatus=document.getElementById("generate-image-status"),imageModelInput=document.getElementById("image-model"),imageCustomModelInput=document.getElementById("image-custom-model"),imageSpecInput=document.getElementById("image-spec");
+const imageTextInput=document.getElementById("image-text"),imageTextPosition=document.getElementById("image-text-position"),imageTextSize=document.getElementById("image-text-size"),imageTextStyle=document.getElementById("image-text-style"),downloadSizeInput=document.getElementById("download-size"),downloadImageButton=document.getElementById("download-image"),downloadImageStatus=document.getElementById("download-image-status");
+const STORAGE_KEYS={brandSpec:"songfeng-workbench-brand-spec",checklist:"songfeng-workbench-checklist",aiKey:"songfeng-workbench-ai-key",openrouterModel:"songfeng-workbench-openrouter-model",openrouterCustomModel:"songfeng-workbench-openrouter-custom-model",openrouterReasoning:"songfeng-workbench-openrouter-reasoning",geminiKey:"songfeng-workbench-gemini-key",geminiModel:"songfeng-workbench-gemini-model",aiOrder:"songfeng-workbench-ai-order",imageModel:"songfeng-workbench-image-model",imageCustomModel:"songfeng-workbench-image-custom-model",imageSpec:"songfeng-workbench-image-spec",aiDailyUsage:"songfeng-workbench-ai-daily-usage",savedPosts:"songfeng-workbench-saved-posts",draft:"songfeng-workbench-current-draft"};
+const posts=Object.fromEntries(BRAND.platforms.map(platform=>[platform,""])),assistantHistory=Object.fromEntries(BRAND.platforms.map(platform=>[platform,[]]));let currentPlatform=BRAND.platforms[0],currentSavedId=null,postImages=[],postImageIds=[],mainImageIndex=0,currentImageIndex=0,previousPosts=null,showingPrevious=false,assistantBusy=false,imageBusy=false,workRevision=0,previewRevision=0,storageUsageToken=0,storageSaveFailed=false;const materialInputs=[];const MAX_IMAGES=6;
 const escapeHTML=value=>value.replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
 const withBreaks=value=>escapeHTML(value).replace(/\n/g,"<br>");
 const copyHTML=value=>value?withBreaks(value):'<span class="platform-placeholder">還沒有貼文內容</span>';
-const profileHTML=meta=>'<div class="platform-profile"><div class="platform-avatar"></div><div><div class="platform-name">'+BRAND.name+'</div><div class="platform-meta">'+meta+'</div></div></div>';
+const previewIcon=(name,size=18)=>{
+  const paths={heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',chat:'<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-3.4-.7L3 21l1.7-5.2a8.5 8.5 0 1 1 16.3-4.3Z"/>',send:'<path d="m22 2-7.5 20-3.2-8.8L2 10l20-8ZM11.3 13.2 22 2"/>',save:'<path d="M5 3h14v18l-7-4.5L5 21V3Z"/>',search:'<circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/>',home:'<path d="m3 10 9-7 9 7v11h-6v-7H9v7H3V10Z"/>',plus:'<rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 7v10M7 12h10"/>',reels:'<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M8 3l4 6M15 3l4 6M10 12l5 3-5 3v-6Z"/>',menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',back:'<path d="m15 4-8 8 8 8"/>',phone:'<path d="M8 3H5a2 2 0 0 0-2 2c0 8.8 7.2 16 16 16a2 2 0 0 0 2-2v-3l-5-2-2 2a13 13 0 0 1-6-6l2-2-2-5Z"/>',bell:'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',more:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>'};
+  return '<svg class="preview-icon" width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[name]+'</svg>';
+};
+const avatarHTML=()=>'<div class="platform-avatar" aria-hidden="true">松</div>';
+const profileHTML=(name,meta)=>'<div class="platform-profile">'+avatarHTML()+'<div class="profile-copy"><div class="platform-name">'+name+'</div><div class="platform-meta">'+meta+'</div></div></div>';
+const previewNav=names=>'<div class="preview-bottom-nav" aria-hidden="true">'+names.map(name=>previewIcon(name,19)).join("")+'</div>';
+function imageForCanvas(source){return new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error("圖片讀取失敗，請重新上傳。"));image.src=source})}
+function wrappedImageLines(ctx,value,maxWidth){
+  const lines=[""];
+  for(const char of Array.from(value.replace(/\r/g,""))){
+    if(char==="\n"){lines.push("");continue}
+    const last=lines.length-1,next=lines[last]+char;
+    if(lines[last]&&ctx.measureText(next).width>maxWidth)lines.push(char);else lines[last]=next;
+  }
+  return lines;
+}
+async function drawImageWithText(source,width,height){
+  const image=await imageForCanvas(source),canvas=document.createElement("canvas"),ctx=canvas.getContext("2d");
+  if(!ctx)throw new Error("這個瀏覽器無法繪製圖片。");
+  canvas.width=width;canvas.height=height;
+  const scale=Math.max(width/image.naturalWidth,height/image.naturalHeight),drawWidth=image.naturalWidth*scale,drawHeight=image.naturalHeight*scale;
+  ctx.drawImage(image,(width-drawWidth)/2,(height-drawHeight)/2,drawWidth,drawHeight);
+  const value=imageTextInput.value.trim();if(!value)return canvas;
+  const style=imageTextStyle.value,base={small:Math.round(width*.045),medium:Math.round(width*.065),large:Math.round(width*.085)}[imageTextSize.value]||Math.round(width*.065);
+  const maxWidth=width*(style==="shadow"?.84:.72);let fontSize=base,lines=[];
+  do{ctx.font="700 "+fontSize+'px "PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif';lines=wrappedImageLines(ctx,value,maxWidth);if(lines.length<=3)break;fontSize-=2}while(fontSize>24);
+  if(lines.length>3){lines=lines.slice(0,3);while(lines[2]&&ctx.measureText(lines[2]+"…").width>maxWidth)lines[2]=lines[2].slice(0,-1);lines[2]+="…"}
+  const lineHeight=fontSize*1.35,paddingX=width*.035,paddingY=fontSize*.48,textWidth=Math.max(...lines.map(line=>ctx.measureText(line).width)),blockWidth=Math.min(width*.84,textWidth+paddingX*2),blockHeight=lines.length*lineHeight+paddingY*2;
+  const position=imageTextPosition.value,centerY=position==="top"?height*.16+blockHeight/2:position==="middle"?height/2:height*.84-blockHeight/2;
+  const top=Math.max(height*.08,Math.min(centerY-blockHeight/2,height*.92-blockHeight)),left=(width-blockWidth)/2;
+  if(style!=="shadow"){
+    ctx.fillStyle=style==="white"?"rgba(255,255,255,.84)":"rgba(0,0,0,.68)";
+    const radius=Math.min(fontSize*.35,blockHeight/4);ctx.beginPath();ctx.moveTo(left+radius,top);ctx.lineTo(left+blockWidth-radius,top);ctx.quadraticCurveTo(left+blockWidth,top,left+blockWidth,top+radius);ctx.lineTo(left+blockWidth,top+blockHeight-radius);ctx.quadraticCurveTo(left+blockWidth,top+blockHeight,left+blockWidth-radius,top+blockHeight);ctx.lineTo(left+radius,top+blockHeight);ctx.quadraticCurveTo(left,top+blockHeight,left,top+blockHeight-radius);ctx.lineTo(left,top+radius);ctx.quadraticCurveTo(left,top,left+radius,top);ctx.closePath();ctx.fill();
+  }
+  ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillStyle=style==="white"?getComputedStyle(document.documentElement).getPropertyValue("--forest").trim():"#fff";
+  if(style==="shadow"){ctx.shadowColor="rgba(0,0,0,.8)";ctx.shadowBlur=fontSize*.25;ctx.shadowOffsetY=fontSize*.08}
+  lines.forEach((line,index)=>ctx.fillText(line,width/2,top+paddingY+lineHeight*(index+.5),maxWidth));
+  ctx.shadowColor="transparent";ctx.shadowBlur=0;ctx.shadowOffsetY=0;return canvas;
+}
+async function downloadCurrentImage(){
+  downloadImageStatus.textContent="";
+  if(!postImages.length){downloadImageStatus.textContent="請先上傳或生成一張圖片。";return}
+  const selected=downloadSizeInput.value,setting=SIZES[selected]||SIZES.platform,[width,height]=selected==="platform"?PIC_SIZE[currentPlatform]:[setting.width,setting.height],name=selected==="platform"?currentPlatform:setting.label;
+  downloadImageButton.disabled=true;
+  try{
+    const canvas=await drawImageWithText(postImages[mainImageIndex],width,height),url=canvas.toDataURL("image/png"),link=document.createElement("a");
+    link.href=url;link.download=BRAND.name+"_"+name+"_"+width+"x"+height+".png";document.body.append(link);link.click();link.remove();
+  }catch(error){downloadImageStatus.textContent=error.message||"圖片下載失敗，請再試一次。"}
+  finally{downloadImageButton.disabled=false}
+}
 function renderPreview(){
   const copy=copyHTML(posts[currentPlatform]);
+  const [pictureWidth,pictureHeight]=PIC_SIZE[currentPlatform];platformPreview.style.setProperty("--picture-ratio",pictureWidth+" / "+pictureHeight);
   const materialText=materialInputs[0]&&materialInputs[0].value.trim()?escapeHTML(materialInputs[0].value.trim()):'<span class="platform-placeholder">素材卡第一格的文字</span>';
-  const imageSources=postImages.map(image=>escapeHTML(image));currentImageIndex=Math.min(currentImageIndex,Math.max(0,imageSources.length-1));const activeImage=imageSources[currentImageIndex]||"",hasCarousel=imageSources.length>1,countBadge=hasCarousel?'<span class="media-count">'+(currentImageIndex+1)+' / '+imageSources.length+'</span>':"",dots=hasCarousel?'<span class="media-dots">'+imageSources.map((source,index)=>'<span class="'+(index===currentImageIndex?'is-current':'')+'">●</span>').join(" ")+'</span>':"",controls=hasCarousel?'<button class="carousel-control carousel-prev" data-carousel="-1" type="button" aria-label="上一張圖片">‹</button><button class="carousel-control carousel-next" data-carousel="1" type="button" aria-label="下一張圖片">›</button>':"";
+  const imageSources=postImages.map(image=>escapeHTML(image));mainImageIndex=Math.min(mainImageIndex,Math.max(0,imageSources.length-1));currentImageIndex=Math.min(currentImageIndex,Math.max(0,imageSources.length-1));const activeImage=imageSources[currentImageIndex]||"",hasCarousel=imageSources.length>1,countBadge=hasCarousel?'<span class="media-count">'+(currentImageIndex+1)+' / '+imageSources.length+'</span>':"",dots=hasCarousel?'<span class="media-dots">'+imageSources.map((source,index)=>'<span class="'+(index===currentImageIndex?'is-current':'')+'">●</span>').join(" ")+'</span>':"",controls=hasCarousel?'<button class="carousel-control carousel-prev" data-carousel="-1" type="button" aria-label="上一張圖片">‹</button><button class="carousel-control carousel-next" data-carousel="1" type="button" aria-label="下一張圖片">›</button>':"";
   const fbMedia=activeImage?'<img class="preview-photo" src="'+activeImage+'" alt="">'+countBadge+controls+dots:'<span class="platform-placeholder">尚未加入圖片</span>';
-  const igMedia=activeImage?'<img class="preview-photo" src="'+activeImage+'" alt="">'+countBadge+controls+dots+'<span class="ig-image-label">'+materialText+'</span>':'<span>'+materialText+'</span>';
+  const igMedia=activeImage?'<img class="preview-photo" src="'+activeImage+'" alt="">'+countBadge+controls+dots:'<span>'+materialText+'</span>';
   const lineMedia=activeImage?'<div class="line-carousel"><img src="'+activeImage+'" alt="">'+countBadge+controls+dots+'</div>':"",threadsMedia=activeImage?'<div class="threads-carousel"><img src="'+activeImage+'" alt="">'+countBadge+controls+dots+'</div>':"";
-  if(currentPlatform==="FB")platformPreview.innerHTML='<div class="platform-phone fb-shell"><div class="preview-appbar"><b>facebook</b><div class="preview-icon-row"><span>⌕</span><span>✉</span></div></div>'+profileHTML("剛剛・🌐")+'<span class="fb-menu">···</span><p class="platform-text">'+copy+'</p><div class="fb-image">'+fbMedia+'</div><div class="fb-reactions"><span><i class="reaction-dot">👍</i><i class="reaction-dot heart">♥</i>　尚無反應</span><span>留言　分享</span></div><div class="fb-actions"><span>♡　讚</span><span>◌　留言</span><span>↗　分享</span></div></div>';
-  if(currentPlatform==="IG")platformPreview.innerHTML='<div class="platform-phone ig-shell"><div class="preview-appbar"><span>⌄</span><b>Instagram</b><div class="preview-icon-row"><span>♡</span><span>✉</span></div></div>'+profileHTML("@"+BRAND.accountName)+'<span class="ig-more">···</span><div class="ig-image">'+igMedia+'</div><div class="ig-actions"><span>♡</span><span>💬</span><span>➤</span><span>▱</span></div><div class="ig-likes">尚無喜歡這則貼文的人</div><p class="ig-caption"><b>'+BRAND.name+'</b>　'+copy+'</p></div>';
-  if(currentPlatform==="LINE")platformPreview.innerHTML='<div class="platform-phone line-shell"><div class="line-header"><span>‹</span><b>'+BRAND.name+'</b><span>☰</span></div><div class="line-date">今天</div><div class="line-chat"><div class="platform-avatar"></div><div class="line-bubble'+(imageSources.length?' has-photo':'')+'">'+lineMedia+'<span class="line-bubble-text">'+copy+'</span></div><span class="line-time">剛剛</span></div></div>';
-  if(currentPlatform==="Threads")platformPreview.innerHTML='<div class="platform-phone threads-shell"><div class="threads-top">@</div><div class="threads-preview"><div class="threads-row"><div class="platform-avatar"></div><div class="threads-copy"><div class="threads-account"><b>'+BRAND.name+'</b><small>@'+BRAND.accountName+'</small><button class="threads-follow" type="button" tabindex="-1">追蹤</button></div>'+copy+threadsMedia+'<div class="threads-actions"><span>♡</span><span>◌</span><span>↗</span><span>⋮</span></div><div class="threads-replies">尚無回覆</div></div></div></div></div>';
+  if(currentPlatform==="FB")platformPreview.innerHTML='<div class="platform-phone fb-shell"><div class="preview-appbar fb-appbar"><b>facebook</b><div class="preview-icon-row">'+previewIcon("search")+previewIcon("chat")+'</div></div><div class="fb-post-head">'+profileHTML(BRAND.name,"剛剛 · 公開")+'<span class="fb-head-more">'+previewIcon("more")+'</span></div><p class="platform-text">'+copy+'</p><div class="fb-image">'+fbMedia+'</div><div class="fb-reactions"><span>♡　尚無心情</span><span>留言 · 分享</span></div><div class="fb-actions"><span>'+previewIcon("heart")+'讚</span><span>'+previewIcon("chat")+'留言</span><span>'+previewIcon("send")+'分享</span></div>'+previewNav(["home","reels","user","bell","menu"])+"</div>";
+  if(currentPlatform==="IG")platformPreview.innerHTML='<div class="platform-phone ig-shell"><div class="preview-appbar ig-appbar"><b class="ig-wordmark">Instagram</b><div class="preview-icon-row">'+previewIcon("heart",20)+previewIcon("chat",20)+'</div></div><div class="ig-post-head">'+profileHTML(BRAND.accountName,BRAND.name)+'<span class="ig-head-more">'+previewIcon("more")+'</span></div><div class="ig-image">'+igMedia+'</div><div class="ig-actions">'+previewIcon("heart",21)+previewIcon("chat",21)+previewIcon("send",21)+'<span class="ig-save">'+previewIcon("save",21)+'</span></div><p class="ig-caption"><b>'+BRAND.accountName+'</b>　'+copy+'</p><div class="ig-post-time">剛剛</div>'+previewNav(["home","search","plus","reels","user"])+"</div>";
+  if(currentPlatform==="LINE")platformPreview.innerHTML='<div class="platform-phone line-shell"><div class="line-header"><span>'+previewIcon("back",19)+'</span><b>'+BRAND.name+'</b><span class="line-header-actions">'+previewIcon("phone",17)+previewIcon("menu",18)+'</span></div><div class="line-date">今天</div><div class="line-chat">'+avatarHTML()+'<div class="line-chat-content">'+(lineMedia?'<div class="line-photo-bubble">'+lineMedia+'</div>':"")+'<div class="line-bubble line-text-bubble">'+copy+'</div></div><span class="line-time">剛剛</span></div><div class="line-compose" aria-hidden="true">'+previewIcon("plus",19)+'<span>輸入訊息</span>'+previewIcon("reels",18)+'</div></div>';
+  if(currentPlatform==="Threads")platformPreview.innerHTML='<div class="platform-phone threads-shell"><div class="threads-top"><b>Threads</b></div><div class="threads-preview"><div class="threads-row">'+avatarHTML()+'<div class="threads-copy"><div class="threads-account"><b>'+BRAND.accountName+'</b><small>剛剛</small><span class="threads-more">'+previewIcon("more")+'</span></div><div class="threads-display-name">'+BRAND.name+'</div><div class="threads-post-text">'+copy+'</div>'+threadsMedia+'<div class="threads-actions">'+previewIcon("heart",18)+previewIcon("chat",18)+previewIcon("send",18)+previewIcon("more",18)+'</div></div></div></div>'+previewNav(["home","search","plus","heart","user"])+"</div>";
   platformPreview.querySelectorAll("[data-carousel]").forEach(button=>button.addEventListener("click",()=>moveCarousel(Number(button.dataset.carousel))));
+  const previewToken=++previewRevision;
+  if(activeImage&&currentImageIndex===mainImageIndex&&imageTextInput.value.trim()){
+    const previewPhoto=platformPreview.querySelector(".preview-photo,.line-carousel img,.threads-carousel img");
+    if(previewPhoto)drawImageWithText(postImages[mainImageIndex],pictureWidth,pictureHeight).then(canvas=>{if(previewToken===previewRevision&&previewPhoto.isConnected)previewPhoto.src=canvas.toDataURL("image/png")}).catch(()=>{});
+  }
 }
 function moveCarousel(direction){if(postImages.length<2)return;currentImageIndex=(currentImageIndex+direction+postImages.length)%postImages.length;renderPreview();persistDraft()}
 function switchPlatform(platform){
-  posts[currentPlatform]=postContent.value;currentPlatform=platform;postContent.value=posts[platform];postContent.placeholder="在 "+platform+" 貼文框開始輸入……";activePlatform.textContent=platform;wordCount.textContent=postContent.value.length+" 字";
+  posts[currentPlatform]=postContent.value;currentPlatform=platform;currentImageIndex=mainImageIndex;postContent.value=posts[platform];postContent.placeholder="在 "+platform+" 貼文框開始輸入……";activePlatform.textContent=platform;wordCount.textContent=postContent.value.length+" 字";
   document.querySelectorAll(".platform-tab").forEach(tab=>{const active=tab.dataset.platform===platform;tab.classList.toggle("is-active",active);tab.setAttribute("aria-pressed",String(active));});renderPreview();renderAssistantHistory();assistantInput.value="";showAssistantStatus("");persistDraft();
 }
 function renderAssistantHistory(){
@@ -109,38 +364,133 @@ function closeModal(modal){modal.hidden=true;document.body.style.overflow=""}
 function readJSON(key,fallback){try{const value=JSON.parse(localStorage.getItem(key));return value===null?fallback:value}catch(error){return fallback}}
 function readSavedPosts(){const items=readJSON(STORAGE_KEYS.savedPosts,[]);return Array.isArray(items)?items:[]}
 function writeSavedPosts(items){localStorage.setItem(STORAGE_KEYS.savedPosts,JSON.stringify(items))}
+const imageDatabase=new Promise((resolve,reject)=>{
+  if(!window.indexedDB){reject(new Error("這個瀏覽器無法使用圖片倉庫。"));return}
+  const request=indexedDB.open("studio-images",1);
+  request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains("imgs"))request.result.createObjectStore("imgs")};
+  request.onsuccess=()=>resolve(request.result);
+  request.onerror=()=>reject(new Error("圖片倉庫無法開啟，請檢查瀏覽器設定。"));
+});
+function imageStoreAction(mode,action){return imageDatabase.then(db=>new Promise((resolve,reject)=>{const transaction=db.transaction("imgs",mode),store=transaction.objectStore("imgs"),request=action(store);let result;request.onsuccess=()=>{result=request.result};request.onerror=()=>reject(request.error||new Error("圖片倉庫操作失敗。"));transaction.oncomplete=()=>resolve(result);transaction.onabort=()=>reject(transaction.error||new Error("圖片倉庫操作失敗。"));transaction.onerror=()=>reject(transaction.error||new Error("圖片倉庫操作失敗。"))}))}
+function newImageId(){return "img-"+(globalThis.crypto&&globalThis.crypto.randomUUID?globalThis.crypto.randomUUID():Date.now()+"-"+Math.random().toString(36).slice(2))}
+async function storeImage(source){const id=newImageId();await imageStoreAction("readwrite",store=>store.put(source,id));updateStorageUsage();return id}
+function getImage(id){return imageStoreAction("readonly",store=>store.get(id))}
+async function removeUnusedImage(id){
+  if(readSavedPosts().some(post=>Array.isArray(post.images)&&post.images.includes(id)))return;
+  await imageStoreAction("readwrite",store=>store.delete(id));updateStorageUsage();
+}
+function countWarehouseImages(){return imageStoreAction("readonly",store=>store.count())}
+async function migrateImageIds(state){
+  const sources=Array.isArray(state.images)?state.images:(typeof state.image==="string"&&state.image?[state.image]:[]);
+  const ids=[];
+  for(const item of sources.slice(0,MAX_IMAGES)){
+    if(typeof item!=="string"||!item)continue;
+    ids.push(item.startsWith("data:image/")?await storeImage(item):item);
+  }
+  return {...state,images:ids,image:undefined};
+}
+async function migrateSavedPosts(){
+  const items=readSavedPosts();let changed=false;
+  for(let index=0;index<items.length;index++){
+    const item=items[index];
+    if((Array.isArray(item.images)&&item.images.some(image=>typeof image==="string"&&image.startsWith("data:image/")))||typeof item.image==="string"&&item.image.startsWith("data:image/")){
+      items[index]=await migrateImageIds(item);writeSavedPosts(items);changed=true;
+    }
+  }
+  if(changed)updateStorageUsage();
+}
+function updateStorageUsage(failed=false){
+  if(failed)storageSaveFailed=true;
+  if(storageSaveFailed){storageUsage.textContent="⚠️ 抽屜滿了，剛剛的沒存到！";storageUsage.classList.add("is-error");return}
+  try{
+    let units=0;for(let index=0;index<localStorage.length;index++){const key=localStorage.key(index);units+=key.length+(localStorage.getItem(key)||"").length}
+    const drawer="瀏覽器的抽屜：已用 "+(units*2/1048576).toFixed(2)+" MB";
+    const token=++storageUsageToken;storageUsage.textContent=drawer+"\n圖片倉庫：計算中…";storageUsage.classList.remove("is-error");
+    Promise.all([countWarehouseImages(),navigator.storage&&navigator.storage.estimate?navigator.storage.estimate():Promise.resolve(null)]).then(([count,estimate])=>{
+      if(token!==storageUsageToken)return;
+      storageUsage.textContent=drawer+"\n圖片倉庫："+count+" 張，這個網站約用 "+(estimate&&typeof estimate.usage==="number"?(estimate.usage/1048576).toFixed(2):"—")+" MB";
+    }).catch(()=>{if(token===storageUsageToken)storageUsage.textContent=drawer+"\n圖片倉庫：無法讀取用量"});
+  }catch(error){storageUsage.textContent="⚠️ 無法讀取瀏覽器抽屜的用量";storageUsage.classList.add("is-error")}
+}
 function renderImageControl(){
   imagePreviewGrid.replaceChildren();imagePreviewGrid.hidden=postImages.length===0;
-  postImages.forEach((source,index)=>{const item=document.createElement("div"),image=document.createElement("img"),number=document.createElement("span"),remove=document.createElement("button");item.className="image-preview-item";image.src=source;image.alt="已選擇的第 "+(index+1)+" 張貼文圖片";number.className="image-preview-index";number.textContent=index+1;remove.className="remove-image";remove.type="button";remove.textContent="移除";remove.setAttribute("aria-label","移除第 "+(index+1)+" 張圖片");remove.addEventListener("click",()=>{postImages.splice(index,1);currentImageIndex=Math.min(currentImageIndex,Math.max(0,postImages.length-1));renderImageControl();renderPreview();persistDraft();imageFeedback.textContent="已移除第 "+(index+1)+" 張圖片。"});item.append(image,number,remove);imagePreviewGrid.append(item)});
-  const full=postImages.length>=MAX_IMAGES;imageInput.disabled=full;imagePickerLabel.textContent=full?"已達 6 張上限":postImages.length?"＋ 再加入圖片（"+postImages.length+" / "+MAX_IMAGES+"）":"＋ 選擇圖片（可多選）";
+  postImages.forEach((source,index)=>{const item=document.createElement("div"),select=document.createElement("button"),image=document.createElement("img"),number=document.createElement("span"),badge=document.createElement("span"),remove=document.createElement("button");item.className="image-preview-item"+(index===mainImageIndex?" is-main":"");select.className="image-select";select.type="button";select.setAttribute("aria-label","選第 "+(index+1)+" 張當主圖");select.setAttribute("aria-pressed",String(index===mainImageIndex));image.src=source;image.alt="第 "+(index+1)+" 張貼文圖片";number.className="image-preview-index";number.textContent=index+1;badge.className="image-main-badge";badge.textContent="主圖";badge.hidden=index!==mainImageIndex;select.addEventListener("click",()=>{mainImageIndex=index;currentImageIndex=index;renderImageControl();renderPreview();persistDraft()});select.append(image,number,badge);remove.className="remove-image";remove.type="button";remove.textContent="×";remove.setAttribute("aria-label","刪除第 "+(index+1)+" 張圖片");remove.addEventListener("click",async()=>{const removedId=postImageIds.splice(index,1)[0];postImages.splice(index,1);if(index<mainImageIndex)mainImageIndex--;else if(index===mainImageIndex)mainImageIndex=Math.min(index,Math.max(0,postImages.length-1));currentImageIndex=mainImageIndex;renderImageControl();renderPreview();persistDraft();try{if(removedId)await removeUnusedImage(removedId);imageFeedback.textContent="已刪除第 "+(index+1)+" 張圖片。"}catch(error){imageFeedback.textContent="已從這篇移除圖片，但圖片倉庫暫時無法清理。"}});item.append(select,remove);imagePreviewGrid.append(item)});
+  const full=postImages.length>=MAX_IMAGES;imageInput.disabled=full;uploadButton.disabled=full;imagePickerLabel.textContent=full?"已達 6 張上限":"📤 上傳";
 }
-function compressImage(file){
-  return new Promise((resolve,reject)=>{const image=new Image(),url=URL.createObjectURL(file);image.onload=()=>{try{const maxSide=1000,scale=Math.min(1,maxSide/Math.max(image.naturalWidth,image.naturalHeight)),canvas=document.createElement("canvas"),context=canvas.getContext("2d");canvas.width=Math.max(1,Math.round(image.naturalWidth*scale));canvas.height=Math.max(1,Math.round(image.naturalHeight*scale));context.fillStyle="#fff";context.fillRect(0,0,canvas.width,canvas.height);context.drawImage(image,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL("image/jpeg",.7))}catch(error){reject(error)}finally{URL.revokeObjectURL(url)}};image.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("無法讀取圖片"))};image.src=url});
+function compressImageSource(source,revoke=false){
+  return new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{try{const maxSide=1080,scale=Math.min(1,maxSide/Math.max(image.naturalWidth,image.naturalHeight)),canvas=document.createElement("canvas"),context=canvas.getContext("2d");canvas.width=Math.max(1,Math.round(image.naturalWidth*scale));canvas.height=Math.max(1,Math.round(image.naturalHeight*scale));context.fillStyle="#fff";context.fillRect(0,0,canvas.width,canvas.height);context.drawImage(image,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL("image/jpeg",.85))}catch(error){reject(error)}finally{if(revoke)URL.revokeObjectURL(source)}};image.onerror=()=>{if(revoke)URL.revokeObjectURL(source);reject(new Error("無法讀取圖片"))};image.src=source});
 }
+function compressImage(file){return compressImageSource(URL.createObjectURL(file),true)}
 async function handleImageUpload(event){
   const selected=Array.from(event.target.files||[]);if(!selected.length)return;
   const remaining=MAX_IMAGES-postImages.length,validFiles=selected.filter(file=>file.type.startsWith("image/")).slice(0,remaining);if(!validFiles.length){imageFeedback.textContent=remaining?"請選擇圖片檔案。":"每篇最多 6 張圖片。";imageInput.value="";return}
-  imageFeedback.textContent="正在縮小 "+validFiles.length+" 張圖片……";let added=0;
-  for(const file of validFiles){try{postImages.push(await compressImage(file));added++}catch(error){}}
-  renderImageControl();renderPreview();persistDraft();imageFeedback.textContent=added?"已加入 "+added+" 張圖片，目前共 "+postImages.length+" 張。":"選擇的圖片無法讀取，請換一張試試。";
+  imageFeedback.textContent="正在縮小 "+validFiles.length+" 張圖片……";let added=0;const revision=workRevision;
+  for(const file of validFiles){try{const source=await compressImage(file);if(workRevision!==revision)break;const id=await storeImage(source);if(workRevision!==revision){await removeUnusedImage(id);break}postImages.push(source);postImageIds.push(id);added++}catch(error){imageFeedback.textContent="圖片倉庫存不下或無法使用，請檢查瀏覽器空間。"}}
+  if(workRevision!==revision){imageInput.value="";return}
+  if(postImages.length===added){mainImageIndex=0;currentImageIndex=0}
+  renderImageControl();renderPreview();
+  const saved=added?persistDraft():true;
+  if(!added&&imageFeedback.textContent.startsWith("正在"))imageFeedback.textContent="選擇的圖片無法讀取，請換一張試試。";
+  else if(saved)imageFeedback.textContent="已加入 "+added+" 張圖片，目前共 "+postImages.length+" 張。";
+  else imageFeedback.textContent="圖片已加入畫面，但還沒存進瀏覽器。請刪除舊貼文或減少圖片後再試。";
   imageInput.value="";
+}
+function showGenerateImageStatus(message,isError=false){generateImageStatus.textContent=message;generateImageStatus.classList.toggle("is-error",isError)}
+function imageAspectRatio(platform){
+  const [width,height]=PIC_SIZE[platform];let a=width,b=height;
+  while(b){const next=a%b;a=b;b=next}
+  return width/a+":"+height/a;
+}
+function imageGenerationError(status){
+  return ({400:"這個模型不接受這個要求，換一個生圖模型試試",401:"金鑰不對",402:"全班的額度用完了",404:"生圖模型名稱打錯了",429:"太多人同時在用",502:"這張沒畫完（沒有扣錢），再按一次"})[status]||"生圖服務暫時出錯（"+status+"），稍後再試";
+}
+async function generateImage(promptOverride=null,statusPrefix=""){
+  if(imageBusy)return;
+  const key=aiKeyInput.value.trim(),prompt=typeof promptOverride==="string"?promptOverride:imagePromptInput.value.trim();
+  if(!key){showGenerateImageStatus(statusPrefix+"生圖要用第一組 OpenRouter 的金鑰（Gemini 的免費金鑰不能生圖）。先用 📤 上傳。",true);return}
+  if(!prompt){showGenerateImageStatus(statusPrefix+"請先填寫圖片描述（要畫什麼）。",true);return}
+  if(postImages.length>=MAX_IMAGES){showGenerateImageStatus(statusPrefix+"這篇最多 6 張圖，請先刪掉一張再生圖。",true);return}
+  const revision=workRevision,platform=currentPlatform,model=imageCustomModelInput.value.trim()||imageModelInput.value;
+  const controller=new AbortController();let timedOut=false;
+  const timer=setTimeout(()=>{timedOut=true;controller.abort()},IMAGE_TIMEOUT_MS);
+  imageBusy=true;generateImageButton.disabled=true;imagineImageButton.disabled=true;generateImageButton.textContent="🎨 畫圖中…";showGenerateImageStatus(statusPrefix+"畫圖：正在畫圖，可能需要等一會兒…");
+  try{
+    const response=await fetch("https://openrouter.ai/api/v1/images",{method:"POST",headers:{Authorization:"Bearer "+key,"Content-Type":"application/json"},body:JSON.stringify({model,prompt,aspect_ratio:imageAspectRatio(platform),resolution:"1K",n:1}),signal:controller.signal});
+    if(!response.ok)throw new Error(imageGenerationError(response.status));
+    const data=await response.json(),picture=data&&data.data&&data.data[0];
+    if(!picture||typeof picture.b64_json!=="string"||!picture.b64_json)throw new Error("服務沒有回傳圖片，請再試一次。");
+    const cost=typeof data.usage?.cost==="number"?data.usage.cost:null,usageLine=recordGeneratedImage(cost);
+    const mediaType=typeof picture.media_type==="string"&&/^image\/[a-z0-9.+-]+$/i.test(picture.media_type)?picture.media_type:"image/png";
+    const source="data:"+mediaType+";base64,"+picture.b64_json,compressed=await compressImageSource(source);
+    if(timedOut)throw new Error("等太久");
+    if(workRevision!==revision){showGenerateImageStatus(statusPrefix+"畫圖：圖片已生成，但你已切換到另一篇，因此沒有加入。"+usageLine,true);return}
+    if(postImages.length>=MAX_IMAGES){showGenerateImageStatus(statusPrefix+"畫圖：圖片已生成，但這篇已滿 6 張，沒有加入。"+usageLine,true);return}
+    const id=await storeImage(compressed);
+    if(workRevision!==revision){await removeUnusedImage(id);showGenerateImageStatus(statusPrefix+"畫圖：圖片已生成，但你已切換到另一篇，因此沒有加入。"+usageLine,true);return}
+    postImages.push(compressed);postImageIds.push(id);mainImageIndex=postImages.length-1;currentImageIndex=mainImageIndex;
+    renderImageControl();renderPreview();const saved=persistDraft();
+    showGenerateImageStatus(statusPrefix+"畫圖："+usageLine+(saved?"":"\n⚠️ 抽屜滿了，圖片還沒存到瀏覽器。"),!saved);
+  }catch(error){const disconnected=error instanceof TypeError||error.name==="NetworkError";showGenerateImageStatus(statusPrefix+"畫圖："+(timedOut||error.name==="AbortError"?"等太久":disconnected?"連不到":error.message||"生圖失敗，請再試一次"),true)}
+  finally{clearTimeout(timer);imageBusy=false;generateImageButton.disabled=false;imagineImageButton.disabled=false;generateImageButton.textContent="🎨 生圖"}
 }
 function collectState(){
   posts[currentPlatform]=postContent.value;
-  return {id:currentSavedId,materials:materialInputs.map(input=>input.value),posts:{...posts},activePlatform:currentPlatform,images:[...postImages],imageIndex:currentImageIndex,previousPosts:previousPosts?{...previousPosts}:null,showingPrevious,assistantHistory:Object.fromEntries(BRAND.platforms.map(platform=>[platform,assistantHistory[platform].map(entry=>({...entry}))]))};
+  return {id:currentSavedId,materials:materialInputs.map(input=>input.value),posts:{...posts},activePlatform:currentPlatform,images:[...postImageIds],mainImageIndex,imagePrompt:imagePromptInput.value,imageText:imageTextInput.value,imageTextPosition:imageTextPosition.value,imageTextSize:imageTextSize.value,imageTextStyle:imageTextStyle.value,downloadSize:downloadSizeInput.value,previousPosts:previousPosts?{...previousPosts}:null,showingPrevious,assistantHistory:Object.fromEntries(BRAND.platforms.map(platform=>[platform,assistantHistory[platform].map(entry=>({...entry}))]))};
 }
-function persistDraft(){try{localStorage.setItem(STORAGE_KEYS.draft,JSON.stringify(collectState()))}catch(error){imageFeedback.textContent="瀏覽器暫存空間不足，請移除圖片或刪除舊貼文。"}}
+function persistDraft(){try{localStorage.setItem(STORAGE_KEYS.draft,JSON.stringify(collectState()));storageSaveFailed=false;updateStorageUsage();return true}catch(error){updateStorageUsage(true);return false}}
 function showCurrentPlatform(){
   postContent.value=posts[currentPlatform]||"";postContent.placeholder="在 "+currentPlatform+" 貼文框開始輸入……";activePlatform.textContent=currentPlatform;wordCount.textContent=postContent.value.length+" 字";
   document.querySelectorAll(".platform-tab").forEach(tab=>{const active=tab.dataset.platform===currentPlatform;tab.classList.toggle("is-active",active);tab.setAttribute("aria-pressed",String(active));});renderPreview();renderAssistantHistory();updateUndoButton();
 }
-function applyState(state){
+async function applyState(rawState){
+  const state=await migrateImageIds(rawState),imageIds=state.images||[],imageSources=await Promise.all(imageIds.map(id=>getImage(id)));
+  if(imageSources.some(source=>typeof source!=="string"||!source.startsWith("data:image/")))throw new Error("有圖片在倉庫裡找不到，請重新上傳。");
   workRevision++;
   materialInputs.forEach((input,index)=>{input.value=Array.isArray(state.materials)?state.materials[index]||"":""});
   BRAND.platforms.forEach(platform=>{posts[platform]=state.posts&&typeof state.posts[platform]==="string"?state.posts[platform]:""});
   BRAND.platforms.forEach(platform=>{const entries=state.assistantHistory&&state.assistantHistory[platform];assistantHistory[platform]=Array.isArray(entries)?entries.filter(entry=>entry&&["user","assistant"].includes(entry.role)&&typeof entry.content==="string").slice(-8).map(entry=>({role:entry.role,content:entry.content})):[]});
   previousPosts=state.previousPosts&&typeof state.previousPosts==="object"?Object.fromEntries(BRAND.platforms.map(platform=>[platform,typeof state.previousPosts[platform]==="string"?state.previousPosts[platform]:""])):null;showingPrevious=Boolean(previousPosts&&state.showingPrevious);
-  postImages=Array.isArray(state.images)?state.images.filter(image=>typeof image==="string").slice(0,MAX_IMAGES):(typeof state.image==="string"&&state.image?[state.image]:[]);currentImageIndex=Number.isInteger(state.imageIndex)?Math.min(Math.max(0,state.imageIndex),Math.max(0,postImages.length-1)):0;renderImageControl();currentSavedId=state.id||null;currentPlatform=BRAND.platforms.includes(state.activePlatform)?state.activePlatform:BRAND.platforms[0];showCurrentPlatform();
+  postImages=imageSources;postImageIds=imageIds;const storedMain=Number.isInteger(state.mainImageIndex)?state.mainImageIndex:state.imageIndex;mainImageIndex=Number.isInteger(storedMain)?Math.min(Math.max(0,storedMain),Math.max(0,postImages.length-1)):0;currentImageIndex=mainImageIndex;imagePromptInput.value=typeof state.imagePrompt==="string"?state.imagePrompt:"";imageTextInput.value=typeof state.imageText==="string"?state.imageText:"";imageTextPosition.value=["top","middle","bottom"].includes(state.imageTextPosition)?state.imageTextPosition:"bottom";imageTextSize.value=["small","medium","large"].includes(state.imageTextSize)?state.imageTextSize:"medium";imageTextStyle.value=["white","black","shadow"].includes(state.imageTextStyle)?state.imageTextStyle:"white";downloadSizeInput.value=SIZES[state.downloadSize]?state.downloadSize:"platform";renderImageControl();currentSavedId=state.id||null;currentPlatform=BRAND.platforms.includes(state.activePlatform)?state.activePlatform:BRAND.platforms[0];showCurrentPlatform();
 }
 function makeSavedName(materials){
   const date=(materials[0]||"").trim()||"未填日期";
@@ -152,17 +502,18 @@ function saveCurrentPost(){
   const record={...state,id,name:makeSavedName(state.materials),savedAt};
   const items=readSavedPosts(),existingIndex=items.findIndex(item=>item.id===id);
   if(existingIndex>=0)items[existingIndex]=record;else items.push(record);
-  try{writeSavedPosts(items)}catch(error){saveFeedback.textContent="存檔空間不足，請移除圖片或刪除舊貼文。";return}
+  try{writeSavedPosts(items);updateStorageUsage()}catch(error){updateStorageUsage(true);saveFeedback.textContent="存檔空間不足，請移除圖片或刪除舊貼文。";return}
   currentSavedId=id;persistDraft();saveFeedback.textContent="已存檔｜"+new Date(savedAt).toLocaleString("zh-TW",{hour12:false});
   setTimeout(()=>{saveFeedback.textContent=""},2500);
 }
-function openSavedPost(id){
+async function openSavedPost(id){
   const item=readSavedPosts().find(saved=>saved.id===id);if(!item)return;
-  applyState(item);persistDraft();closeModal(libraryModal);saveFeedback.textContent="已打開｜"+item.name;setTimeout(()=>{saveFeedback.textContent=""},2500);
+  try{await applyState(item);persistDraft();closeModal(libraryModal);saveFeedback.textContent="已打開｜"+item.name;setTimeout(()=>{saveFeedback.textContent=""},2500)}
+  catch(error){const notice=document.createElement("p");notice.className="image-feedback";notice.textContent=error.message||"圖片倉庫無法讀取，這篇暫時打不開。";savedList.prepend(notice)}
 }
 function deleteSavedPost(id){
   if(!window.confirm("確定嗎？"))return;
-  const items=readSavedPosts().filter(item=>item.id!==id);writeSavedPosts(items);
+  const items=readSavedPosts().filter(item=>item.id!==id);writeSavedPosts(items);updateStorageUsage();
   if(currentSavedId===id){currentSavedId=null;persistDraft()}
   renderSavedList();
 }
@@ -172,9 +523,9 @@ function renderSavedList(){
   items.forEach(item=>{const row=document.createElement("article"),info=document.createElement("div"),name=document.createElement("p"),time=document.createElement("p"),actions=document.createElement("div"),openButton=document.createElement("button"),deleteButton=document.createElement("button");row.className="saved-item";name.className="saved-name";name.textContent=item.name||"未命名貼文";time.className="saved-time";time.textContent="存檔時間｜"+new Date(item.savedAt).toLocaleString("zh-TW",{hour12:false});actions.className="saved-actions";openButton.className="library-action";openButton.type="button";openButton.textContent="打開";openButton.addEventListener("click",()=>openSavedPost(item.id));deleteButton.className="library-action delete";deleteButton.type="button";deleteButton.textContent="刪除";deleteButton.addEventListener("click",()=>deleteSavedPost(item.id));info.append(name,time);actions.append(openButton,deleteButton);row.append(info,actions);savedList.append(row)});
 }
 function startNewPost(){
-  workRevision++;materialInputs.forEach(input=>{input.value=""});BRAND.platforms.forEach(platform=>{posts[platform]="";assistantHistory[platform]=[]});previousPosts=null;showingPrevious=false;postImages=[];currentImageIndex=0;renderImageControl();currentSavedId=null;currentPlatform=BRAND.platforms[0];assistantInput.value="";showAssistantStatus("");showCurrentPlatform();persistDraft();aiResult.hidden=true;aiResult.textContent="";imageFeedback.textContent="圖片會縮小後保存在這個瀏覽器。";saveFeedback.textContent="已建立新的一篇";setTimeout(()=>{saveFeedback.textContent=""},1800);
+  workRevision++;materialInputs.forEach(input=>{input.value=""});BRAND.platforms.forEach(platform=>{posts[platform]="";assistantHistory[platform]=[]});previousPosts=null;showingPrevious=false;postImages=[];postImageIds=[];mainImageIndex=0;currentImageIndex=0;imagePromptInput.value="";imageTextInput.value="";imageTextPosition.value="bottom";imageTextSize.value="medium";imageTextStyle.value="white";downloadSizeInput.value="platform";downloadImageStatus.textContent="";showGenerateImageStatus("");renderImageControl();currentSavedId=null;currentPlatform=BRAND.platforms[0];assistantInput.value="";showAssistantStatus("");showCurrentPlatform();persistDraft();aiResult.hidden=true;aiResult.textContent="";imageFeedback.textContent="圖片會縮小後保存在這個瀏覽器。";saveFeedback.textContent="已建立新的一篇";setTimeout(()=>{saveFeedback.textContent=""},1800);
 }
-function restoreDraft(){const draft=readJSON(STORAGE_KEYS.draft,null);if(draft&&typeof draft==="object")applyState(draft)}
+async function restoreDraft(){const draft=readJSON(STORAGE_KEYS.draft,null);if(draft&&typeof draft==="object"){await applyState(draft);persistDraft()}}
 function formatDateWithWeekday(value){
   const match=value.trim().match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/);
   if(!match)return value.trim()||"（未填）";
@@ -217,13 +568,20 @@ function showAIResult(message,isError=false){aiResult.textContent=message;aiResu
 function taiwanDate(){return new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
 function dailyUsage(){
   const date=taiwanDate(),saved=readJSON(STORAGE_KEYS.aiDailyUsage,null);
-  return saved&&saved.date===date?{date,openrouter:{count:Number(saved.openrouter&&saved.openrouter.count)||0,cost:Number(saved.openrouter&&saved.openrouter.cost)||0,unknownCost:Number(saved.openrouter&&saved.openrouter.unknownCost)||0},gemini:{count:Number(saved.gemini&&saved.gemini.count)||0}}:{date,openrouter:{count:0,cost:0,unknownCost:0},gemini:{count:0}};
+  return saved&&saved.date===date?{date,openrouter:{count:Number(saved.openrouter&&saved.openrouter.count)||0,cost:Number(saved.openrouter&&saved.openrouter.cost)||0,unknownCost:Number(saved.openrouter&&saved.openrouter.unknownCost)||0},gemini:{count:Number(saved.gemini&&saved.gemini.count)||0},image:{count:Number(saved.image&&saved.image.count)||0,cost:Number(saved.image&&saved.image.cost)||0,unknownCost:Number(saved.image&&saved.image.unknownCost)||0}}:{date,openrouter:{count:0,cost:0,unknownCost:0},gemini:{count:0},image:{count:0,cost:0,unknownCost:0}};
 }
 function updateDailyUsage(provider,cost){
   const usage=dailyUsage();
   if(cost===undefined)usage[provider].count++;
   else if(provider==="openrouter"){if(typeof cost==="number"&&Number.isFinite(cost))usage.openrouter.cost+=cost;else usage.openrouter.unknownCost++}
-  try{localStorage.setItem(STORAGE_KEYS.aiDailyUsage,JSON.stringify(usage))}catch(error){}
+  try{localStorage.setItem(STORAGE_KEYS.aiDailyUsage,JSON.stringify(usage));updateStorageUsage()}catch(error){updateStorageUsage(true)}
+}
+function recordGeneratedImage(cost){
+  const usage=dailyUsage();usage.image.count++;
+  if(typeof cost==="number"&&Number.isFinite(cost))usage.image.cost+=cost;else usage.image.unknownCost++;
+  try{localStorage.setItem(STORAGE_KEYS.aiDailyUsage,JSON.stringify(usage));updateStorageUsage()}catch(error){updateStorageUsage(true)}
+  const todayCost=usage.image.unknownCost&&!usage.image.cost?"$—":formatDollars(usage.image.cost)+(usage.image.unknownCost?"（部分費用未提供）":"");
+  return "這張約 "+formatDollars(typeof cost==="number"&&Number.isFinite(cost)?cost:null)+"｜今天生了 "+usage.image.count+" 張 約 "+todayCost;
 }
 function formatDollars(value){return "$"+(value===null?"—":value===0?"0":value<.0001?value.toFixed(6):value.toFixed(4))}
 function usageSummary(provider,usage){
@@ -272,6 +630,31 @@ async function askAI(promptOrMessages,options={}){
     catch(error){failures.push(error&&error.provider?error:aiFailure(provider,"暫時無法使用"))}
   }
   const error=new Error("AI 寫作失敗");error.failures=failures;error.noBackup=order!=="gemini-only"&&!geminiKeyInput.value.trim();throw error;
+}
+async function imagineAndDraw(){
+  if(imageBusy||imagineImageButton.disabled)return;
+  const platform=currentPlatform,currentPost=postContent.value.trim();
+  if(!currentPost){showGenerateImageStatus("先讓 AI 寫貼文",true);return}
+  if(!aiKeyInput.value.trim()){showGenerateImageStatus("生圖要用第一組 OpenRouter 的金鑰（Gemini 的免費金鑰不能生圖）。先用 📤 上傳。",true);return}
+  if(postImages.length>=MAX_IMAGES){showGenerateImageStatus("這篇最多 6 張圖，請先刪掉一張再生圖。",true);return}
+  const revision=workRevision;
+  const system="你是【"+BRAND.name+"】的美術指導。使用者會給你一篇社群貼文，請你寫一段給 AI 畫圖用的畫面描述。只描述畫面：主角、場景、構圖、光線、顏色、氣氛，要具體到看得到。照圖片規格寫。畫面裡不要有任何文字、字母、數字、標誌。不要畫名人，不要畫別的品牌的 logo。素材卡和貼文裡沒有的東西，不要自己加進畫面。一律用台灣的繁體中文。只回一段 80～150 字的畫面描述，不要標題、不要解釋。";
+  const user="圖片規格：\n"+(imageSpecInput.value.trim()||"（未填）")+"\n\n素材卡：\n"+materialCardText()+"\n\n目前【"+platform+"】的貼文：\n"+currentPost+"\n\n圖的比例："+imageAspectRatio(platform);
+  imagineImageButton.disabled=true;generateImageButton.disabled=true;imagineImageButton.textContent="🪄 想圖中…";showGenerateImageStatus("想圖：正在整理畫面描述…");
+  try{
+    const answer=await askAI([{role:"system",content:system},{role:"user",content:user}],{expectPlatformHeadings:false});
+    if(workRevision!==revision||currentPlatform!==platform||postContent.value.trim()!==currentPost){showGenerateImageStatus("貼文已切換或修改，這次想圖沒有套用。",true);return}
+    const description=answer.content.trim();
+    imagePromptInput.value=description;persistDraft();
+    const warning=answer.fallbackReason?"⚠️ OpenRouter："+answer.fallbackReason.reason+"。這次改用 Gemini。\n":"";
+    const statusPrefix=warning+"想圖："+usageSummary(answer.provider,answer.usage)+(answer.truncated?"（回覆可能被切掉了）":"")+"\n";
+    imagineImageButton.textContent="🪄 畫圖中…";
+    await generateImage(description+"（畫面中不要出現任何文字、字母、數字或標誌。）",statusPrefix);
+  }catch(error){
+    const reasons=(error.failures||[]).map(item=>(item.provider==="openrouter"?"OpenRouter":"Gemini")+"："+item.reason+"。");
+    if(error.noBackup)reasons.push("沒有備胎。");
+    showGenerateImageStatus("想圖："+(reasons.length?reasons.join("\n"):error.message||"暫時無法使用"),true);
+  }finally{imagineImageButton.disabled=false;generateImageButton.disabled=false;imagineImageButton.textContent="🪄 AI 想圖再畫"}
 }
 function assistantMessages(platform,instruction,currentPost){
   const system="你是【"+BRAND.name+"】的小編助理。使用者會叫你修改一篇【"+platform+"】貼文。只改使用者要求的地方，其他保持原樣；不能加素材卡上沒有的事實；遵守品牌規格；一律用台灣的繁體中文和台灣用語。不要出現簡體字，也不要用大陸用語（例如：視頻→影片、質量→品質、優化→改善、信息→訊息、網絡→網路、用戶→客人或使用者）。只回覆改好以後的整篇貼文，不要解釋、不要加標題。";
@@ -369,11 +752,17 @@ async function handleAIButton(){
   }finally{aiButton.disabled=false;aiButton.textContent="✨ 讓 AI 寫"}
 }
 document.getElementById("brand-name").textContent=BRAND.name;document.getElementById("brand-mark").textContent=`${BRAND.name}｜LONTIAN, LUYE`;document.getElementById("brand-account").textContent=`帳號名稱｜${BRAND.accountName}`;document.documentElement.style.setProperty("--forest",BRAND.primaryColor);
-brandSpecInput.value=localStorage.getItem(STORAGE_KEYS.brandSpec)||"";checklistInput.value=localStorage.getItem(STORAGE_KEYS.checklist)||"";aiKeyInput.value=localStorage.getItem(STORAGE_KEYS.aiKey)||"";
+const storedBrandSpec=localStorage.getItem(STORAGE_KEYS.brandSpec);
+brandSpecInput.value=storedBrandSpec&&storedBrandSpec.trim()?storedBrandSpec:document.getElementById("brand-spec-default").textContent.trim();
+if(!storedBrandSpec||!storedBrandSpec.trim()){try{localStorage.setItem(STORAGE_KEYS.brandSpec,brandSpecInput.value)}catch(error){}}
+checklistInput.value=localStorage.getItem(STORAGE_KEYS.checklist)||"";aiKeyInput.value=localStorage.getItem(STORAGE_KEYS.aiKey)||"";
 geminiKeyInput.value=localStorage.getItem(STORAGE_KEYS.geminiKey)||"";openrouterCustomModelInput.value=localStorage.getItem(STORAGE_KEYS.openrouterCustomModel)||"";
 openrouterModelInput.value=localStorage.getItem(STORAGE_KEYS.openrouterModel)||DEFAULT_OPENROUTER_MODEL;if(!openrouterModelInput.value)openrouterModelInput.value=DEFAULT_OPENROUTER_MODEL;
 openrouterReasoningInput.value=localStorage.getItem(STORAGE_KEYS.openrouterReasoning)||"low";if(!openrouterReasoningInput.value)openrouterReasoningInput.value="low";
 geminiModelInput.value=localStorage.getItem(STORAGE_KEYS.geminiModel)||DEFAULT_GEMINI_MODEL;if(!geminiModelInput.value)geminiModelInput.value=DEFAULT_GEMINI_MODEL;
+imageModelInput.value=localStorage.getItem(STORAGE_KEYS.imageModel)||DEFAULT_IMAGE_MODEL;if(!imageModelInput.value)imageModelInput.value=DEFAULT_IMAGE_MODEL;
+imageCustomModelInput.value=localStorage.getItem(STORAGE_KEYS.imageCustomModel)||"";
+imageSpecInput.value=localStorage.getItem(STORAGE_KEYS.imageSpec)||"";
 aiOrderInput.value=localStorage.getItem(STORAGE_KEYS.aiOrder)||"openrouter-then-gemini";if(!aiOrderInput.value)aiOrderInput.value="openrouter-then-gemini";
 BRAND.materialFields.forEach((field,index)=>{const wrapper=document.createElement("div"),inputId=`material-${index}`,label=document.createElement("label"),input=document.createElement(field.type==="textarea"?"textarea":"input");wrapper.className="field";label.htmlFor=inputId;label.append(field.label);if(field.required){const required=document.createElement("span");required.className="required";required.textContent="必填";label.append(required)}input.id=inputId;input.name=inputId;input.placeholder=field.placeholder;input.required=field.required;if(field.type!=="textarea")input.type="text";if(index===0)input.addEventListener("input",renderPreview);input.addEventListener("input",persistDraft);materialInputs.push(input);wrapper.append(label,input);materialForm.append(wrapper)});
 BRAND.platforms.forEach((platform,index)=>{const button=document.createElement("button");button.type="button";button.dataset.platform=platform;button.className=`platform-tab${index===0?" is-active":""}`;button.textContent=platform;button.setAttribute("aria-pressed",String(index===0));button.addEventListener("click",()=>switchPlatform(platform));platformTabs.append(button)});
@@ -382,19 +771,33 @@ undoButton.addEventListener("click",togglePreviousVersion);
 checkButton.addEventListener("click",runCheck);
 assistantQuickButtons.forEach(button=>button.addEventListener("click",()=>sendAssistantInstruction(button.dataset.assistantInstruction)));
 assistantForm.addEventListener("submit",event=>{event.preventDefault();sendAssistantInstruction(assistantInput.value,true)});
+uploadButton.addEventListener("click",()=>imageInput.click());
 imageInput.addEventListener("change",handleImageUpload);
+imagePromptInput.addEventListener("input",persistDraft);
+Object.entries(SIZES).forEach(([key,size])=>{const option=document.createElement("option");option.value=key;option.textContent=size.label+(key==="platform"?"（依目前平台）":" "+size.width+"×"+size.height);downloadSizeInput.append(option)});
+[imageTextPosition,imageTextSize,imageTextStyle].forEach(input=>input.addEventListener("change",()=>{renderPreview();persistDraft()}));
+imageTextInput.addEventListener("input",()=>{renderPreview();persistDraft()});
+downloadSizeInput.addEventListener("change",persistDraft);
+downloadImageButton.addEventListener("click",downloadCurrentImage);
+generateImageButton.addEventListener("click",generateImage);
+imagineImageButton.addEventListener("click",imagineAndDraw);
 document.getElementById("save-post").addEventListener("click",saveCurrentPost);
 document.getElementById("new-post").addEventListener("click",startNewPost);
 document.getElementById("open-library").addEventListener("click",()=>{renderSavedList();openModal(libraryModal)});
 document.getElementById("open-settings").addEventListener("click",()=>openModal(settingsModal));
-document.getElementById("save-settings").addEventListener("click",()=>{localStorage.setItem(STORAGE_KEYS.brandSpec,brandSpecInput.value);localStorage.setItem(STORAGE_KEYS.checklist,checklistInput.value);localStorage.setItem(STORAGE_KEYS.aiKey,aiKeyInput.value);localStorage.setItem(STORAGE_KEYS.openrouterModel,openrouterModelInput.value);localStorage.setItem(STORAGE_KEYS.openrouterCustomModel,openrouterCustomModelInput.value);localStorage.setItem(STORAGE_KEYS.openrouterReasoning,openrouterReasoningInput.value);localStorage.setItem(STORAGE_KEYS.geminiKey,geminiKeyInput.value);localStorage.setItem(STORAGE_KEYS.geminiModel,geminiModelInput.value);localStorage.setItem(STORAGE_KEYS.aiOrder,aiOrderInput.value);closeModal(settingsModal)});
+document.getElementById("save-settings").addEventListener("click",()=>{localStorage.setItem(STORAGE_KEYS.brandSpec,brandSpecInput.value);localStorage.setItem(STORAGE_KEYS.checklist,checklistInput.value);localStorage.setItem(STORAGE_KEYS.aiKey,aiKeyInput.value);localStorage.setItem(STORAGE_KEYS.openrouterModel,openrouterModelInput.value);localStorage.setItem(STORAGE_KEYS.openrouterCustomModel,openrouterCustomModelInput.value);localStorage.setItem(STORAGE_KEYS.openrouterReasoning,openrouterReasoningInput.value);localStorage.setItem(STORAGE_KEYS.geminiKey,geminiKeyInput.value);localStorage.setItem(STORAGE_KEYS.geminiModel,geminiModelInput.value);localStorage.setItem(STORAGE_KEYS.imageModel,imageModelInput.value);localStorage.setItem(STORAGE_KEYS.imageCustomModel,imageCustomModelInput.value);localStorage.setItem(STORAGE_KEYS.imageSpec,imageSpecInput.value);localStorage.setItem(STORAGE_KEYS.aiOrder,aiOrderInput.value);updateStorageUsage();closeModal(settingsModal)});
 aiButton.addEventListener("click",handleAIButton);
 document.getElementById("compose-prompt").addEventListener("click",()=>{promptOutput.value=buildPrompt();pasteResponse.value="";pasteFeedback.textContent="";openModal(promptModal)});
 document.getElementById("paste-back").addEventListener("click",()=>{const response=pasteResponse.value.trim();if(!response){pasteFeedback.textContent="請先貼上 AI 回覆。";return}const result=parseAIResponse(response);if(!result.count){pasteFeedback.textContent="找不到【FB】【IG】【LINE】或【Threads】標題，請確認回覆格式。";return}showAIResult(result.questions?"【要問我的】\n"+result.questions:"已貼回 "+result.count+" 個平台的貼文。");pasteFeedback.textContent="已貼回 "+result.count+" 個平台。";closeModal(promptModal)});
 document.querySelectorAll("[data-close]").forEach(button=>button.addEventListener("click",()=>closeModal(document.getElementById(button.dataset.close))));
 document.querySelectorAll(".modal-backdrop").forEach(modal=>modal.addEventListener("click",event=>{if(event.target===modal)closeModal(modal)}));
 document.getElementById("copy-prompt").addEventListener("click",async event=>{try{await navigator.clipboard.writeText(promptOutput.value)}catch(error){promptOutput.select();document.execCommand("copy")}event.currentTarget.textContent="已複製";setTimeout(()=>{event.currentTarget.textContent="複製"},1200)});
-renderImageControl();restoreDraft();renderPreview();renderAssistantHistory();updateUndoButton();
+renderImageControl();renderPreview();renderAssistantHistory();updateUndoButton();updateStorageUsage();
+(async()=>{
+  try{await migrateSavedPosts()}catch(error){saveFeedback.textContent="舊貼文圖片還沒搬完："+(error.message||"圖片倉庫無法使用。")}
+  try{await restoreDraft()}catch(error){imageFeedback.textContent="舊暫存圖片還沒搬完："+(error.message||"圖片倉庫無法使用。")}
+  updateStorageUsage();
+})();
 </script>
 </body>
 </html>
