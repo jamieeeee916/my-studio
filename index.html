@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>松風民宿｜社群工作台</title>
 <style>
-:root{--forest:#314a35;--canopy:#647a49;--leaf:#91a66d;--pineapple:#eeb63b;--fruit:#cb853e;--paper:#fffef8;--mist:#eef0e9;--ink:#26372b;--muted:#6d776a;--rule:#d6dccc;--shadow:rgba(35,57,39,.13)}
+:root{--forest:#314a35;--canopy:#647a49;--leaf:#91a66d;--pineapple:#eeb63b;--fruit:#cb853e;--paper:#fffef8;--mist:#eef0e9;--ink:#26372b;--muted:#6d776a;--rule:#d6dccc;--shadow:rgba(35,57,39,.13);--error:#a23d36;--disabled:#a5aaa3;--check-error-bg:#f8e4e0;--check-warning-bg:#fff1cb}
 *{box-sizing:border-box}body{min-width:320px;margin:0;color:var(--ink);background:var(--mist);font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}
 .site-header{position:relative;overflow:hidden;padding:24px clamp(22px,4vw,66px) 20px;color:var(--paper);background:var(--forest);border-bottom:5px solid var(--pineapple)}.site-header:before,.site-header:after{content:"";position:absolute;right:-50px;width:320px;height:320px;border:1px solid rgba(238,182,59,.35);border-radius:50%;pointer-events:none}.site-header:before{top:-244px}.site-header:after{top:-208px;right:85px;opacity:.55}.brand-line,.top-title{position:relative;z-index:1}.brand-line{display:flex;align-items:baseline;justify-content:space-between;gap:20px;max-width:1480px;margin:auto;padding-bottom:15px;border-bottom:1px solid rgba(255,254,248,.32)}.brand-mark{margin:0;font-size:.78rem;letter-spacing:.14em}.brand-account{margin:0;color:rgba(255,254,248,.76);font-size:.75rem}.top-title{max-width:1480px;margin:18px auto 0;font-family:"Songti TC","Noto Serif TC",serif;font-size:clamp(1.65rem,3.3vw,2.55rem);font-weight:600;letter-spacing:.08em}.top-title span{color:var(--pineapple);font-family:"PingFang TC","Noto Sans TC",sans-serif;font-size:.7em;font-weight:500;letter-spacing:.04em}
 .workspace{max-width:1480px;margin:auto;padding:32px clamp(18px,4vw,56px) 56px;display:grid;grid-template-columns:286px minmax(390px,1fr) 286px;gap:clamp(20px,2.5vw,38px);align-items:start}.section-kicker{display:flex;align-items:center;gap:9px;margin:0 0 17px;color:var(--canopy);font-size:.77rem;font-weight:700;letter-spacing:.08em}.section-kicker:before{width:25px;height:2px;background:var(--pineapple);content:""}h2{margin:0;color:var(--forest);font-family:"Songti TC","Noto Serif TC",serif;font-size:1.45rem;font-weight:600;letter-spacing:.08em}.material-panel,.preview-panel{padding-top:4px}.material-intro{margin:11px 0 23px;color:var(--muted);font-size:.86rem;line-height:1.7}.material-form{display:grid;gap:13px}.field{display:grid;gap:7px;padding:11px 12px 12px;border-left:3px solid var(--leaf);background:rgba(255,254,248,.48)}.field:focus-within{border-left-color:var(--fruit);background:var(--paper)}label{color:var(--forest);font-size:.84rem;font-weight:700}.required{margin-left:5px;color:var(--fruit);font-size:.72rem;font-weight:600}input,textarea{width:100%;border:0;border-bottom:1px solid var(--rule);border-radius:0;outline:0;color:var(--ink);background:transparent;line-height:1.6}input{min-height:31px;padding:2px 0}textarea{min-height:58px;padding:1px 0;resize:vertical}input::placeholder,textarea::placeholder{color:#9ca497}input:focus,textarea:focus{border-bottom-color:var(--canopy)}
@@ -30,30 +30,43 @@
 </style>
 <style>
 .carousel-control{position:absolute;z-index:3;top:50%;display:grid;place-items:center;width:25px;height:25px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#28322b;box-shadow:0 1px 5px rgba(0,0,0,.2);font-size:.95rem;line-height:1;transform:translateY(-50%)}.carousel-control:hover,.carousel-control:focus-visible{background:#fff;outline:2px solid var(--pineapple)}.carousel-prev{left:7px}.carousel-next{right:7px}.line-carousel,.threads-carousel{position:relative;overflow:hidden}.line-carousel{width:198px;height:132px}.threads-carousel{width:100%;height:150px;margin-top:10px;border-radius:10px}.line-carousel img,.threads-carousel img{display:block;width:100%;height:100%;object-fit:cover}.line-carousel .media-dots,.threads-carousel .media-dots{bottom:6px}.line-carousel .media-count,.threads-carousel .media-count{top:6px;right:6px}.media-dots .is-current{color:var(--pineapple)}
+.ai-button{width:100%;margin-top:10px;padding:10px 12px;border:1px solid var(--forest);border-radius:0;background:var(--canopy);color:var(--paper);font-size:.8rem;font-weight:700;text-align:left}.ai-button:hover,.ai-button:focus-visible{background:var(--forest);outline:0}.ai-button:disabled{cursor:wait;border-color:var(--disabled);background:var(--disabled);color:var(--paper)}.ai-result{margin:8px 0 2px;padding:9px 10px;border-left:3px solid var(--pineapple);background:rgba(255,254,250,.72);color:var(--muted);font-size:.72rem;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}.ai-result.is-error{border-left-color:var(--error);color:var(--error)}.ai-result[hidden]{display:none}.modal-field input,.modal-field select{width:100%;min-height:42px;padding:8px 10px;border:1px solid var(--rule);border-radius:0;background:#fff;color:var(--ink);font:inherit}.modal-field input:focus,.modal-field select:focus{border-color:var(--canopy);outline:2px solid var(--leaf);outline-offset:1px}.ai-setting-group{margin-top:24px;padding-top:17px;border-top:1px solid var(--rule)}.ai-setting-group h3{margin:0;color:var(--forest);font-size:.97rem}.ai-setting-group .modal-field{margin-top:13px}.secret-note{margin:7px 0 0}.paste-back-area{margin-top:26px;padding-top:22px;border-top:1px solid var(--rule)}.paste-back-area .modal-field{margin-top:0}.paste-back-area textarea{min-height:150px}.paste-feedback{min-height:1.2em;margin:8px 0 0;color:var(--canopy);font-size:.72rem}
+.undo-button{margin-top:16px;padding:7px 0;border:0;border-bottom:1px solid var(--canopy);background:transparent;color:var(--canopy);font-size:.78rem;font-weight:700}.undo-button:disabled{border-color:var(--rule);color:var(--disabled);cursor:default}.undo-button:focus-visible,.assistant-quick button:focus-visible,.assistant-send:focus-visible{outline:2px solid var(--fruit);outline-offset:2px}.assistant-panel{margin-top:25px;padding-top:23px;border-top:1px solid var(--rule)}.assistant-panel h3{margin:0 0 15px;color:var(--forest);font-family:"Songti TC","Noto Serif TC",serif;font-size:1.15rem;font-weight:600}.assistant-log{display:grid;align-content:start;gap:8px;min-height:78px;max-height:280px;overflow:auto;padding:11px;border:1px solid var(--rule);background:var(--mist)}.assistant-empty{margin:9px 0;color:var(--muted);font-size:.78rem;line-height:1.6}.assistant-entry{padding:9px 11px;background:var(--paper);font-size:.8rem;line-height:1.65;overflow-wrap:anywhere;white-space:pre-wrap}.assistant-entry.is-user{border-left:3px solid var(--fruit)}.assistant-entry.is-assistant{border-left:3px solid var(--canopy)}.assistant-entry strong{display:block;margin-bottom:2px;color:var(--forest);font-size:.72rem}.assistant-quick{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}.assistant-quick button{padding:7px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--forest);font-size:.75rem}.assistant-quick button:hover{border-color:var(--canopy);background:var(--mist)}.assistant-quick button:disabled{opacity:.55;cursor:wait}.assistant-form label{display:block;margin-bottom:7px}.assistant-compose{display:flex;gap:9px}.assistant-compose input{min-width:0;min-height:39px;padding:7px 9px;border:1px solid var(--rule);background:#fff}.assistant-compose input:focus-visible{outline:2px solid var(--canopy);outline-offset:1px}.assistant-send{flex:0 0 auto;padding:7px 14px;border:1px solid var(--forest);background:var(--forest);color:var(--paper);font-size:.78rem;font-weight:700}.assistant-send:disabled{border-color:var(--disabled);background:var(--disabled);cursor:wait}.assistant-status{min-height:1.2em;margin:9px 0 0;color:var(--muted);font-size:.73rem;line-height:1.6;white-space:pre-wrap}.assistant-status.is-error{color:var(--error)}@media(max-width:520px){.assistant-compose{flex-direction:column}.assistant-send{align-self:flex-end}}
+.check-button{margin:16px 0 0 18px;padding:7px 11px;border:1px solid var(--canopy);background:var(--paper);color:var(--forest);font-size:.78rem;font-weight:700}.check-button:hover,.check-button:focus-visible{background:var(--mist);outline:2px solid var(--fruit);outline-offset:2px}.check-button:disabled{border-color:var(--disabled);color:var(--disabled);cursor:wait}.check-status{min-height:1.2em;margin:8px 0 0;color:var(--muted);font-size:.73rem;line-height:1.6;white-space:pre-wrap}.check-status.is-error{color:var(--error)}.check-report{display:grid;gap:5px;white-space:pre-wrap;overflow-wrap:anywhere}.check-line{padding:6px 9px;line-height:1.65}.check-line.is-error{background:var(--check-error-bg)}.check-line.is-warning{background:var(--check-warning-bg)}.check-line.is-heading{margin-top:9px;color:var(--forest);font-weight:700}
 </style>
 </head>
 <body>
 <header class="site-header"><div class="brand-line"><p class="brand-mark" id="brand-mark">松風民宿｜LONTIAN, LUYE</p><div class="header-actions"><p class="brand-account" id="brand-account">帳號名稱｜❓待補</p><button class="setting-button" id="new-post" type="button">＋ 新的一篇</button><button class="setting-button" id="open-library" type="button">📁 我的貼文</button><button class="setting-button" id="open-settings" type="button">⚙ 設定</button></div></div><h1 class="top-title"><span id="brand-name">松風民宿</span>｜社群工作台</h1></header>
 <main class="workspace">
-<section class="material-panel" aria-labelledby="material-title"><p class="section-kicker">CAPTURE</p><h2 id="material-title">素材卡</h2><p class="material-intro">先留下今天看見的地方，再開始說故事。</p><form class="material-form" id="material-form" novalidate></form><div class="image-field"><div class="image-field-head"><span>貼文圖片</span><small>選填・最多 6 張</small></div><label class="image-picker" for="post-image-input"><span id="image-picker-label">＋ 選擇圖片（可多選）</span><input class="visually-hidden" id="post-image-input" type="file" accept="image/*" multiple></label><div class="image-preview-grid" id="image-preview-grid" hidden></div><p class="image-feedback" id="image-feedback" aria-live="polite">圖片會縮小後保存在這個瀏覽器。</p></div><button class="save-post-button" id="save-post" type="button">💾 存檔</button><p class="save-feedback" id="save-feedback" aria-live="polite"></p><button class="compose-button" id="compose-prompt" type="button">🧩 組好指令</button></section>
-<section class="editor-panel" aria-labelledby="editor-title"><div class="editor-top"><div><p class="section-kicker">DRAFT</p><h2 id="editor-title">貼文內容</h2></div><p class="editor-note">一句一件事，讓文字留有呼吸。</p></div><nav class="tabs" id="platform-tabs" aria-label="選擇平台"></nav><label class="editor-label" for="post-content">正在寫給 <span id="active-platform">FB</span></label><textarea class="post-content" id="post-content" aria-label="貼文內容" placeholder="從今天看見的一個畫面開始……"></textarea><div class="editor-footer"><span>內容會自動暫存在這個瀏覽器</span><span id="word-count">0 字</span></div></section>
+<section class="material-panel" aria-labelledby="material-title"><p class="section-kicker">CAPTURE</p><h2 id="material-title">素材卡</h2><p class="material-intro">先留下今天看見的地方，再開始說故事。</p><form class="material-form" id="material-form" novalidate></form><div class="image-field"><div class="image-field-head"><span>貼文圖片</span><small>選填・最多 6 張</small></div><label class="image-picker" for="post-image-input"><span id="image-picker-label">＋ 選擇圖片（可多選）</span><input class="visually-hidden" id="post-image-input" type="file" accept="image/*" multiple></label><div class="image-preview-grid" id="image-preview-grid" hidden></div><p class="image-feedback" id="image-feedback" aria-live="polite">圖片會縮小後保存在這個瀏覽器。</p></div><button class="save-post-button" id="save-post" type="button">💾 存檔</button><p class="save-feedback" id="save-feedback" aria-live="polite"></p><button class="ai-button" id="ask-ai" type="button">✨ 讓 AI 寫</button><div class="ai-result" id="ai-result" aria-live="polite" hidden></div><button class="compose-button" id="compose-prompt" type="button">🧩 組好指令</button></section>
+<section class="editor-panel" aria-labelledby="editor-title"><div class="editor-top"><div><p class="section-kicker">DRAFT</p><h2 id="editor-title">貼文內容</h2></div><p class="editor-note">一句一件事，讓文字留有呼吸。</p></div><nav class="tabs" id="platform-tabs" aria-label="選擇平台"></nav><label class="editor-label" for="post-content">正在寫給 <span id="active-platform">FB</span></label><textarea class="post-content" id="post-content" aria-label="貼文內容" placeholder="從今天看見的一個畫面開始……"></textarea><div class="editor-footer"><span>內容會自動暫存在這個瀏覽器</span><span id="word-count">0 字</span></div><button class="undo-button" id="undo-post" type="button" disabled>↩ 復原上一版</button><button class="check-button" id="check-posts" type="button">🔍 檢查官</button><p class="check-status" id="check-status" aria-live="polite"></p><section class="assistant-panel" aria-labelledby="assistant-title"><h3 id="assistant-title">💬 AI 小幫手</h3><div class="assistant-log" id="assistant-log" role="log" aria-label="目前平台的小幫手對話紀錄"></div><div class="assistant-quick" aria-label="快捷修改"><button type="button" data-assistant-instruction="短一點">短一點</button><button type="button" data-assistant-instruction="換開頭">換開頭</button><button type="button" data-assistant-instruction="少一點 emoji">少一點 emoji</button><button type="button" data-assistant-instruction="更像範例">更像範例</button></div><form class="assistant-form" id="assistant-form"><label for="assistant-input">想怎麼改？</label><div class="assistant-compose"><input id="assistant-input" type="text" placeholder="例：最後一段再溫柔一點"><button class="assistant-send" id="assistant-send" type="submit">送出</button></div></form><p class="assistant-status" id="assistant-status" aria-live="polite"></p></section></section>
 <aside class="preview-panel" aria-labelledby="preview-title"><p class="section-kicker">PREVIEW</p><h2 id="preview-title">手機預覽</h2><div class="preview-panel-inner"><p class="preview-note">切換平台後，這裡會顯示相對應的貼文樣子，並隨輸入即時更新。</p><div class="phone" aria-label="手機貼文預覽"><div class="speaker"></div><div id="platform-preview"></div></div></div></aside>
 </main>
 <div class="modal-backdrop" id="settings-modal" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
-  <section class="modal"><button class="modal-close" type="button" data-close="settings-modal" aria-label="關閉設定">×</button><h2 id="settings-title">設定</h2><p class="modal-note">內容只保存在這個瀏覽器裡，重新開啟網頁後仍會保留。</p><label class="modal-field" for="brand-spec"><span>品牌規格</span><textarea id="brand-spec" placeholder="貼上品牌規格全文"></textarea></label><label class="modal-field" for="checklist"><span>檢查清單</span><textarea id="checklist" placeholder="貼上寫完後要檢查的清單"></textarea></label><div class="modal-actions"><button class="modal-button primary" id="save-settings" type="button">儲存</button></div></section>
+  <section class="modal"><button class="modal-close" type="button" data-close="settings-modal" aria-label="關閉設定">×</button><h2 id="settings-title">設定</h2><p class="modal-note">內容只保存在這個瀏覽器裡，重新開啟網頁後仍會保留。</p><label class="modal-field" for="brand-spec"><span>品牌規格</span><textarea id="brand-spec" placeholder="貼上品牌規格全文"></textarea></label><label class="modal-field" for="checklist"><span>檢查清單</span><textarea id="checklist" placeholder="貼上寫完後要檢查的清單"></textarea></label>
+    <div class="ai-setting-group"><h3>第一組｜OpenRouter</h3><label class="modal-field" for="ai-key"><span>AI 金鑰</span><input id="ai-key" type="password" autocomplete="off" placeholder="貼上 OpenRouter API 金鑰"></label><label class="modal-field" for="openrouter-model"><span>模型</span><select id="openrouter-model"><optgroup label="DeepSeek"><option value="deepseek/deepseek-v4.1-flash">deepseek/deepseek-v4.1-flash</option><option value="deepseek/deepseek-v4-pro">deepseek/deepseek-v4-pro</option><option value="deepseek/deepseek-v3.2">deepseek/deepseek-v3.2</option></optgroup><optgroup label="Kimi"><option value="moonshotai/kimi-k2.6">moonshotai/kimi-k2.6</option><option value="moonshotai/kimi-k2.5">moonshotai/kimi-k2.5</option><option value="moonshotai/kimi-k3">moonshotai/kimi-k3</option></optgroup><optgroup label="MiniMax"><option value="minimax/minimax-m3">minimax/minimax-m3</option><option value="minimax/minimax-m2.7">minimax/minimax-m2.7</option><option value="minimax/minimax-m2.5">minimax/minimax-m2.5</option></optgroup></select></label><label class="modal-field" for="openrouter-custom-model"><span>或自己打模型名稱</span><input id="openrouter-custom-model" type="text" spellcheck="false" placeholder="有填就使用這個模型"></label><label class="modal-field" for="openrouter-reasoning"><span>思考</span><select id="openrouter-reasoning"><option value="low">少想一點 low</option><option value="medium">多想一點 medium</option><option value="high">想很久 high</option></select></label></div>
+    <div class="ai-setting-group"><h3>第二組｜Gemini</h3><label class="modal-field" for="gemini-key"><span>Gemini 金鑰</span><input id="gemini-key" type="password" autocomplete="off" placeholder="貼上 Gemini API 金鑰"></label><label class="modal-field" for="gemini-model"><span>Gemini 模型</span><select id="gemini-model"><option value="gemini-3.8-flash">gemini-3.8-flash</option><option value="gemini-3.6-flash">gemini-3.6-flash</option><option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option><option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite</option></select></label></div>
+    <div class="ai-setting-group"><label class="modal-field" for="ai-order"><span>先用哪一組</span><select id="ai-order"><option value="openrouter-then-gemini">先用 OpenRouter，失敗了自動換 Gemini</option><option value="gemini-only">只用 Gemini</option><option value="openrouter-only">只用 OpenRouter</option></select></label></div><p class="modal-note secret-note">金鑰只會保存在這個瀏覽器，送出 AI 請求時才使用。</p><div class="modal-actions"><button class="modal-button primary" id="save-settings" type="button">儲存</button></div></section>
 </div>
 <div class="modal-backdrop" id="prompt-modal" hidden role="dialog" aria-modal="true" aria-labelledby="prompt-title">
-  <section class="modal"><button class="modal-close" type="button" data-close="prompt-modal" aria-label="關閉指令視窗">×</button><h2 id="prompt-title">組好的指令</h2><p class="modal-note">確認內容後，可直接複製到對話中使用。</p><textarea class="prompt-output" id="prompt-output" readonly aria-label="組好的指令"></textarea><div class="modal-actions"><button class="modal-button" id="copy-prompt" type="button">複製</button></div></section>
+  <section class="modal"><button class="modal-close" type="button" data-close="prompt-modal" aria-label="關閉指令視窗">×</button><h2 id="prompt-title">組好的指令</h2><p class="modal-note">確認內容後，可直接複製到對話中使用。</p><textarea class="prompt-output" id="prompt-output" readonly aria-label="組好的指令"></textarea><div class="modal-actions"><button class="modal-button" id="copy-prompt" type="button">複製</button></div><div class="paste-back-area"><label class="modal-field" for="paste-response"><span>AI 回覆</span><textarea id="paste-response" placeholder="AI 連不上時，可把回覆貼在這裡"></textarea></label><p class="paste-feedback" id="paste-feedback" aria-live="polite"></p><div class="modal-actions"><button class="modal-button primary" id="paste-back" type="button">📥 貼回</button></div></div></section>
 </div>
 <div class="modal-backdrop" id="library-modal" hidden role="dialog" aria-modal="true" aria-labelledby="library-title">
   <section class="modal"><button class="modal-close" type="button" data-close="library-modal" aria-label="關閉我的貼文">×</button><h2 id="library-title">我的貼文</h2><p class="modal-note">正式存檔的貼文會留在這個瀏覽器裡。</p><div class="saved-list" id="saved-list"></div></section>
 </div>
+<div class="modal-backdrop" id="check-modal" hidden role="dialog" aria-modal="true" aria-labelledby="check-title">
+  <section class="modal"><button class="modal-close" type="button" data-close="check-modal" aria-label="關閉檢查報告">×</button><h2 id="check-title">檢查報告</h2><p class="modal-note">有 ⚠️ 的地方，請再由你確認。</p><div class="check-report" id="check-report"></div></section>
+</div>
 <script>
 // 品牌、平台與素材卡欄位：之後可直接從這裡修改。
 const BRAND={name:"松風民宿",accountName:"songfung2025",primaryColor:"#314A35",platforms:["FB","IG","LINE","Threads"],materialFields:[{label:"日期",required:true,type:"text",placeholder:"例：2026/10/15"},{label:"在地生活片段",required:false,type:"textarea",placeholder:"例：風穿過樹葉；龍田的草地與茶田"},{label:"活動名稱",required:false,type:"text",placeholder:"例：地方深度旅遊 工作坊"},{label:"民宿主人想說的話",required:false,type:"textarea",placeholder:"例：我們不是飯店；希望旅客住進鹿野的生活節奏"},{label:"松風裡的時刻",required:false,type:"textarea",placeholder:"例：回到松風後，坐著讀幾頁書、泡一壺茶"},{label:"❓待確認資訊",required:false,type:"textarea",placeholder:"例：熱氣球季日期、房況、訂房方式、聯絡資訊"}]};
-const materialForm=document.getElementById("material-form"),platformTabs=document.getElementById("platform-tabs"),postContent=document.getElementById("post-content"),wordCount=document.getElementById("word-count"),activePlatform=document.getElementById("active-platform"),platformPreview=document.getElementById("platform-preview"),settingsModal=document.getElementById("settings-modal"),promptModal=document.getElementById("prompt-modal"),libraryModal=document.getElementById("library-modal"),savedList=document.getElementById("saved-list"),brandSpecInput=document.getElementById("brand-spec"),checklistInput=document.getElementById("checklist"),promptOutput=document.getElementById("prompt-output"),saveFeedback=document.getElementById("save-feedback"),imageInput=document.getElementById("post-image-input"),imagePreviewGrid=document.getElementById("image-preview-grid"),imagePickerLabel=document.getElementById("image-picker-label"),imageFeedback=document.getElementById("image-feedback");
-const STORAGE_KEYS={brandSpec:"songfeng-workbench-brand-spec",checklist:"songfeng-workbench-checklist",savedPosts:"songfeng-workbench-saved-posts",draft:"songfeng-workbench-current-draft"};
-const posts=Object.fromEntries(BRAND.platforms.map(platform=>[platform,""]));let currentPlatform=BRAND.platforms[0],currentSavedId=null,postImages=[],currentImageIndex=0;const materialInputs=[];const MAX_IMAGES=6;
+const DEFAULT_OPENROUTER_MODEL="deepseek/deepseek-v4.1-flash",DEFAULT_GEMINI_MODEL="gemini-3.8-flash",AI_TIMEOUT_MS=60000;
+const DEFAULT_CHECKLIST=["日期價格對不對","有沒有多加的事","只能在某平台講的有沒有跑掉","先不要講的有沒有出現","有沒有不能用的字","有沒有簡體字或大陸用語"];
+const materialForm=document.getElementById("material-form"),platformTabs=document.getElementById("platform-tabs"),postContent=document.getElementById("post-content"),wordCount=document.getElementById("word-count"),activePlatform=document.getElementById("active-platform"),platformPreview=document.getElementById("platform-preview"),settingsModal=document.getElementById("settings-modal"),promptModal=document.getElementById("prompt-modal"),libraryModal=document.getElementById("library-modal"),savedList=document.getElementById("saved-list"),brandSpecInput=document.getElementById("brand-spec"),checklistInput=document.getElementById("checklist"),aiKeyInput=document.getElementById("ai-key"),openrouterModelInput=document.getElementById("openrouter-model"),openrouterCustomModelInput=document.getElementById("openrouter-custom-model"),openrouterReasoningInput=document.getElementById("openrouter-reasoning"),geminiKeyInput=document.getElementById("gemini-key"),geminiModelInput=document.getElementById("gemini-model"),aiOrderInput=document.getElementById("ai-order"),promptOutput=document.getElementById("prompt-output"),pasteResponse=document.getElementById("paste-response"),pasteFeedback=document.getElementById("paste-feedback"),aiButton=document.getElementById("ask-ai"),aiResult=document.getElementById("ai-result"),saveFeedback=document.getElementById("save-feedback"),imageInput=document.getElementById("post-image-input"),imagePreviewGrid=document.getElementById("image-preview-grid"),imagePickerLabel=document.getElementById("image-picker-label"),imageFeedback=document.getElementById("image-feedback");
+const undoButton=document.getElementById("undo-post"),assistantLog=document.getElementById("assistant-log"),assistantForm=document.getElementById("assistant-form"),assistantInput=document.getElementById("assistant-input"),assistantSend=document.getElementById("assistant-send"),assistantStatus=document.getElementById("assistant-status"),assistantQuickButtons=[...document.querySelectorAll("[data-assistant-instruction]")];
+const checkButton=document.getElementById("check-posts"),checkStatus=document.getElementById("check-status"),checkModal=document.getElementById("check-modal"),checkReport=document.getElementById("check-report");
+const STORAGE_KEYS={brandSpec:"songfeng-workbench-brand-spec",checklist:"songfeng-workbench-checklist",aiKey:"songfeng-workbench-ai-key",openrouterModel:"songfeng-workbench-openrouter-model",openrouterCustomModel:"songfeng-workbench-openrouter-custom-model",openrouterReasoning:"songfeng-workbench-openrouter-reasoning",geminiKey:"songfeng-workbench-gemini-key",geminiModel:"songfeng-workbench-gemini-model",aiOrder:"songfeng-workbench-ai-order",aiDailyUsage:"songfeng-workbench-ai-daily-usage",savedPosts:"songfeng-workbench-saved-posts",draft:"songfeng-workbench-current-draft"};
+const posts=Object.fromEntries(BRAND.platforms.map(platform=>[platform,""])),assistantHistory=Object.fromEntries(BRAND.platforms.map(platform=>[platform,[]]));let currentPlatform=BRAND.platforms[0],currentSavedId=null,postImages=[],currentImageIndex=0,previousPosts=null,showingPrevious=false,assistantBusy=false,workRevision=0;const materialInputs=[];const MAX_IMAGES=6;
 const escapeHTML=value=>value.replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
 const withBreaks=value=>escapeHTML(value).replace(/\n/g,"<br>");
 const copyHTML=value=>value?withBreaks(value):'<span class="platform-placeholder">還沒有貼文內容</span>';
@@ -74,7 +87,22 @@ function renderPreview(){
 function moveCarousel(direction){if(postImages.length<2)return;currentImageIndex=(currentImageIndex+direction+postImages.length)%postImages.length;renderPreview();persistDraft()}
 function switchPlatform(platform){
   posts[currentPlatform]=postContent.value;currentPlatform=platform;postContent.value=posts[platform];postContent.placeholder="在 "+platform+" 貼文框開始輸入……";activePlatform.textContent=platform;wordCount.textContent=postContent.value.length+" 字";
-  document.querySelectorAll(".platform-tab").forEach(tab=>{const active=tab.dataset.platform===platform;tab.classList.toggle("is-active",active);tab.setAttribute("aria-pressed",String(active));});renderPreview();persistDraft();
+  document.querySelectorAll(".platform-tab").forEach(tab=>{const active=tab.dataset.platform===platform;tab.classList.toggle("is-active",active);tab.setAttribute("aria-pressed",String(active));});renderPreview();renderAssistantHistory();assistantInput.value="";showAssistantStatus("");persistDraft();
+}
+function renderAssistantHistory(){
+  assistantLog.replaceChildren();
+  const entries=assistantHistory[currentPlatform];
+  if(!entries.length){const empty=document.createElement("p");empty.className="assistant-empty";empty.textContent="還沒有對話。選一個快捷指令，或自己說想怎麼改。";assistantLog.append(empty);return}
+  entries.forEach(entry=>{const row=document.createElement("div"),label=document.createElement("strong"),message=document.createElement("span");row.className="assistant-entry "+(entry.role==="user"?"is-user":"is-assistant");label.textContent=entry.role==="user"?"我說":"小幫手";message.textContent=entry.content;row.append(label,message);assistantLog.append(row)});
+  assistantLog.scrollTop=assistantLog.scrollHeight;
+}
+function showAssistantStatus(message,isError=false){assistantStatus.textContent=message;assistantStatus.classList.toggle("is-error",isError)}
+function updateUndoButton(){undoButton.disabled=!previousPosts;undoButton.textContent=showingPrevious?"↪ 換回新版":"↩ 復原上一版"}
+function capturePreviousVersion(){posts[currentPlatform]=postContent.value;previousPosts={...posts};showingPrevious=false;updateUndoButton()}
+function togglePreviousVersion(){
+  if(!previousPosts)return;
+  posts[currentPlatform]=postContent.value;
+  const current={...posts};BRAND.platforms.forEach(platform=>{posts[platform]=previousPosts[platform]||""});previousPosts=current;showingPrevious=!showingPrevious;showCurrentPlatform();persistDraft();
 }
 function openModal(modal){modal.hidden=false;document.body.style.overflow="hidden"}
 function closeModal(modal){modal.hidden=true;document.body.style.overflow=""}
@@ -99,16 +127,19 @@ async function handleImageUpload(event){
 }
 function collectState(){
   posts[currentPlatform]=postContent.value;
-  return {id:currentSavedId,materials:materialInputs.map(input=>input.value),posts:{...posts},activePlatform:currentPlatform,images:[...postImages],imageIndex:currentImageIndex};
+  return {id:currentSavedId,materials:materialInputs.map(input=>input.value),posts:{...posts},activePlatform:currentPlatform,images:[...postImages],imageIndex:currentImageIndex,previousPosts:previousPosts?{...previousPosts}:null,showingPrevious,assistantHistory:Object.fromEntries(BRAND.platforms.map(platform=>[platform,assistantHistory[platform].map(entry=>({...entry}))]))};
 }
 function persistDraft(){try{localStorage.setItem(STORAGE_KEYS.draft,JSON.stringify(collectState()))}catch(error){imageFeedback.textContent="瀏覽器暫存空間不足，請移除圖片或刪除舊貼文。"}}
 function showCurrentPlatform(){
   postContent.value=posts[currentPlatform]||"";postContent.placeholder="在 "+currentPlatform+" 貼文框開始輸入……";activePlatform.textContent=currentPlatform;wordCount.textContent=postContent.value.length+" 字";
-  document.querySelectorAll(".platform-tab").forEach(tab=>{const active=tab.dataset.platform===currentPlatform;tab.classList.toggle("is-active",active);tab.setAttribute("aria-pressed",String(active));});renderPreview();
+  document.querySelectorAll(".platform-tab").forEach(tab=>{const active=tab.dataset.platform===currentPlatform;tab.classList.toggle("is-active",active);tab.setAttribute("aria-pressed",String(active));});renderPreview();renderAssistantHistory();updateUndoButton();
 }
 function applyState(state){
+  workRevision++;
   materialInputs.forEach((input,index)=>{input.value=Array.isArray(state.materials)?state.materials[index]||"":""});
   BRAND.platforms.forEach(platform=>{posts[platform]=state.posts&&typeof state.posts[platform]==="string"?state.posts[platform]:""});
+  BRAND.platforms.forEach(platform=>{const entries=state.assistantHistory&&state.assistantHistory[platform];assistantHistory[platform]=Array.isArray(entries)?entries.filter(entry=>entry&&["user","assistant"].includes(entry.role)&&typeof entry.content==="string").slice(-8).map(entry=>({role:entry.role,content:entry.content})):[]});
+  previousPosts=state.previousPosts&&typeof state.previousPosts==="object"?Object.fromEntries(BRAND.platforms.map(platform=>[platform,typeof state.previousPosts[platform]==="string"?state.previousPosts[platform]:""])):null;showingPrevious=Boolean(previousPosts&&state.showingPrevious);
   postImages=Array.isArray(state.images)?state.images.filter(image=>typeof image==="string").slice(0,MAX_IMAGES):(typeof state.image==="string"&&state.image?[state.image]:[]);currentImageIndex=Number.isInteger(state.imageIndex)?Math.min(Math.max(0,state.imageIndex),Math.max(0,postImages.length-1)):0;renderImageControl();currentSavedId=state.id||null;currentPlatform=BRAND.platforms.includes(state.activePlatform)?state.activePlatform:BRAND.platforms[0];showCurrentPlatform();
 }
 function makeSavedName(materials){
@@ -141,7 +172,7 @@ function renderSavedList(){
   items.forEach(item=>{const row=document.createElement("article"),info=document.createElement("div"),name=document.createElement("p"),time=document.createElement("p"),actions=document.createElement("div"),openButton=document.createElement("button"),deleteButton=document.createElement("button");row.className="saved-item";name.className="saved-name";name.textContent=item.name||"未命名貼文";time.className="saved-time";time.textContent="存檔時間｜"+new Date(item.savedAt).toLocaleString("zh-TW",{hour12:false});actions.className="saved-actions";openButton.className="library-action";openButton.type="button";openButton.textContent="打開";openButton.addEventListener("click",()=>openSavedPost(item.id));deleteButton.className="library-action delete";deleteButton.type="button";deleteButton.textContent="刪除";deleteButton.addEventListener("click",()=>deleteSavedPost(item.id));info.append(name,time);actions.append(openButton,deleteButton);row.append(info,actions);savedList.append(row)});
 }
 function startNewPost(){
-  materialInputs.forEach(input=>{input.value=""});BRAND.platforms.forEach(platform=>{posts[platform]=""});postImages=[];currentImageIndex=0;renderImageControl();currentSavedId=null;currentPlatform=BRAND.platforms[0];showCurrentPlatform();persistDraft();imageFeedback.textContent="圖片會縮小後保存在這個瀏覽器。";saveFeedback.textContent="已建立新的一篇";setTimeout(()=>{saveFeedback.textContent=""},1800);
+  workRevision++;materialInputs.forEach(input=>{input.value=""});BRAND.platforms.forEach(platform=>{posts[platform]="";assistantHistory[platform]=[]});previousPosts=null;showingPrevious=false;postImages=[];currentImageIndex=0;renderImageControl();currentSavedId=null;currentPlatform=BRAND.platforms[0];assistantInput.value="";showAssistantStatus("");showCurrentPlatform();persistDraft();aiResult.hidden=true;aiResult.textContent="";imageFeedback.textContent="圖片會縮小後保存在這個瀏覽器。";saveFeedback.textContent="已建立新的一篇";setTimeout(()=>{saveFeedback.textContent=""},1800);
 }
 function restoreDraft(){const draft=readJSON(STORAGE_KEYS.draft,null);if(draft&&typeof draft==="object")applyState(draft)}
 function formatDateWithWeekday(value){
@@ -151,37 +182,219 @@ function formatDateWithWeekday(value){
   if(date.getFullYear()!==Number(match[1])||date.getMonth()!==Number(match[2])-1||date.getDate()!==Number(match[3]))return value.trim();
   return match[1]+"/"+String(Number(match[2])).padStart(2,"0")+"/"+String(Number(match[3])).padStart(2,"0")+"（"+"日一二三四五六".charAt(date.getDay())+"）";
 }
-function buildPrompt(){
-  const material=BRAND.materialFields.map((field,index)=>{
+function materialCardText(){
+  return BRAND.materialFields.map((field,index)=>{
     const value=materialInputs[index].value.trim();
     return field.label+"："+(index===0?formatDateWithWeekday(value):(value||"（未填）"));
   }).join("\n");
+}
+function buildPrompt(){
   const platformLabels=BRAND.platforms.map(platform=>"【"+platform+"】").join(" ");
   let prompt="（這段只要回覆文字，不要建立或修改任何檔案。）\n\n";
   prompt+="你是【"+BRAND.name+"】的小編。請照品牌規格，用素材卡的內容，寫【"+BRAND.platforms.join("、】【")+"】的貼文，每個平台一篇。\n\n";
-  prompt+="規則：\n素材卡上沒有的事不要寫；只能在某個平台說的，只寫在那個平台；先不要講的，每一篇都不能寫；還不確定的不要寫，寫完列出來問我。\n\n";
-  prompt+="回覆格式：\n每個平台用"+platformLabels+"這樣的標題分開。\n\n";
+  prompt+="規則：\n一律用台灣的繁體中文和台灣用語。不要出現簡體字，也不要用大陸用語（例如：視頻→影片、質量→品質、優化→改善、信息→訊息、網絡→網路、用戶→客人或使用者）。\n素材卡上沒有的事不要寫；只能在某個平台說的，只寫在那個平台；先不要講的，每一篇都不能寫；還不確定的不要寫，寫完列出來問我。\n\n";
+  prompt+="回覆格式：\n每個平台用"+platformLabels+"這樣的標題分開。若有需要確認的事，最後用【要問我的】分開。\n\n";
   prompt+="品牌規格：\n"+(brandSpecInput.value.trim()||"（尚未填寫）")+"\n\n";
-  prompt+="素材卡：\n"+material;
+  prompt+="素材卡：\n"+materialCardText();
   if(checklistInput.value.trim())prompt+="\n\n寫完照這張清單檢查，有 ❌ 先自己改好：\n"+checklistInput.value.trim();
   return prompt;
 }
+function stripThink(text){return text.replace(/<think\b[^>]*>[\s\S]*?<\/think>/gi,"").trim()}
+function splitAIResponse(text){
+  const sectionNames=[...BRAND.platforms,"要問我的"],escaped=sectionNames.map(name=>name.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")),pattern=new RegExp("【("+escaped.join("|")+")】","g"),matches=[...text.matchAll(pattern)],sections={};
+  matches.forEach((match,index)=>{const start=match.index+match[0].length,end=index+1<matches.length?matches[index+1].index:text.length;sections[match[1]]=text.slice(start,end).trim()});
+  return {sections,count:BRAND.platforms.filter(platform=>sections[platform]).length,questions:sections["要問我的"]||""};
+}
+function parseAIResponse(text,rememberPrevious=false){
+  posts[currentPlatform]=postContent.value;
+  const result=splitAIResponse(stripThink(text));
+  if(result.count&&rememberPrevious)capturePreviousVersion();
+  BRAND.platforms.forEach(platform=>{if(result.sections[platform])posts[platform]=result.sections[platform]});
+  if(result.count){showCurrentPlatform();persistDraft()}
+  return result;
+}
+function showAIResult(message,isError=false){aiResult.textContent=message;aiResult.hidden=!message;aiResult.classList.toggle("is-error",isError)}
+function taiwanDate(){return new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
+function dailyUsage(){
+  const date=taiwanDate(),saved=readJSON(STORAGE_KEYS.aiDailyUsage,null);
+  return saved&&saved.date===date?{date,openrouter:{count:Number(saved.openrouter&&saved.openrouter.count)||0,cost:Number(saved.openrouter&&saved.openrouter.cost)||0,unknownCost:Number(saved.openrouter&&saved.openrouter.unknownCost)||0},gemini:{count:Number(saved.gemini&&saved.gemini.count)||0}}:{date,openrouter:{count:0,cost:0,unknownCost:0},gemini:{count:0}};
+}
+function updateDailyUsage(provider,cost){
+  const usage=dailyUsage();
+  if(cost===undefined)usage[provider].count++;
+  else if(provider==="openrouter"){if(typeof cost==="number"&&Number.isFinite(cost))usage.openrouter.cost+=cost;else usage.openrouter.unknownCost++}
+  try{localStorage.setItem(STORAGE_KEYS.aiDailyUsage,JSON.stringify(usage))}catch(error){}
+}
+function formatDollars(value){return "$"+(value===null?"—":value===0?"0":value<.0001?value.toFixed(6):value.toFixed(4))}
+function usageSummary(provider,usage){
+  const today=dailyUsage(),tokens=usage&&Number(usage.total_tokens),tokenText=usage&&Number.isFinite(tokens)&&tokens>=0?tokens.toLocaleString("en-US"):"—",requestCost=typeof (usage&&usage.cost)==="number"?usage.cost:null;
+  const todayCost=today.openrouter.unknownCost&&!today.openrouter.cost?"$—":formatDollars(today.openrouter.cost)+(today.openrouter.unknownCost?"（部分費用未提供）":"");
+  return "這次用 "+(provider==="openrouter"?"OpenRouter":"Gemini")+"："+tokenText+" tokens 約 "+formatDollars(requestCost)+(requestCost===null?"（未提供費用）":"")+"｜今天 OpenRouter "+today.openrouter.count+" 次 "+todayCost+"、Gemini "+today.gemini.count+" 次";
+}
+function providerError(provider,status,message){
+  if(provider==="openrouter")return ({401:"金鑰不對",402:"全班的額度用完了",404:"模型名稱打錯了",429:"太多人同時在用"})[status]||"服務暫時出錯（"+status+"）";
+  if(status===400&&/api[\s_-]*key/i.test(message))return "金鑰不對";
+  return ({403:"沒有權限",404:"模型名稱不對，或免費版不能用",429:"免費額度用完了"})[status]||"服務暫時出錯（"+status+"）";
+}
+function aiFailure(provider,reason,raw=""){const error=new Error(reason);error.provider=provider;error.reason=reason;error.raw=raw;return error}
+async function requestProvider(provider,promptOrMessages,options={}){
+  const isOpenRouter=provider==="openrouter",key=(isOpenRouter?aiKeyInput:geminiKeyInput).value.trim();
+  if(!key)throw aiFailure(provider,"還沒填金鑰");
+  const url=isOpenRouter?"https://openrouter.ai/api/v1/chat/completions":"https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
+  const model=isOpenRouter?(openrouterCustomModelInput.value.trim()||openrouterModelInput.value):geminiModelInput.value;
+  const messages=Array.isArray(promptOrMessages)?promptOrMessages:[{role:"user",content:promptOrMessages}];
+  const body={model,messages};
+  if(isOpenRouter){body.max_tokens=4000;body.reasoning={effort:openrouterReasoningInput.value,exclude:true};body.usage={include:true}}
+  const controller=new AbortController();let timedOut=false;
+  const timer=setTimeout(()=>{timedOut=true;controller.abort()},AI_TIMEOUT_MS);
+  updateDailyUsage(provider);
+  try{
+    const response=await fetch(url,{method:"POST",headers:{Authorization:"Bearer "+key,"Content-Type":"application/json"},body:JSON.stringify(body),signal:controller.signal});
+    const json=await response.json().catch(()=>null),data=provider==="gemini"&&Array.isArray(json)?json[0]:json;
+    const errorMessage=String(data&&data.error&&data.error.message||"");
+    if(!response.ok||data&&data.error)throw aiFailure(provider,providerError(provider,response.status,errorMessage));
+    if(!data||!data.choices||!data.choices[0])throw aiFailure(provider,"沒有收到完整回覆");
+    const choice=data.choices[0],content=stripThink(typeof choice.message?.content==="string"?choice.message.content:"");
+    if(isOpenRouter)updateDailyUsage(provider,typeof data.usage?.cost==="number"?data.usage.cost:null);
+    if(!content)throw aiFailure(provider,choice.finish_reason==="length"?"想太久，字數用完了（⚙ 設定把思考調成少想一點）":"沒有收到文字");
+    if(options.expectPlatformHeadings!==false&&!splitAIResponse(content).count){const error=aiFailure(provider,"回覆找不到【平台】標題",content);error.truncated=choice.finish_reason==="length";throw error}
+    return {provider,content,usage:data.usage||null,truncated:choice.finish_reason==="length"};
+  }catch(error){
+    if(error.provider)throw error;
+    throw aiFailure(provider,timedOut||error.name==="AbortError"?"等太久":"連不到（檢查網路）");
+  }finally{clearTimeout(timer)}
+}
+async function askAI(promptOrMessages,options={}){
+  const order=aiOrderInput.value,providers=order==="gemini-only"?["gemini"]:order==="openrouter-only"?["openrouter"]:["openrouter","gemini"],failures=[];
+  for(const provider of providers){
+    if(provider==="gemini"&&order==="openrouter-then-gemini"&&!geminiKeyInput.value.trim())break;
+    try{return {...await requestProvider(provider,promptOrMessages,options),fallbackReason:failures[0]||null}}
+    catch(error){failures.push(error&&error.provider?error:aiFailure(provider,"暫時無法使用"))}
+  }
+  const error=new Error("AI 寫作失敗");error.failures=failures;error.noBackup=order!=="gemini-only"&&!geminiKeyInput.value.trim();throw error;
+}
+function assistantMessages(platform,instruction,currentPost){
+  const system="你是【"+BRAND.name+"】的小編助理。使用者會叫你修改一篇【"+platform+"】貼文。只改使用者要求的地方，其他保持原樣；不能加素材卡上沒有的事實；遵守品牌規格；一律用台灣的繁體中文和台灣用語。不要出現簡體字，也不要用大陸用語（例如：視頻→影片、質量→品質、優化→改善、信息→訊息、網絡→網路、用戶→客人或使用者）。只回覆改好以後的整篇貼文，不要解釋、不要加標題。";
+  return [{role:"system",content:system+"\n\n品牌規格：\n"+(brandSpecInput.value.trim()||"（尚未填寫）")+"\n\n素材卡：\n"+materialCardText()},...assistantHistory[platform].slice(-8).map(entry=>({role:entry.role,content:entry.content})),{role:"user",content:"目前的【"+platform+"】貼文：\n"+currentPost+"\n\n請這樣改："+instruction}];
+}
+function checkMessages(){
+  const system="你是【"+BRAND.name+"】的審核官，專門挑毛病，不負責誇獎。把每一篇貼文照檢查清單一條一條對。✅ 符合；❌ 不符合（寫出哪一句有問題、該怎麼改）；⚠️ 要靠人判斷的，先給意見。回覆格式：【平台名稱】換行，然後每條一行「編號 符號 一句話」，最後【總結】列出要人工確認的事。不管清單有沒有寫，都另外檢查有沒有簡體字或大陸用語。報告也用台灣繁體中文寫。";
+  const checklist=checklistInput.value.trim()||DEFAULT_CHECKLIST.map((item,index)=>(index+1)+". "+item).join("\n");
+  const platformPosts=BRAND.platforms.map(platform=>"【"+platform+"】\n"+(posts[platform].trim()||"（尚未寫）")).join("\n\n");
+  const user="品牌規格：\n"+(brandSpecInput.value.trim()||"（尚未填寫）")+"\n\n素材卡：\n"+materialCardText()+"\n\n檢查清單：\n"+checklist+"\n\n各平台貼文：\n"+platformPosts;
+  return [{role:"system",content:system},{role:"user",content:user}];
+}
+function renderCheckReport(content){
+  checkReport.replaceChildren();
+  content.split(/\r?\n/).forEach(line=>{
+    if(!line.trim())return;
+    const row=document.createElement("div");row.className="check-line";
+    if(line.includes("❌"))row.classList.add("is-error");
+    else if(line.includes("⚠"))row.classList.add("is-warning");
+    else if(/^【[^】]+】/.test(line.trim()))row.classList.add("is-heading");
+    row.textContent=line;checkReport.append(row);
+  });
+}
+function showCheckStatus(message,isError=false){checkStatus.textContent=message;checkStatus.classList.toggle("is-error",isError)}
+async function runCheck(){
+  posts[currentPlatform]=postContent.value;
+  if(!BRAND.platforms.some(platform=>posts[platform].trim())){showCheckStatus("還沒有貼文可以檢查",true);return}
+  if(!aiKeyInput.value.trim()&&!geminiKeyInput.value.trim()){showCheckStatus("還沒填金鑰。按 ⚙ 設定。",true);return}
+  const revision=workRevision,messages=checkMessages();
+  checkButton.disabled=true;checkButton.textContent="🔍 檢查中…";showCheckStatus("正在逐條檢查貼文…");
+  try{
+    const answer=await askAI(messages,{expectPlatformHeadings:false});
+    if(workRevision!==revision){showCheckStatus("已切換貼文，這次檢查報告未顯示。",true);return}
+    renderCheckReport(answer.content);openModal(checkModal);
+    const notices=[];
+    if(answer.fallbackReason)notices.push("⚠️ OpenRouter："+answer.fallbackReason.reason+"。這次改用 Gemini。");
+    if(answer.truncated)notices.push("回覆可能被切掉了。");
+    notices.push(usageSummary(answer.provider,answer.usage));
+    showCheckStatus(notices.join("\n"),Boolean(answer.fallbackReason||answer.truncated));
+  }catch(error){
+    const reasons=(error.failures||[]).map(item=>(item.provider==="openrouter"?"OpenRouter":"Gemini")+"："+item.reason+"。");
+    if(error.noBackup)reasons.push("沒有備胎。");
+    showCheckStatus(reasons.length?reasons.join("\n"):"檢查暫時無法完成，請再試一次。",true);
+  }finally{checkButton.disabled=false;checkButton.textContent="🔍 檢查官"}
+}
+function setAssistantBusy(busy){assistantBusy=busy;assistantSend.disabled=busy;assistantSend.textContent=busy?"送出中…":"送出";assistantInput.disabled=busy;assistantQuickButtons.forEach(button=>{button.disabled=busy})}
+async function sendAssistantInstruction(value,clearInput=false){
+  if(assistantBusy)return;
+  const instruction=value.trim(),platform=currentPlatform,currentPost=postContent.value;
+  if(!currentPost.trim()){showAssistantStatus("先讓 AI 寫一篇",true);return}
+  if(!instruction){showAssistantStatus("先輸入想修改的地方。",true);return}
+  if(!aiKeyInput.value.trim()&&!geminiKeyInput.value.trim()){showAssistantStatus("還沒填金鑰。按 ⚙ 設定。",true);return}
+  const revision=workRevision,messages=assistantMessages(platform,instruction,currentPost);
+  setAssistantBusy(true);showAssistantStatus("AI 修改中…");
+  try{
+    const answer=await askAI(messages,{expectPlatformHeadings:false});
+    if(workRevision!==revision){showAssistantStatus("已切換貼文，這次 AI 回覆未套用。",true);return}
+    if(currentPlatform===platform)posts[platform]=postContent.value;
+    if(posts[platform]!==currentPost){showAssistantStatus("等待時貼文已改動，這次 AI 回覆未覆蓋。請再送一次。",true);return}
+    capturePreviousVersion();posts[platform]=answer.content;
+    assistantHistory[platform]=[...assistantHistory[platform],{role:"user",content:instruction},{role:"assistant",content:answer.content}].slice(-8);
+    showCurrentPlatform();persistDraft();if(clearInput)assistantInput.value="";
+    const notices=[];
+    if(answer.fallbackReason)notices.push("⚠️ OpenRouter："+answer.fallbackReason.reason+"。這次改用 Gemini。");
+    if(answer.truncated)notices.push("回覆可能被切掉了。");
+    notices.push(currentPlatform===platform?"已更新 "+platform+" 貼文。":"已更新 "+platform+" 貼文，可切回查看。");
+    notices.push(usageSummary(answer.provider,answer.usage));
+    showAssistantStatus(notices.join("\n"),Boolean(answer.fallbackReason||answer.truncated));
+  }catch(error){
+    const reasons=(error.failures||[]).map(item=>(item.provider==="openrouter"?"OpenRouter":"Gemini")+"："+item.reason+"。");
+    if(error.noBackup)reasons.push("沒有備胎。");
+    showAssistantStatus(reasons.length?reasons.join("\n"):"AI 暫時無法修改，請再試一次。",true);
+  }finally{setAssistantBusy(false)}
+}
+async function handleAIButton(){
+  if(!aiKeyInput.value.trim()&&!geminiKeyInput.value.trim()){showAIResult("還沒填金鑰。按 ⚙ 設定。",true);return}
+  const revision=workRevision;
+  aiButton.disabled=true;aiButton.textContent="✨ AI 寫作中…";showAIResult("AI 寫作中…");
+  try{
+    const answer=await askAI(buildPrompt());
+    if(workRevision!==revision){showAIResult("已切換貼文，這次 AI 回覆未套用。",true);return}
+    const result=parseAIResponse(answer.content,true),messages=[];
+    if(answer.fallbackReason)messages.push("⚠️ OpenRouter："+answer.fallbackReason.reason+"。這次改用 Gemini。");
+    if(answer.truncated)messages.push("回覆可能被切掉了。");
+    messages.push(result.questions?"【要問我的】\n"+result.questions:"已寫入 "+result.count+" 個平台的貼文。");
+    messages.push(usageSummary(answer.provider,answer.usage));
+    if(answer.fallbackReason&&answer.fallbackReason.raw)messages.push((answer.fallbackReason.truncated?"OpenRouter 回覆可能被切掉了。\n":"")+"OpenRouter 原文：\n"+answer.fallbackReason.raw+"\n可以用「📥 貼回」手動分。");
+    showAIResult(messages.join("\n"),Boolean(answer.fallbackReason||answer.truncated));
+  }catch(error){
+    const failures=error.failures||[],reasons=failures.map(item=>(item.provider==="openrouter"?"OpenRouter":"Gemini")+"："+item.reason+"。"),rawReplies=failures.filter(item=>item.raw);
+    if(error.noBackup)reasons.push("沒有備胎。");
+    if(rawReplies.length){rawReplies.forEach(item=>{if(item.truncated)reasons.push("回覆可能被切掉了。");reasons.push((item.provider==="openrouter"?"OpenRouter":"Gemini")+" 原文：\n"+item.raw)});reasons.push("可以用「📥 貼回」手動分。")}
+    else reasons.push("可以改用「🧩 組好指令」與「📥 貼回」。");
+    showAIResult(reasons.join("\n"),true);
+  }finally{aiButton.disabled=false;aiButton.textContent="✨ 讓 AI 寫"}
+}
 document.getElementById("brand-name").textContent=BRAND.name;document.getElementById("brand-mark").textContent=`${BRAND.name}｜LONTIAN, LUYE`;document.getElementById("brand-account").textContent=`帳號名稱｜${BRAND.accountName}`;document.documentElement.style.setProperty("--forest",BRAND.primaryColor);
-brandSpecInput.value=localStorage.getItem(STORAGE_KEYS.brandSpec)||"";checklistInput.value=localStorage.getItem(STORAGE_KEYS.checklist)||"";
+brandSpecInput.value=localStorage.getItem(STORAGE_KEYS.brandSpec)||"";checklistInput.value=localStorage.getItem(STORAGE_KEYS.checklist)||"";aiKeyInput.value=localStorage.getItem(STORAGE_KEYS.aiKey)||"";
+geminiKeyInput.value=localStorage.getItem(STORAGE_KEYS.geminiKey)||"";openrouterCustomModelInput.value=localStorage.getItem(STORAGE_KEYS.openrouterCustomModel)||"";
+openrouterModelInput.value=localStorage.getItem(STORAGE_KEYS.openrouterModel)||DEFAULT_OPENROUTER_MODEL;if(!openrouterModelInput.value)openrouterModelInput.value=DEFAULT_OPENROUTER_MODEL;
+openrouterReasoningInput.value=localStorage.getItem(STORAGE_KEYS.openrouterReasoning)||"low";if(!openrouterReasoningInput.value)openrouterReasoningInput.value="low";
+geminiModelInput.value=localStorage.getItem(STORAGE_KEYS.geminiModel)||DEFAULT_GEMINI_MODEL;if(!geminiModelInput.value)geminiModelInput.value=DEFAULT_GEMINI_MODEL;
+aiOrderInput.value=localStorage.getItem(STORAGE_KEYS.aiOrder)||"openrouter-then-gemini";if(!aiOrderInput.value)aiOrderInput.value="openrouter-then-gemini";
 BRAND.materialFields.forEach((field,index)=>{const wrapper=document.createElement("div"),inputId=`material-${index}`,label=document.createElement("label"),input=document.createElement(field.type==="textarea"?"textarea":"input");wrapper.className="field";label.htmlFor=inputId;label.append(field.label);if(field.required){const required=document.createElement("span");required.className="required";required.textContent="必填";label.append(required)}input.id=inputId;input.name=inputId;input.placeholder=field.placeholder;input.required=field.required;if(field.type!=="textarea")input.type="text";if(index===0)input.addEventListener("input",renderPreview);input.addEventListener("input",persistDraft);materialInputs.push(input);wrapper.append(label,input);materialForm.append(wrapper)});
 BRAND.platforms.forEach((platform,index)=>{const button=document.createElement("button");button.type="button";button.dataset.platform=platform;button.className=`platform-tab${index===0?" is-active":""}`;button.textContent=platform;button.setAttribute("aria-pressed",String(index===0));button.addEventListener("click",()=>switchPlatform(platform));platformTabs.append(button)});
 postContent.addEventListener("input",()=>{posts[currentPlatform]=postContent.value;wordCount.textContent=postContent.value.length+" 字";renderPreview();persistDraft()});
+undoButton.addEventListener("click",togglePreviousVersion);
+checkButton.addEventListener("click",runCheck);
+assistantQuickButtons.forEach(button=>button.addEventListener("click",()=>sendAssistantInstruction(button.dataset.assistantInstruction)));
+assistantForm.addEventListener("submit",event=>{event.preventDefault();sendAssistantInstruction(assistantInput.value,true)});
 imageInput.addEventListener("change",handleImageUpload);
 document.getElementById("save-post").addEventListener("click",saveCurrentPost);
 document.getElementById("new-post").addEventListener("click",startNewPost);
 document.getElementById("open-library").addEventListener("click",()=>{renderSavedList();openModal(libraryModal)});
 document.getElementById("open-settings").addEventListener("click",()=>openModal(settingsModal));
-document.getElementById("save-settings").addEventListener("click",()=>{localStorage.setItem(STORAGE_KEYS.brandSpec,brandSpecInput.value);localStorage.setItem(STORAGE_KEYS.checklist,checklistInput.value);closeModal(settingsModal)});
-document.getElementById("compose-prompt").addEventListener("click",()=>{promptOutput.value=buildPrompt();openModal(promptModal)});
+document.getElementById("save-settings").addEventListener("click",()=>{localStorage.setItem(STORAGE_KEYS.brandSpec,brandSpecInput.value);localStorage.setItem(STORAGE_KEYS.checklist,checklistInput.value);localStorage.setItem(STORAGE_KEYS.aiKey,aiKeyInput.value);localStorage.setItem(STORAGE_KEYS.openrouterModel,openrouterModelInput.value);localStorage.setItem(STORAGE_KEYS.openrouterCustomModel,openrouterCustomModelInput.value);localStorage.setItem(STORAGE_KEYS.openrouterReasoning,openrouterReasoningInput.value);localStorage.setItem(STORAGE_KEYS.geminiKey,geminiKeyInput.value);localStorage.setItem(STORAGE_KEYS.geminiModel,geminiModelInput.value);localStorage.setItem(STORAGE_KEYS.aiOrder,aiOrderInput.value);closeModal(settingsModal)});
+aiButton.addEventListener("click",handleAIButton);
+document.getElementById("compose-prompt").addEventListener("click",()=>{promptOutput.value=buildPrompt();pasteResponse.value="";pasteFeedback.textContent="";openModal(promptModal)});
+document.getElementById("paste-back").addEventListener("click",()=>{const response=pasteResponse.value.trim();if(!response){pasteFeedback.textContent="請先貼上 AI 回覆。";return}const result=parseAIResponse(response);if(!result.count){pasteFeedback.textContent="找不到【FB】【IG】【LINE】或【Threads】標題，請確認回覆格式。";return}showAIResult(result.questions?"【要問我的】\n"+result.questions:"已貼回 "+result.count+" 個平台的貼文。");pasteFeedback.textContent="已貼回 "+result.count+" 個平台。";closeModal(promptModal)});
 document.querySelectorAll("[data-close]").forEach(button=>button.addEventListener("click",()=>closeModal(document.getElementById(button.dataset.close))));
 document.querySelectorAll(".modal-backdrop").forEach(modal=>modal.addEventListener("click",event=>{if(event.target===modal)closeModal(modal)}));
 document.getElementById("copy-prompt").addEventListener("click",async event=>{try{await navigator.clipboard.writeText(promptOutput.value)}catch(error){promptOutput.select();document.execCommand("copy")}event.currentTarget.textContent="已複製";setTimeout(()=>{event.currentTarget.textContent="複製"},1200)});
-renderImageControl();restoreDraft();renderPreview();
+renderImageControl();restoreDraft();renderPreview();renderAssistantHistory();updateUndoButton();
 </script>
 </body>
 </html>
