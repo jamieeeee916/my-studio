@@ -47,15 +47,41 @@
 <style>
 .image-text-controls{display:grid;gap:8px;margin-top:14px;padding-top:13px;border-top:1px solid var(--rule)}.image-text-controls>label,.image-text-selects label{display:grid;gap:5px;font-size:.73rem}.image-text-controls textarea,.image-text-controls select{width:100%;min-height:35px;padding:6px 8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font-size:.75rem}.image-text-controls textarea{min-height:55px}.image-text-selects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.image-text-selects select{font-size:.69rem}.download-image-button{width:100%;padding:9px 10px;border:1px solid var(--forest);background:var(--paper);color:var(--forest);font-size:.75rem;font-weight:700}.download-image-button:hover,.download-image-button:focus-visible{background:var(--mist)}.download-image-status{min-height:1em;margin:0;color:var(--error);font-size:.68rem}
 </style>
+<style>
+.rich-menu-modal{width:min(860px,100%)}.rich-menu-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}.rich-menu-options label,.rich-menu-cell label{display:grid;gap:5px;color:var(--forest);font-size:.75rem;font-weight:700}.rich-menu-options select,.rich-menu-options input,.rich-menu-cell select,.rich-menu-cell input{width:100%;min-height:38px;padding:7px 9px;border:1px solid var(--rule);background:#fff;color:var(--ink);font-size:.77rem}.rich-menu-bar-label{grid-column:1/-1}.rich-menu-cells{display:grid;gap:9px}.rich-menu-cell{display:grid;grid-template-columns:40px 80px minmax(95px,1fr) minmax(120px,1fr) minmax(120px,1.3fr);gap:8px;align-items:end;padding:10px;background:var(--mist);border-left:3px solid var(--leaf)}.rich-menu-cell-code{align-self:center;color:var(--forest);font-size:1.05rem;font-weight:800;text-align:center}.rich-menu-preview-wrap{margin-top:20px}.rich-menu-preview-wrap p{margin:0 0 7px;color:var(--forest);font-size:.78rem;font-weight:700}.rich-menu-preview-wrap canvas{display:block;width:100%;height:auto;max-height:290px;object-fit:contain;background:var(--forest)}.rich-menu-status{min-height:1.5em;margin:10px 0 0;color:var(--muted);font-size:.76rem;line-height:1.55;white-space:pre-wrap}.rich-menu-status.is-error{color:var(--error)}.rich-menu-actions{flex-wrap:wrap}.line-rich-menu{margin-top:0;background:#fff}.line-rich-menu-bar{padding:6px 8px;border-top:1px solid #e4e8e9;color:#53616a;font-size:.64rem;text-align:center}.line-rich-menu img{display:block;width:100%;height:auto}@media(max-width:720px){.rich-menu-cell{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr)}.rich-menu-cell label:last-child{grid-column:2/-1}}@media(max-width:430px){.rich-menu-options{grid-template-columns:1fr}.rich-menu-bar-label{grid-column:auto}.rich-menu-cell{grid-template-columns:34px minmax(0,1fr)}.rich-menu-cell label:last-child{grid-column:2}.rich-menu-cell label:nth-child(4){grid-column:2}}
+.rich-menu-options>p{margin:0;align-self:end;color:var(--forest);font-size:.8rem;font-weight:700}
+</style>
+<style>
+/* 固定比例的手機外框；只有螢幕區域捲動。 */
+.phone{position:relative;width:min(100%,390px);max-width:none;aspect-ratio:390/844;padding:0;border:8px solid var(--canopy);border-radius:38px;background:#fff;overflow:hidden;box-shadow:0 14px 25px rgba(49,74,53,.14)}
+.phone .speaker{position:absolute;z-index:2;top:6px;left:50%;width:30%;height:16px;margin:0;border-radius:0 0 13px 13px;background:var(--forest);transform:translateX(-50%);pointer-events:none}
+.phone::after{position:absolute;z-index:2;bottom:7px;left:50%;width:31%;height:4px;border-radius:99px;background:var(--forest);content:"";transform:translateX(-50%);pointer-events:none}
+#platform-preview{position:absolute;top:27px;right:3px;bottom:20px;left:3px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#platform-preview::-webkit-scrollbar{display:none}
+#platform-preview.is-dragging{cursor:grabbing}
+#platform-preview .platform-phone{min-height:100%}
+#platform-preview img{-webkit-user-drag:none}
+</style>
+<style>
+.auth-modal{width:min(480px,100%)}.auth-modal .modal-field input{width:100%}.auth-actions{justify-content:flex-start;flex-wrap:wrap}.auth-status{min-height:1.5em;margin:16px 0 0;color:var(--muted);font-size:.82rem;line-height:1.6;overflow-wrap:anywhere}.auth-status.is-error{color:var(--error)}.auth-actions button:disabled{opacity:.55;cursor:default}.auth-header-button{max-width:280px;overflow-wrap:anywhere}
+.save-feedback.is-error{color:var(--error)}
+.cloud-sync-actions{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 10px}.cloud-sync-actions .modal-button{font-size:.76rem}.cloud-sync-actions .modal-button:disabled{opacity:.55;cursor:wait}.cloud-sync-status{min-height:1.4em;margin:0 0 14px;color:var(--canopy);font-size:.75rem;line-height:1.55;white-space:pre-wrap}.cloud-sync-status.is-error{color:var(--error)}.cloud-badge{display:inline-block;margin-left:7px;padding:2px 6px;border:1px solid var(--rule);color:var(--canopy);font-size:.65rem;font-weight:600;vertical-align:middle}.cloud-badge.is-local{color:var(--muted)}
+</style>
 </head>
 <body>
-<header class="site-header"><div class="brand-line"><p class="brand-mark" id="brand-mark">松風民宿｜LONTIAN, LUYE</p><div class="header-actions"><p class="brand-account" id="brand-account">帳號名稱｜❓待補</p><button class="setting-button" id="new-post" type="button">＋ 新的一篇</button><button class="setting-button" id="open-library" type="button">📁 我的貼文</button><button class="setting-button" id="open-settings" type="button">⚙ 設定</button></div></div><h1 class="top-title"><span id="brand-name">松風民宿</span>｜社群工作台</h1></header>
+<header class="site-header"><div class="brand-line"><p class="brand-mark" id="brand-mark">松風民宿｜LONTIAN, LUYE</p><div class="header-actions"><p class="brand-account" id="brand-account">帳號名稱｜❓待補</p><button class="setting-button" id="new-post" type="button">＋ 新的一篇</button><button class="setting-button" id="open-library" type="button">📁 我的貼文</button><button class="setting-button" id="open-rich-menu" type="button">📋 圖文選單</button><button class="setting-button" id="open-settings" type="button">⚙ 設定</button><button class="setting-button auth-header-button" id="open-auth" type="button">🔐 登入</button></div></div><h1 class="top-title"><span id="brand-name">松風民宿</span>｜社群工作台</h1></header>
 <main class="workspace">
 <section class="material-panel" aria-labelledby="material-title"><p class="section-kicker">CAPTURE</p><h2 id="material-title">素材卡</h2><p class="material-intro">先留下今天看見的地方，再開始說故事。</p><form class="material-form" id="material-form" novalidate></form><div class="image-field"><div class="image-field-head"><span>🖼 這篇的圖</span><small>選填・最多 6 張</small></div><button class="image-picker" id="upload-images" type="button"><span id="image-picker-label">📤 上傳</span></button><input class="visually-hidden" id="post-image-input" type="file" accept="image/*" multiple aria-label="選擇這篇的圖片"><label class="image-prompt-label" for="image-prompt">圖片描述（要畫什麼）</label><textarea class="image-prompt-input" id="image-prompt" placeholder="例：鹿野茶田邊，風穿過樹葉的午後"></textarea><div class="image-action-row"><button class="generate-image-button" id="generate-image" type="button">🎨 生圖</button><button class="generate-image-button" id="imagine-image" type="button">🪄 AI 想圖再畫</button></div><p class="generate-image-status" id="generate-image-status" aria-live="polite"></p><div class="image-text-controls"><label for="image-text">加字｜圖上的字</label><textarea id="image-text" placeholder="想放在圖上的字，最多顯示 3 行"></textarea><div class="image-text-selects"><label for="image-text-position">位置<select id="image-text-position"><option value="top">上</option><option value="middle">中</option><option value="bottom" selected>下</option></select></label><label for="image-text-size">大小<select id="image-text-size"><option value="small">小</option><option value="medium" selected>中</option><option value="large">大</option></select></label><label for="image-text-style">樣式<select id="image-text-style"><option value="white">白底主色字</option><option value="black">黑底白字</option><option value="shadow">白字陰影</option></select></label></div><label for="download-size">下載尺寸<select id="download-size"></select></label><button class="download-image-button" id="download-image" type="button">⬇ 下載這張圖</button><p class="download-image-status" id="download-image-status" aria-live="polite"></p></div><div class="image-preview-grid" id="image-preview-grid" hidden></div><p class="storage-usage" id="storage-usage" aria-live="polite">瀏覽器的抽屜：已用 0 MB
 圖片倉庫：計算中…</p><p class="image-feedback" id="image-feedback" aria-live="polite">圖片會縮小後保存在這個瀏覽器。</p></div><button class="save-post-button" id="save-post" type="button">💾 存檔</button><p class="save-feedback" id="save-feedback" aria-live="polite"></p><button class="ai-button" id="ask-ai" type="button">✨ 讓 AI 寫</button><div class="ai-result" id="ai-result" aria-live="polite" hidden></div><button class="compose-button" id="compose-prompt" type="button">🧩 組好指令</button></section>
 <section class="editor-panel" aria-labelledby="editor-title"><div class="editor-top"><div><p class="section-kicker">DRAFT</p><h2 id="editor-title">貼文內容</h2></div><p class="editor-note">一句一件事，讓文字留有呼吸。</p></div><nav class="tabs" id="platform-tabs" aria-label="選擇平台"></nav><label class="editor-label" for="post-content">正在寫給 <span id="active-platform">FB</span></label><textarea class="post-content" id="post-content" aria-label="貼文內容" placeholder="從今天看見的一個畫面開始……"></textarea><div class="editor-footer"><span>內容會自動暫存在這個瀏覽器</span><span id="word-count">0 字</span></div><button class="undo-button" id="undo-post" type="button" disabled>↩ 復原上一版</button><button class="check-button" id="check-posts" type="button">🔍 檢查官</button><p class="check-status" id="check-status" aria-live="polite"></p><section class="assistant-panel" aria-labelledby="assistant-title"><h3 id="assistant-title">💬 AI 小幫手</h3><div class="assistant-log" id="assistant-log" role="log" aria-label="目前平台的小幫手對話紀錄"></div><div class="assistant-quick" aria-label="快捷修改"><button type="button" data-assistant-instruction="短一點">短一點</button><button type="button" data-assistant-instruction="換開頭">換開頭</button><button type="button" data-assistant-instruction="少一點 emoji">少一點 emoji</button><button type="button" data-assistant-instruction="更像範例">更像範例</button></div><form class="assistant-form" id="assistant-form"><label for="assistant-input">想怎麼改？</label><div class="assistant-compose"><input id="assistant-input" type="text" placeholder="例：最後一段再溫柔一點"><button class="assistant-send" id="assistant-send" type="submit">送出</button></div></form><p class="assistant-status" id="assistant-status" aria-live="polite"></p></section></section>
-<aside class="preview-panel" aria-labelledby="preview-title"><p class="section-kicker">PREVIEW</p><h2 id="preview-title">手機預覽</h2><div class="preview-panel-inner"><p class="preview-note">切換平台後即時預覽貼文。介面為近似示意，實際畫面可能因 App 版本而不同。</p><div class="phone" aria-label="手機貼文預覽"><div class="speaker"></div><div id="platform-preview"></div></div></div></aside>
+<aside class="preview-panel" aria-labelledby="preview-title"><p class="section-kicker">PREVIEW</p><h2 id="preview-title">手機預覽</h2><div class="preview-panel-inner"><p class="preview-note">切換平台後即時預覽貼文。介面為近似示意，實際畫面可能因 App 版本而不同。</p><div class="phone" aria-label="手機貼文預覽"><div class="speaker"></div><div id="platform-preview" role="region" aria-label="可捲動的手機螢幕預覽" tabindex="0"></div></div></div></aside>
 </main>
+<div class="modal-backdrop" id="rich-menu-modal" hidden role="dialog" aria-modal="true" aria-labelledby="rich-menu-title">
+  <section class="modal rich-menu-modal"><button class="modal-close" type="button" data-close="rich-menu-modal" aria-label="關閉圖文選單">×</button><h2 id="rich-menu-title">📋 圖文選單</h2><p class="modal-note">製作 LINE 聊天室下方的選單圖片；格子的點擊動作請照設定表到 LINE 後台設定。</p><div class="rich-menu-options"><p>版型：大型 4 格（上 2 下 2）｜2500×1686</p><label>底色<select id="rich-menu-background"><option value="brand">品牌主色</option><option value="white">白色</option><option value="photo">這篇的主圖加深一點</option></select></label><label class="rich-menu-bar-label">選單列的字<input id="rich-menu-bar" type="text" maxlength="14" value="選單"></label></div><div class="rich-menu-cells" id="rich-menu-cells"></div><div class="rich-menu-preview-wrap"><p>選單圖預覽</p><canvas id="rich-menu-canvas" aria-label="圖文選單圖片預覽"></canvas></div><p class="rich-menu-status" id="rich-menu-status" aria-live="polite"></p><div class="modal-actions rich-menu-actions"><button class="modal-button" id="copy-rich-menu" type="button">📋 複製設定表</button><button class="modal-button primary" id="download-rich-menu" type="button">⬇ 下載選單圖</button></div></section>
+</div>
+<div class="modal-backdrop" id="auth-modal" hidden role="dialog" aria-modal="true" aria-labelledby="auth-title">
+  <section class="modal auth-modal"><button class="modal-close" type="button" data-close="auth-modal" aria-label="關閉登入視窗">×</button><h2 id="auth-title">🔐 登入</h2><p class="modal-note">登入後，這個瀏覽器會記住你的登入狀態。</p><form id="auth-form" novalidate><label class="modal-field" for="auth-email"><span>Email</span><input id="auth-email" type="email" inputmode="email" autocomplete="username" required></label><label class="modal-field" for="auth-password"><span>密碼（至少 6 個字）</span><input id="auth-password" type="password" autocomplete="current-password" minlength="6" required></label><div class="modal-actions auth-actions"><button class="modal-button primary" id="auth-sign-in" type="submit">登入</button><button class="modal-button" id="auth-sign-up" type="button">第一次：註冊</button><button class="modal-button" id="auth-sign-out" type="button">登出</button><button class="modal-button" type="button" data-close="auth-modal">關閉</button></div></form><p class="auth-status" id="auth-status" role="status" aria-live="polite"></p></section>
+</div>
 <div class="modal-backdrop" id="settings-modal" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
   <section class="modal"><button class="modal-close" type="button" data-close="settings-modal" aria-label="關閉設定">×</button><h2 id="settings-title">設定</h2><p class="modal-note">內容只保存在這個瀏覽器裡，重新開啟網頁後仍會保留。</p><label class="modal-field" for="brand-spec"><span>品牌規格</span><textarea id="brand-spec" placeholder="貼上品牌規格全文"></textarea></label><label class="modal-field" for="checklist"><span>檢查清單</span><textarea id="checklist" placeholder="貼上寫完後要檢查的清單"></textarea></label>
     <div class="ai-setting-group"><h3>第一組｜OpenRouter</h3><label class="modal-field" for="ai-key"><span>AI 金鑰</span><input id="ai-key" type="password" autocomplete="off" placeholder="貼上 OpenRouter API 金鑰"></label><label class="modal-field" for="openrouter-model"><span>模型</span><select id="openrouter-model"><optgroup label="DeepSeek"><option value="deepseek/deepseek-v4.1-flash">deepseek/deepseek-v4.1-flash</option><option value="deepseek/deepseek-v4-pro">deepseek/deepseek-v4-pro</option><option value="deepseek/deepseek-v3.2">deepseek/deepseek-v3.2</option></optgroup><optgroup label="Kimi"><option value="moonshotai/kimi-k2.6">moonshotai/kimi-k2.6</option><option value="moonshotai/kimi-k2.5">moonshotai/kimi-k2.5</option><option value="moonshotai/kimi-k3">moonshotai/kimi-k3</option></optgroup><optgroup label="MiniMax"><option value="minimax/minimax-m3">minimax/minimax-m3</option><option value="minimax/minimax-m2.7">minimax/minimax-m2.7</option><option value="minimax/minimax-m2.5">minimax/minimax-m2.5</option></optgroup></select></label><label class="modal-field" for="openrouter-custom-model"><span>或自己打模型名稱</span><input id="openrouter-custom-model" type="text" spellcheck="false" placeholder="有填就使用這個模型"></label><label class="modal-field" for="openrouter-reasoning"><span>思考</span><select id="openrouter-reasoning"><option value="low">少想一點 low</option><option value="medium">多想一點 medium</option><option value="high">想很久 high</option></select></label></div>
@@ -67,7 +93,7 @@
   <section class="modal"><button class="modal-close" type="button" data-close="prompt-modal" aria-label="關閉指令視窗">×</button><h2 id="prompt-title">組好的指令</h2><p class="modal-note">確認內容後，可直接複製到對話中使用。</p><textarea class="prompt-output" id="prompt-output" readonly aria-label="組好的指令"></textarea><div class="modal-actions"><button class="modal-button" id="copy-prompt" type="button">複製</button></div><div class="paste-back-area"><label class="modal-field" for="paste-response"><span>AI 回覆</span><textarea id="paste-response" placeholder="AI 連不上時，可把回覆貼在這裡"></textarea></label><p class="paste-feedback" id="paste-feedback" aria-live="polite"></p><div class="modal-actions"><button class="modal-button primary" id="paste-back" type="button">📥 貼回</button></div></div></section>
 </div>
 <div class="modal-backdrop" id="library-modal" hidden role="dialog" aria-modal="true" aria-labelledby="library-title">
-  <section class="modal"><button class="modal-close" type="button" data-close="library-modal" aria-label="關閉我的貼文">×</button><h2 id="library-title">我的貼文</h2><p class="modal-note">正式存檔的貼文會留在這個瀏覽器裡。</p><div class="saved-list" id="saved-list"></div></section>
+  <section class="modal"><button class="modal-close" type="button" data-close="library-modal" aria-label="關閉我的貼文">×</button><h2 id="library-title">我的貼文</h2><p class="modal-note">正式存檔的貼文會留在這個瀏覽器裡。</p><div class="cloud-sync-actions"><button class="modal-button" id="upload-all-posts" type="button">⬆ 全部上傳到雲端</button><button class="modal-button" id="download-cloud-posts" type="button">⬇ 從雲端拿回來</button></div><p class="cloud-sync-status" id="cloud-sync-status" aria-live="polite"></p><div class="saved-list" id="saved-list"></div></section>
 </div>
 <div class="modal-backdrop" id="check-modal" hidden role="dialog" aria-modal="true" aria-labelledby="check-title">
   <section class="modal"><button class="modal-close" type="button" data-close="check-modal" aria-label="關閉檢查報告">×</button><h2 id="check-title">檢查報告</h2><p class="modal-note">有 ⚠️ 的地方，請再由你確認。</p><div class="check-report" id="check-report"></div></section>
@@ -250,11 +276,16 @@
 - 有沒有自行加上房型、設備、交通、店家、小農或優惠資訊？有就刪除或改成 `❓待補`。
 - 三平台內容是否各自符合長度、第一行與固定結尾的規則？
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // 品牌、平台與素材卡欄位：之後可直接從這裡修改。
+// 這兩個可以公開，守門的是 Supabase 的 RLS；sb_secret_ 開頭的絕對不要貼。
+const SB_URL='https://ikqutmpvlrvwucljszte.supabase.co',SB_KEY='sb_publishable_88-LmzLo2EdhY_xPPf3ppg_eZrYyDTO';
 const BRAND={name:"松風民宿",accountName:"songfung2025",primaryColor:"#314A35",platforms:["FB","IG","LINE","Threads"],materialFields:[{label:"日期",required:true,type:"text",placeholder:"例：2026/10/15"},{label:"在地生活片段",required:false,type:"textarea",placeholder:"例：風穿過樹葉；龍田的草地與茶田"},{label:"活動名稱",required:false,type:"text",placeholder:"例：地方深度旅遊 工作坊"},{label:"民宿主人想說的話",required:false,type:"textarea",placeholder:"例：我們不是飯店；希望旅客住進鹿野的生活節奏"},{label:"松風裡的時刻",required:false,type:"textarea",placeholder:"例：回到松風後，坐著讀幾頁書、泡一壺茶"},{label:"❓待確認資訊",required:false,type:"textarea",placeholder:"例：熱氣球季日期、房況、訂房方式、聯絡資訊"}]};
 const PIC_SIZE={FB:[1080,1080],IG:[1080,1350],LINE:[1040,1040],Threads:[1080,1350]};
 const SIZES={platform:{label:"跟著平台"},square:{label:"方形",width:1080,height:1080},portrait:{label:"直式",width:1080,height:1350},story:{label:"限動",width:1080,height:1920},lineAvatar:{label:"LINE 大頭貼",width:640,height:640},lineBroadcast:{label:"LINE 群發圖",width:1040,height:1040}};
+const MENUS=[{id:"large-4",name:"大型 4 格（上 2 下 2）",w:2500,h:1686,cols:2,rows:2}];
+const MENU_STORAGE_KEY="songfeng-workbench-rich-menu";
 const DEFAULT_OPENROUTER_MODEL="deepseek/deepseek-v4.1-flash",DEFAULT_GEMINI_MODEL="gemini-3.8-flash",DEFAULT_IMAGE_MODEL="bytedance-seed/seedream-5-0-flash",AI_TIMEOUT_MS=60000,IMAGE_TIMEOUT_MS=120000;
 const DEFAULT_CHECKLIST=["日期價格對不對","有沒有多加的事","只能在某平台講的有沒有跑掉","先不要講的有沒有出現","有沒有不能用的字","有沒有簡體字或大陸用語"];
 const materialForm=document.getElementById("material-form"),platformTabs=document.getElementById("platform-tabs"),postContent=document.getElementById("post-content"),wordCount=document.getElementById("word-count"),activePlatform=document.getElementById("active-platform"),platformPreview=document.getElementById("platform-preview"),settingsModal=document.getElementById("settings-modal"),promptModal=document.getElementById("prompt-modal"),libraryModal=document.getElementById("library-modal"),savedList=document.getElementById("saved-list"),brandSpecInput=document.getElementById("brand-spec"),checklistInput=document.getElementById("checklist"),aiKeyInput=document.getElementById("ai-key"),openrouterModelInput=document.getElementById("openrouter-model"),openrouterCustomModelInput=document.getElementById("openrouter-custom-model"),openrouterReasoningInput=document.getElementById("openrouter-reasoning"),geminiKeyInput=document.getElementById("gemini-key"),geminiModelInput=document.getElementById("gemini-model"),aiOrderInput=document.getElementById("ai-order"),promptOutput=document.getElementById("prompt-output"),pasteResponse=document.getElementById("paste-response"),pasteFeedback=document.getElementById("paste-feedback"),aiButton=document.getElementById("ask-ai"),aiResult=document.getElementById("ai-result"),saveFeedback=document.getElementById("save-feedback"),imageInput=document.getElementById("post-image-input"),imagePreviewGrid=document.getElementById("image-preview-grid"),imagePickerLabel=document.getElementById("image-picker-label"),imageFeedback=document.getElementById("image-feedback");
@@ -264,8 +295,82 @@ const storageUsage=document.getElementById("storage-usage");
 const uploadButton=document.getElementById("upload-images");
 const imagePromptInput=document.getElementById("image-prompt"),generateImageButton=document.getElementById("generate-image"),imagineImageButton=document.getElementById("imagine-image"),generateImageStatus=document.getElementById("generate-image-status"),imageModelInput=document.getElementById("image-model"),imageCustomModelInput=document.getElementById("image-custom-model"),imageSpecInput=document.getElementById("image-spec");
 const imageTextInput=document.getElementById("image-text"),imageTextPosition=document.getElementById("image-text-position"),imageTextSize=document.getElementById("image-text-size"),imageTextStyle=document.getElementById("image-text-style"),downloadSizeInput=document.getElementById("download-size"),downloadImageButton=document.getElementById("download-image"),downloadImageStatus=document.getElementById("download-image-status");
+const richMenuModal=document.getElementById("rich-menu-modal"),richMenuBackgroundInput=document.getElementById("rich-menu-background"),richMenuBarInput=document.getElementById("rich-menu-bar"),richMenuCells=document.getElementById("rich-menu-cells"),richMenuCanvas=document.getElementById("rich-menu-canvas"),richMenuStatus=document.getElementById("rich-menu-status"),richMenuDownloadButton=document.getElementById("download-rich-menu");
+const authModal=document.getElementById("auth-modal"),authHeaderButton=document.getElementById("open-auth"),authForm=document.getElementById("auth-form"),authEmailInput=document.getElementById("auth-email"),authPasswordInput=document.getElementById("auth-password"),authSignInButton=document.getElementById("auth-sign-in"),authSignUpButton=document.getElementById("auth-sign-up"),authSignOutButton=document.getElementById("auth-sign-out"),authStatus=document.getElementById("auth-status");
 const STORAGE_KEYS={brandSpec:"songfeng-workbench-brand-spec",checklist:"songfeng-workbench-checklist",aiKey:"songfeng-workbench-ai-key",openrouterModel:"songfeng-workbench-openrouter-model",openrouterCustomModel:"songfeng-workbench-openrouter-custom-model",openrouterReasoning:"songfeng-workbench-openrouter-reasoning",geminiKey:"songfeng-workbench-gemini-key",geminiModel:"songfeng-workbench-gemini-model",aiOrder:"songfeng-workbench-ai-order",imageModel:"songfeng-workbench-image-model",imageCustomModel:"songfeng-workbench-image-custom-model",imageSpec:"songfeng-workbench-image-spec",aiDailyUsage:"songfeng-workbench-ai-daily-usage",savedPosts:"songfeng-workbench-saved-posts",draft:"songfeng-workbench-current-draft"};
 const posts=Object.fromEntries(BRAND.platforms.map(platform=>[platform,""])),assistantHistory=Object.fromEntries(BRAND.platforms.map(platform=>[platform,[]]));let currentPlatform=BRAND.platforms[0],currentSavedId=null,postImages=[],postImageIds=[],mainImageIndex=0,currentImageIndex=0,previousPosts=null,showingPrevious=false,assistantBusy=false,imageBusy=false,workRevision=0,previewRevision=0,storageUsageToken=0,storageSaveFailed=false;const materialInputs=[];const MAX_IMAGES=6;
+const cur={publishDate:""},publishDateInput=document.createElement("input");
+let saveFeedbackTimer=0,saveStatusVersion=0;
+function showSaveFeedback(message,isError=false,clearAfter=0){
+  clearTimeout(saveFeedbackTimer);saveFeedback.textContent=message;saveFeedback.classList.toggle("is-error",isError);
+  if(clearAfter)saveFeedbackTimer=setTimeout(()=>{saveFeedback.textContent="";saveFeedback.classList.remove("is-error")},clearAfter);
+}
+let sb=null,me=null,sbProblem="",authBusy=false,cloudIdsKnown=false,cloudSyncBusy=false,localReady=Promise.resolve();
+const cloudPostIds=new Set(),autoPulledUsers=new Set(),cloudSyncStatus=document.getElementById("cloud-sync-status"),uploadAllButton=document.getElementById("upload-all-posts"),downloadCloudButton=document.getElementById("download-cloud-posts");
+function showCloudSyncStatus(message,isError=false){cloudSyncStatus.textContent=message;cloudSyncStatus.classList.toggle("is-error",isError)}
+function setCloudSyncBusy(busy){cloudSyncBusy=busy;uploadAllButton.disabled=busy;downloadCloudButton.disabled=busy}
+function showAuthStatus(message,isError=false){authStatus.textContent=message;authStatus.classList.toggle("is-error",isError)}
+function updateAuthUI(){
+  authHeaderButton.textContent=me?.email?"☁ "+me.email:"🔐 登入";
+  authSignInButton.disabled=authBusy||!sb||Boolean(me);
+  authSignUpButton.disabled=authBusy||!sb||Boolean(me);
+  authSignOutButton.disabled=authBusy||!sb||!me;
+}
+function authErrorMessage(error){
+  const message=String(error?.message||"");
+  if(/invalid login credentials/i.test(message))return "Email 或密碼不對";
+  if(/user already registered/i.test(message))return "這個 Email 註冊過了，直接按「登入」";
+  if(/email not confirmed/i.test(message))return "到 Supabase 把 Confirm email 關掉";
+  if(/password|weak_password/i.test(message)&&/short|at least|characters|length|weak/i.test(message))return "至少 6 個字";
+  if(/rate limit|too many|over_email_send_rate_limit/i.test(message))return "試太多次了，等 1 分鐘";
+  return "雲端暫時無法處理，請稍後再試。";
+}
+function initSupabaseAuth(){
+  if(!SB_URL.trim()||!SB_KEY.trim())sbProblem=[!SB_URL.trim()?"SB_URL":"",!SB_KEY.trim()?"SB_KEY":""].filter(Boolean).join(" 和 ")+" 尚未填入";
+  else if(SB_KEY.startsWith("sb_secret_"))sbProblem="不能使用 sb_secret_ 金鑰，請改用可公開的金鑰";
+  else if(!window.supabase?.createClient)sbProblem="Supabase 程式庫載入失敗，請檢查網路";
+  else try{
+    sb=window.supabase.createClient(SB_URL,SB_KEY);
+    sb.auth.onAuthStateChange((event,session)=>{
+      const previousUser=me?.id;me=session?.user||null;updateAuthUI();
+      if(previousUser!==me?.id){cloudPostIds.clear();cloudIdsKnown=false;renderSavedList()}
+      if(me&&(event==="INITIAL_SESSION"||event==="SIGNED_IN")&&!autoPulledUsers.has(me.id)){
+        autoPulledUsers.add(me.id);
+        setTimeout(()=>{pullCloudPosts(true)},0);
+      }
+      if(!authModal.hidden&&!authBusy&&(event==="INITIAL_SESSION"||event==="SIGNED_IN"||event==="SIGNED_OUT"))showAuthStatus(me?"已登入："+me.email:"目前尚未登入。");
+    });
+  }catch(error){sb=null;sbProblem="雲端無法初始化，請檢查網址與金鑰"}
+  updateAuthUI();
+}
+async function runAuth(action){
+  if(!sb){showAuthStatus("還沒接雲端："+sbProblem,true);return}
+  if(authBusy)return;
+  let email="",password="";
+  if(action!=="out"){
+    email=authEmailInput.value.trim();password=authPasswordInput.value;
+    if(!email||!authEmailInput.checkValidity()){showAuthStatus("請填入正確的 Email。",true);return}
+    if(password.length<6){showAuthStatus("密碼至少 6 個字。",true);return}
+  }
+  const clearLocal=action==="out"?window.confirm("要把這台電腦上的貼文也清掉嗎？借別人的電腦用，請按確定；自己的電腦按取消。"):false;
+  authBusy=true;updateAuthUI();showAuthStatus(action==="out"?"正在登出…":action==="signup"?"正在註冊…":"正在登入…");
+  try{
+    const result=action==="out"?await sb.auth.signOut():action==="signup"?await sb.auth.signUp({email,password}):await sb.auth.signInWithPassword({email,password});
+    if(result.error)throw result.error;
+    if(action==="out"){
+      me=null;authPasswordInput.value="";autoPulledUsers.clear();cloudPostIds.clear();cloudIdsKnown=false;
+      if(clearLocal){
+        while(cloudSyncBusy)await new Promise(resolve=>setTimeout(resolve,100));
+        try{await clearLocalPosts();showAuthStatus("已登出，這台電腦的貼文、草稿與圖片已清除。")}
+        catch(error){showAuthStatus("已登出，但這台電腦的資料未能全部清除："+(error.message||"請檢查瀏覽器儲存空間"),true)}
+      }else showAuthStatus("已登出。");
+      renderSavedList();
+    }
+    else if(action==="signup"&&!result.data?.session)showAuthStatus("Supabase 的 Confirm email 還開著，關掉再按登入。",true);
+    else{me=result.data?.user||result.data?.session?.user||me;authPasswordInput.value="";showAuthStatus("已登入："+(me?.email||email))}
+  }catch(error){showAuthStatus(authErrorMessage(error),true)}
+  finally{authBusy=false;updateAuthUI()}
+}
 const escapeHTML=value=>value.replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
 const withBreaks=value=>escapeHTML(value).replace(/\n/g,"<br>");
 const copyHTML=value=>value?withBreaks(value):'<span class="platform-placeholder">還沒有貼文內容</span>';
@@ -320,7 +425,126 @@ async function downloadCurrentImage(){
   }catch(error){downloadImageStatus.textContent=error.message||"圖片下載失敗，請再試一次。"}
   finally{downloadImageButton.disabled=false}
 }
+const emptyMenuCell=()=>({icon:"",text:"",action:"none",content:""});
+function normalizeRichMenu(value){
+  const saved=value&&typeof value==="object"?value:{},layout=MENUS.find(menu=>menu.id===saved.layoutId)||MENUS[0];
+  return {layoutId:layout.id,background:["brand","white","photo"].includes(saved.background)?saved.background:"brand",chatBarText:typeof saved.chatBarText==="string"?Array.from(saved.chatBarText).slice(0,14).join(""):"選單",cells:Array.from({length:4},(_,index)=>{const cell=Array.isArray(saved.cells)?saved.cells[index]:null;return {icon:typeof cell?.icon==="string"?cell.icon:"",text:typeof cell?.text==="string"?Array.from(cell.text).slice(0,12).join(""):"",action:["none","text","url"].includes(cell?.action)?cell.action:"none",content:typeof cell?.content==="string"?cell.content:""}})};
+}
+function selectedRichMenu(){return MENUS.find(menu=>menu.id===richMenuState.layoutId)||MENUS[0]}
+function menuCellPosition(menu,index){
+  if(menu.cols===1&&menu.rows===1)return "整張";
+  const col=index%menu.cols,row=Math.floor(index/menu.cols),horizontal=menu.cols===3?["左","中","右"][col]:["左","右"][col];
+  return menu.rows===1?horizontal:horizontal+(row===0?"上":"下");
+}
+function menuEmoji(value){
+  const text=value.trim();if(!text)return "";
+  if(Intl.Segmenter)return [...new Intl.Segmenter("zh-TW",{granularity:"grapheme"}).segment(text)][0]?.segment||"";
+  return Array.from(text)[0]||"";
+}
+function showRichMenuStatus(message,isError=false){richMenuStatus.textContent=message;richMenuStatus.classList.toggle("is-error",isError)}
+function richMenuErrors(){
+  const menu=selectedRichMenu(),cells=richMenuState.cells.slice(0,menu.cols*menu.rows),errors=[];
+  if(!richMenuState.chatBarText.trim())errors.push("選單列的字不能空白。");
+  if(cells.every(cell=>cell.action==="none"))errors.push("每一格都選了「不設定」，LINE 圖文選單至少要有一格能點。");
+  if(richMenuState.background==="photo"&&!postImages[mainImageIndex])errors.push("這篇還沒有主圖，請先加入圖片或改用其他底色。");
+  cells.forEach((cell,index)=>{
+    const code=String.fromCharCode(65+index);
+    if(!cell.icon.trim()&&!cell.text.trim())errors.push(code+" 格沒有字也沒有圖示。");
+    if(cell.action==="url"&&!/^https:\/\/\S+$/i.test(cell.content.trim()))errors.push(code+" 格的網址必須以 https:// 開頭。");
+  });
+  return errors;
+}
+function saveRichMenu(){
+  try{localStorage.setItem(MENU_STORAGE_KEY,JSON.stringify(richMenuState));updateStorageUsage();return true}
+  catch(error){showRichMenuStatus("選單暫時存不進瀏覽器，請清理空間後再試。",true);return false}
+}
+function makeRichMenuCell(index){
+  const cell=richMenuState.cells[index],row=document.createElement("div");row.className="rich-menu-cell";
+  row.innerHTML='<span class="rich-menu-cell-code"></span><label>圖示<input class="menu-cell-icon" type="text" placeholder="☕" aria-label="圖示"></label><label>格子上的字<input class="menu-cell-text" type="text" maxlength="12" placeholder="例：訂房資訊"></label><label>按了做什麼<select class="menu-cell-action"><option value="text">送出文字</option><option value="url">開網址</option><option value="none">不設定</option></select></label><label>內容<input class="menu-cell-content" type="text" placeholder="沒填就送出格子上的字"></label>';
+  row.querySelector(".rich-menu-cell-code").textContent=String.fromCharCode(65+index);
+  const icon=row.querySelector(".menu-cell-icon"),label=row.querySelector(".menu-cell-text"),action=row.querySelector(".menu-cell-action"),content=row.querySelector(".menu-cell-content");
+  icon.value=cell.icon;label.value=cell.text;action.value=cell.action;content.value=cell.content;
+  const update=()=>{cell.icon=menuEmoji(icon.value);if(icon.value!==cell.icon)icon.value=cell.icon;cell.text=Array.from(label.value).slice(0,12).join("");cell.action=action.value;cell.content=content.value;content.placeholder=cell.action==="url"?"https://example.com":"沒填就送出格子上的字";saveRichMenu();refreshRichMenu()};
+  [icon,label,content].forEach(input=>input.addEventListener("input",update));action.addEventListener("change",update);content.placeholder=cell.action==="url"?"https://example.com":"沒填就送出格子上的字";
+  return row;
+}
+function renderRichMenuFields(){
+  const menu=selectedRichMenu();richMenuBackgroundInput.value=richMenuState.background;richMenuBarInput.value=richMenuState.chatBarText;
+  richMenuCells.replaceChildren(...Array.from({length:menu.cols*menu.rows},(_,index)=>makeRichMenuCell(index)));
+  refreshRichMenu();
+}
+function drawMenuCover(ctx,image,width,height){const scale=Math.max(width/image.naturalWidth,height/image.naturalHeight),w=image.naturalWidth*scale,h=image.naturalHeight*scale;ctx.drawImage(image,(width-w)/2,(height-h)/2,w,h)}
+async function drawRichMenu(canvas,menu,state,photoSource,scale=1){
+  const ctx=canvas.getContext("2d");if(!ctx)throw new Error("這個瀏覽器無法畫選單圖。");
+  canvas.width=Math.round(menu.w*scale);canvas.height=Math.round(menu.h*scale);ctx.scale(scale,scale);
+  const brand=getComputedStyle(document.documentElement).getPropertyValue("--forest").trim()||BRAND.primaryColor;
+  ctx.fillStyle=state.background==="white"?"#fff":brand;ctx.fillRect(0,0,menu.w,menu.h);
+  if(state.background==="photo"&&photoSource){const image=await imageForCanvas(photoSource);drawMenuCover(ctx,image,menu.w,menu.h);ctx.fillStyle="rgba(0,0,0,.48)";ctx.fillRect(0,0,menu.w,menu.h)}
+  const isWhite=state.background==="white";ctx.strokeStyle=isWhite?"rgba(49,74,53,.28)":"rgba(255,255,255,.38)";ctx.lineWidth=3;
+  for(let col=1;col<menu.cols;col++){const x=Math.round(col*menu.w/menu.cols);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,menu.h);ctx.stroke()}
+  for(let row=1;row<menu.rows;row++){const y=Math.round(row*menu.h/menu.rows);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(menu.w,y);ctx.stroke()}
+  ctx.fillStyle=isWhite?brand:"#fff";ctx.textAlign="center";ctx.textBaseline="middle";
+  const cellW=menu.w/menu.cols,cellH=menu.h/menu.rows;
+  state.cells.slice(0,menu.cols*menu.rows).forEach((cell,index)=>{
+    const x=(index%menu.cols+.5)*cellW,y=(Math.floor(index/menu.cols)+.5)*cellH,icon=menuEmoji(cell.icon),value=cell.text.trim(),maxWidth=cellW*.79;
+    let fontSize=Math.round(Math.min(cellW*.11,cellH*.125,180)),lines=[];
+    do{ctx.font='700 '+fontSize+'px "PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif';lines=wrappedImageLines(ctx,value,maxWidth);if(lines.length<=2)break;fontSize-=3}while(fontSize>32);
+    if(lines.length>2){lines=lines.slice(0,2);while(lines[1]&&ctx.measureText(lines[1]+"…").width>maxWidth)lines[1]=lines[1].slice(0,-1);lines[1]+="…"}
+    if(!value)lines=[];
+    const lineH=fontSize*1.3,iconSize=Math.round(Math.min(cellW*.23,cellH*.3,250)),groupH=(icon?iconSize*1.25:0)+lines.length*lineH,top=y-groupH/2;
+    if(icon){ctx.font=iconSize+'px "Apple Color Emoji","Segoe UI Emoji",sans-serif';ctx.fillText(icon,x,top+iconSize*.52)}
+    ctx.font='700 '+fontSize+'px "PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif';lines.forEach((line,lineIndex)=>ctx.fillText(line,x,top+(icon?iconSize*1.25:0)+lineH*(lineIndex+.5),maxWidth));
+  });
+  return canvas;
+}
+let richMenuPreviewToken=0,richMenuLastPhoto="";
+async function refreshRichMenu(){
+  const errors=richMenuErrors();showRichMenuStatus(errors.join("\n"),errors.length>0);
+  const menu=selectedRichMenu(),token=++richMenuPreviewToken,photo=postImages[mainImageIndex]||"";
+  try{
+    const buffer=document.createElement("canvas");await drawRichMenu(buffer,menu,richMenuState,photo,.4);
+    if(token!==richMenuPreviewToken)return;
+    richMenuLastPhoto=photo;
+    richMenuCanvas.width=buffer.width;richMenuCanvas.height=buffer.height;richMenuCanvas.getContext("2d").drawImage(buffer,0,0);
+    updateLineRichMenuPreview();
+  }catch(error){if(token===richMenuPreviewToken)showRichMenuStatus(error.message||"選單預覽無法顯示。",true)}
+}
+function updateLineRichMenuPreview(){
+  const image=platformPreview.querySelector("#line-rich-menu-image"),bar=platformPreview.querySelector("#line-rich-menu-bar");
+  if(!image||!bar)return;
+  bar.textContent=(richMenuState.chatBarText.trim()||"選單")+" ▾";
+  try{image.src=richMenuCanvas.toDataURL("image/jpeg",.78)}catch(error){}
+}
+function menuSettingsText(){
+  const menu=selectedRichMenu(),lines=["版型："+menu.name+"（"+menu.w+"×"+menu.h+"）","選單列的字："+richMenuState.chatBarText.trim(),""];
+  richMenuState.cells.slice(0,menu.cols*menu.rows).forEach((cell,index)=>{
+    const code=String.fromCharCode(65+index),label=(cell.icon.trim()?cell.icon.trim()+" ":"")+cell.text.trim();
+    const action=cell.action==="text"?"文字「"+(cell.content.trim()||cell.text.trim())+"」":cell.action==="url"?"網址「"+cell.content.trim()+"」":"不設定";
+    lines.push(code+"（"+menuCellPosition(menu,index)+"）"+label+" → "+action);
+  });
+  return lines.join("\n");
+}
+async function copyRichMenuSettings(){
+  const errors=richMenuErrors();if(errors.length){showRichMenuStatus(errors.join("\n"),true);return}
+  const content=menuSettingsText();
+  try{await navigator.clipboard.writeText(content)}catch(error){const field=document.createElement("textarea");field.value=content;field.style.position="fixed";field.style.opacity="0";document.body.append(field);field.select();const copied=document.execCommand("copy");field.remove();if(!copied){showRichMenuStatus("複製失敗，請檢查瀏覽器的剪貼簿權限。",true);return}}
+  showRichMenuStatus("設定表已複製。請到 LINE 後台逐格設定。",false);
+}
+function jpegBlob(canvas,quality){return new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",quality))}
+async function downloadRichMenu(){
+  const errors=richMenuErrors();if(errors.length){showRichMenuStatus(errors.join("\n"),true);return}
+  richMenuDownloadButton.disabled=true;
+  try{
+    const menu=selectedRichMenu(),canvas=document.createElement("canvas");await drawRichMenu(canvas,menu,richMenuState,postImages[mainImageIndex]||"");
+    let blob=null;for(const quality of [.92,.85,.78,.7,.6,.5]){blob=await jpegBlob(canvas,quality);if(blob&&blob.size<=1000000)break}
+    if(!blob||blob.size>1000000){showRichMenuStatus("圖片超過 1 MB，已試過所有壓縮品質；請改用純色底或較簡單的主圖。",true);return}
+    const url=URL.createObjectURL(blob),link=document.createElement("a");link.href=url;link.download=BRAND.name+"_圖文選單_"+menu.w+"x"+menu.h+".jpg";document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
+    showRichMenuStatus("下載好了："+menu.w+"×"+menu.h+"，"+(blob.size/1000000).toFixed(2)+" MB",false);
+  }catch(error){showRichMenuStatus(error.message||"選單圖下載失敗，請再試一次。",true)}
+  finally{richMenuDownloadButton.disabled=false}
+}
 function renderPreview(){
+  const previousScroll=platformPreview.dataset.platform===currentPlatform?platformPreview.scrollTop:0;
   const copy=copyHTML(posts[currentPlatform]);
   const [pictureWidth,pictureHeight]=PIC_SIZE[currentPlatform];platformPreview.style.setProperty("--picture-ratio",pictureWidth+" / "+pictureHeight);
   const materialText=materialInputs[0]&&materialInputs[0].value.trim()?escapeHTML(materialInputs[0].value.trim()):'<span class="platform-placeholder">素材卡第一格的文字</span>';
@@ -330,14 +554,57 @@ function renderPreview(){
   const lineMedia=activeImage?'<div class="line-carousel"><img src="'+activeImage+'" alt="">'+countBadge+controls+dots+'</div>':"",threadsMedia=activeImage?'<div class="threads-carousel"><img src="'+activeImage+'" alt="">'+countBadge+controls+dots+'</div>':"";
   if(currentPlatform==="FB")platformPreview.innerHTML='<div class="platform-phone fb-shell"><div class="preview-appbar fb-appbar"><b>facebook</b><div class="preview-icon-row">'+previewIcon("search")+previewIcon("chat")+'</div></div><div class="fb-post-head">'+profileHTML(BRAND.name,"剛剛 · 公開")+'<span class="fb-head-more">'+previewIcon("more")+'</span></div><p class="platform-text">'+copy+'</p><div class="fb-image">'+fbMedia+'</div><div class="fb-reactions"><span>♡　尚無心情</span><span>留言 · 分享</span></div><div class="fb-actions"><span>'+previewIcon("heart")+'讚</span><span>'+previewIcon("chat")+'留言</span><span>'+previewIcon("send")+'分享</span></div>'+previewNav(["home","reels","user","bell","menu"])+"</div>";
   if(currentPlatform==="IG")platformPreview.innerHTML='<div class="platform-phone ig-shell"><div class="preview-appbar ig-appbar"><b class="ig-wordmark">Instagram</b><div class="preview-icon-row">'+previewIcon("heart",20)+previewIcon("chat",20)+'</div></div><div class="ig-post-head">'+profileHTML(BRAND.accountName,BRAND.name)+'<span class="ig-head-more">'+previewIcon("more")+'</span></div><div class="ig-image">'+igMedia+'</div><div class="ig-actions">'+previewIcon("heart",21)+previewIcon("chat",21)+previewIcon("send",21)+'<span class="ig-save">'+previewIcon("save",21)+'</span></div><p class="ig-caption"><b>'+BRAND.accountName+'</b>　'+copy+'</p><div class="ig-post-time">剛剛</div>'+previewNav(["home","search","plus","reels","user"])+"</div>";
-  if(currentPlatform==="LINE")platformPreview.innerHTML='<div class="platform-phone line-shell"><div class="line-header"><span>'+previewIcon("back",19)+'</span><b>'+BRAND.name+'</b><span class="line-header-actions">'+previewIcon("phone",17)+previewIcon("menu",18)+'</span></div><div class="line-date">今天</div><div class="line-chat">'+avatarHTML()+'<div class="line-chat-content">'+(lineMedia?'<div class="line-photo-bubble">'+lineMedia+'</div>':"")+'<div class="line-bubble line-text-bubble">'+copy+'</div></div><span class="line-time">剛剛</span></div><div class="line-compose" aria-hidden="true">'+previewIcon("plus",19)+'<span>輸入訊息</span>'+previewIcon("reels",18)+'</div></div>';
+  if(currentPlatform==="LINE")platformPreview.innerHTML='<div class="platform-phone line-shell"><div class="line-header"><span>'+previewIcon("back",19)+'</span><b>'+BRAND.name+'</b><span class="line-header-actions">'+previewIcon("phone",17)+previewIcon("menu",18)+'</span></div><div class="line-date">今天</div><div class="line-chat">'+avatarHTML()+'<div class="line-chat-content">'+(lineMedia?'<div class="line-photo-bubble">'+lineMedia+'</div>':"")+'<div class="line-bubble line-text-bubble">'+copy+'</div></div><span class="line-time">剛剛</span></div><div class="line-compose" aria-hidden="true">'+previewIcon("plus",19)+'<span>輸入訊息</span>'+previewIcon("reels",18)+'</div><div class="line-rich-menu"><div class="line-rich-menu-bar" id="line-rich-menu-bar"></div><img id="line-rich-menu-image" alt="圖文選單預覽"></div></div>';
   if(currentPlatform==="Threads")platformPreview.innerHTML='<div class="platform-phone threads-shell"><div class="threads-top"><b>Threads</b></div><div class="threads-preview"><div class="threads-row">'+avatarHTML()+'<div class="threads-copy"><div class="threads-account"><b>'+BRAND.accountName+'</b><small>剛剛</small><span class="threads-more">'+previewIcon("more")+'</span></div><div class="threads-display-name">'+BRAND.name+'</div><div class="threads-post-text">'+copy+'</div>'+threadsMedia+'<div class="threads-actions">'+previewIcon("heart",18)+previewIcon("chat",18)+previewIcon("send",18)+previewIcon("more",18)+'</div></div></div></div>'+previewNav(["home","search","plus","heart","user"])+"</div>";
+  platformPreview.dataset.platform=currentPlatform;
+  platformPreview.scrollTop=previousScroll;
   platformPreview.querySelectorAll("[data-carousel]").forEach(button=>button.addEventListener("click",()=>moveCarousel(Number(button.dataset.carousel))));
+  if(currentPlatform==="LINE"){
+    if(richMenuState.background==="photo"&&richMenuLastPhoto!==(postImages[mainImageIndex]||""))refreshRichMenu();
+    else updateLineRichMenuPreview();
+  }
   const previewToken=++previewRevision;
   if(activeImage&&currentImageIndex===mainImageIndex&&imageTextInput.value.trim()){
     const previewPhoto=platformPreview.querySelector(".preview-photo,.line-carousel img,.threads-carousel img");
     if(previewPhoto)drawImageWithText(postImages[mainImageIndex],pictureWidth,pictureHeight).then(canvas=>{if(previewToken===previewRevision&&previewPhoto.isConnected)previewPhoto.src=canvas.toDataURL("image/png")}).catch(()=>{});
   }
+}
+function enablePreviewDragScroll(){
+  let pointerId=null,startY=0,lastY=0,lastTime=0,velocity=0,dragging=false,glideFrame=0;
+  const stopGlide=()=>{if(glideFrame)cancelAnimationFrame(glideFrame);glideFrame=0};
+  platformPreview.addEventListener("pointerdown",event=>{
+    if(event.pointerType!=="mouse"||event.button!==0||event.target.closest("button,a,input,textarea,select"))return;
+    stopGlide();pointerId=event.pointerId;startY=lastY=event.clientY;lastTime=performance.now();velocity=0;dragging=false;
+  });
+  platformPreview.addEventListener("pointermove",event=>{
+    if(event.pointerId!==pointerId)return;
+    if(!dragging&&Math.abs(event.clientY-startY)<4)return;
+    if(!dragging){dragging=true;platformPreview.classList.add("is-dragging");platformPreview.setPointerCapture(event.pointerId)}
+    const now=performance.now(),previous=platformPreview.scrollTop;
+    platformPreview.scrollTop-=event.clientY-lastY;
+    const elapsed=Math.max(8,now-lastTime);
+    velocity=velocity*.7+((platformPreview.scrollTop-previous)/elapsed)*.3;
+    lastY=event.clientY;lastTime=now;event.preventDefault();
+  });
+  const finishDrag=event=>{
+    if(event.pointerId!==pointerId)return;
+    pointerId=null;platformPreview.classList.remove("is-dragging");
+    if(platformPreview.hasPointerCapture(event.pointerId))platformPreview.releasePointerCapture(event.pointerId);
+    if(!dragging)return;
+    if(event.type==="pointercancel"||performance.now()-lastTime>80)velocity=0;
+    dragging=false;let lastFrame=performance.now();
+    const glide=now=>{
+      const elapsed=Math.min(now-lastFrame,32),previous=platformPreview.scrollTop;lastFrame=now;
+      platformPreview.scrollTop+=velocity*elapsed;
+      velocity*=Math.pow(.92,elapsed/16);
+      glideFrame=Math.abs(velocity)>.02&&platformPreview.scrollTop!==previous?requestAnimationFrame(glide):0;
+    };
+    if(Math.abs(velocity)>.02)glideFrame=requestAnimationFrame(glide);
+  };
+  platformPreview.addEventListener("pointerup",finishDrag);
+  platformPreview.addEventListener("pointercancel",finishDrag);
+  platformPreview.addEventListener("wheel",stopGlide,{passive:true});
+  platformPreview.addEventListener("touchstart",stopGlide,{passive:true});
 }
 function moveCarousel(direction){if(postImages.length<2)return;currentImageIndex=(currentImageIndex+direction+postImages.length)%postImages.length;renderPreview();persistDraft()}
 function switchPlatform(platform){
@@ -362,6 +629,7 @@ function togglePreviousVersion(){
 function openModal(modal){modal.hidden=false;document.body.style.overflow="hidden"}
 function closeModal(modal){modal.hidden=true;document.body.style.overflow=""}
 function readJSON(key,fallback){try{const value=JSON.parse(localStorage.getItem(key));return value===null?fallback:value}catch(error){return fallback}}
+let richMenuState=normalizeRichMenu(readJSON(MENU_STORAGE_KEY,null));
 function readSavedPosts(){const items=readJSON(STORAGE_KEYS.savedPosts,[]);return Array.isArray(items)?items:[]}
 function writeSavedPosts(items){localStorage.setItem(STORAGE_KEYS.savedPosts,JSON.stringify(items))}
 const imageDatabase=new Promise((resolve,reject)=>{
@@ -475,7 +743,8 @@ async function generateImage(promptOverride=null,statusPrefix=""){
 }
 function collectState(){
   posts[currentPlatform]=postContent.value;
-  return {id:currentSavedId,materials:materialInputs.map(input=>input.value),posts:{...posts},activePlatform:currentPlatform,images:[...postImageIds],mainImageIndex,imagePrompt:imagePromptInput.value,imageText:imageTextInput.value,imageTextPosition:imageTextPosition.value,imageTextSize:imageTextSize.value,imageTextStyle:imageTextStyle.value,downloadSize:downloadSizeInput.value,previousPosts:previousPosts?{...previousPosts}:null,showingPrevious,assistantHistory:Object.fromEntries(BRAND.platforms.map(platform=>[platform,assistantHistory[platform].map(entry=>({...entry}))]))};
+  cur.publishDate=publishDateInput.value;
+  return {id:currentSavedId,materials:materialInputs.map(input=>input.value),publishDate:cur.publishDate,posts:{...posts},activePlatform:currentPlatform,images:[...postImageIds],mainImageIndex,imagePrompt:imagePromptInput.value,imageText:imageTextInput.value,imageTextPosition:imageTextPosition.value,imageTextSize:imageTextSize.value,imageTextStyle:imageTextStyle.value,downloadSize:downloadSizeInput.value,previousPosts:previousPosts?{...previousPosts}:null,showingPrevious,assistantHistory:Object.fromEntries(BRAND.platforms.map(platform=>[platform,assistantHistory[platform].map(entry=>({...entry}))]))};
 }
 function persistDraft(){try{localStorage.setItem(STORAGE_KEYS.draft,JSON.stringify(collectState()));storageSaveFailed=false;updateStorageUsage();return true}catch(error){updateStorageUsage(true);return false}}
 function showCurrentPlatform(){
@@ -487,6 +756,7 @@ async function applyState(rawState){
   if(imageSources.some(source=>typeof source!=="string"||!source.startsWith("data:image/")))throw new Error("有圖片在倉庫裡找不到，請重新上傳。");
   workRevision++;
   materialInputs.forEach((input,index)=>{input.value=Array.isArray(state.materials)?state.materials[index]||"":""});
+  cur.publishDate=typeof state.publishDate==="string"?state.publishDate:"";publishDateInput.value=cur.publishDate;
   BRAND.platforms.forEach(platform=>{posts[platform]=state.posts&&typeof state.posts[platform]==="string"?state.posts[platform]:""});
   BRAND.platforms.forEach(platform=>{const entries=state.assistantHistory&&state.assistantHistory[platform];assistantHistory[platform]=Array.isArray(entries)?entries.filter(entry=>entry&&["user","assistant"].includes(entry.role)&&typeof entry.content==="string").slice(-8).map(entry=>({role:entry.role,content:entry.content})):[]});
   previousPosts=state.previousPosts&&typeof state.previousPosts==="object"?Object.fromEntries(BRAND.platforms.map(platform=>[platform,typeof state.previousPosts[platform]==="string"?state.previousPosts[platform]:""])):null;showingPrevious=Boolean(previousPosts&&state.showingPrevious);
@@ -497,33 +767,137 @@ function makeSavedName(materials){
   const firstMaterial=materials.slice(1).find(value=>value&&value.trim());
   return firstMaterial?date+"｜"+firstMaterial.trim():date+"｜未命名素材";
 }
-function saveCurrentPost(){
-  const state=collectState(),savedAt=new Date().toISOString(),id=currentSavedId||("post-"+Date.now()+"-"+Math.random().toString(16).slice(2));
+function cloudSaveErrorMessage(error){
+  const code=String(error?.code||""),message=String(error?.message||"");
+  if(code==="42P01"||code==="PGRST205")return "雲端還沒有 posts 表，到 SQL Editor 貼建表那段按 Run";
+  if(code==="42501"||/row.level security/i.test(message))return "雲端不讓你存，SQL 的權限那段沒跑到";
+  if(error instanceof TypeError)return "連不上雲端，請檢查網路";
+  return message?"雲端存檔失敗："+message:"雲端存檔失敗，請稍後再試";
+}
+function savedTime(post){
+  const value=post?.savedAt;
+  const time=typeof value==="number"?value:Date.parse(value);
+  return Number.isFinite(time)?time:0;
+}
+function sortSavedPosts(items){return items.sort((a,b)=>savedTime(b)-savedTime(a)||String(b.id||"").localeCompare(String(a.id||"")))}
+async function upsertCloudPost(record,userId){
+  const cloudRecord={...record,images:[]};
+  for(const imageId of Array.isArray(record.images)?record.images:[]){
+    const image=typeof imageId==="string"&&imageId.startsWith("data:image/")?imageId:await getImage(imageId);
+    if(!image)throw new Error("圖片倉庫找不到這篇的圖，請打開貼文重新上傳圖片");
+    cloudRecord.images.push(image);
+  }
+  const {error}=await sb.from("posts").upsert({id:String(record.id),user_id:userId,data:cloudRecord,publish_date:record.publishDate||null,updated_at:new Date().toISOString()},{onConflict:"user_id,id"});
+  if(error)throw error;
+  cloudPostIds.add(String(record.id));cloudIdsKnown=true;renderSavedList();
+}
+async function uploadAllCloudPosts(){
+  if(!sb||!me){showCloudSyncStatus("先 🔐 登入",true);return}
+  if(cloudSyncBusy)return;
+  const userId=me.id;setCloudSyncBusy(true);showCloudSyncStatus("正在上傳…");
+  try{
+    await localReady;
+    const items=readSavedPosts();
+    for(let index=0;index<items.length;index++){
+      if(me?.id!==userId)throw new Error("登入狀態已改變，請重新登入");
+      showCloudSyncStatus("正在上傳第 "+(index+1)+"／"+items.length+" 篇…");
+      try{await upsertCloudPost(items[index],userId)}catch(error){showCloudSyncStatus("第 "+(index+1)+" 篇上傳失敗："+cloudSaveErrorMessage(error),true);return}
+    }
+    showCloudSyncStatus("上傳好了："+items.length+" 篇");
+  }catch(error){showCloudSyncStatus(cloudSaveErrorMessage(error),true)}
+  finally{setCloudSyncBusy(false)}
+}
+async function pullCloudPosts(automatic=false){
+  if(!sb||!me){if(!automatic)showCloudSyncStatus("先 🔐 登入",true);return}
+  const userId=me.id;
+  if(cloudSyncBusy){
+    if(!automatic)return;
+    while(cloudSyncBusy)await new Promise(resolve=>setTimeout(resolve,100));
+    if(me?.id!==userId)return;
+  }
+  setCloudSyncBusy(true);showCloudSyncStatus(automatic?"正在自動拿回雲端貼文…":"正在從雲端拿回來…");
+  try{
+    await localReady;
+    const cloudRows=[];let offset=0;
+    while(true){
+      const {data,error}=await sb.from("posts").select("data, updated_at").eq("user_id",userId).order("updated_at",{ascending:false}).range(offset,offset+199);
+      if(error)throw error;
+      const page=Array.isArray(data)?data:[];cloudRows.push(...page);
+      if(page.length<200)break;
+      offset+=200;
+    }
+    if(me?.id!==userId)return;
+    const items=readSavedPosts(),byId=new Map(items.map((item,index)=>[String(item.id),index]));
+    let added=0,updated=0,missingImages=0;
+    const cloudIds=new Set();
+    for(const row of cloudRows){
+      const remote=row?.data;
+      if(!remote||remote.id==null)continue;
+      const id=String(remote.id);cloudIds.add(id);
+      const index=byId.get(id);
+      if(index!==undefined&&savedTime(items[index])>=savedTime(remote))continue;
+      const migrated=await migrateImageIds(remote);
+      const validImages=[];
+      for(const imageId of migrated.images||[]){
+        if(await getImage(imageId))validImages.push(imageId);else missingImages++;
+      }
+      migrated.images=validImages;
+      if(index===undefined){byId.set(id,items.length);items.push(migrated);added++}
+      else{items[index]=migrated;updated++}
+    }
+    if(me?.id!==userId)return;
+    writeSavedPosts(sortSavedPosts(items));cloudPostIds.clear();cloudIds.forEach(id=>cloudPostIds.add(id));cloudIdsKnown=true;
+    renderSavedList();updateStorageUsage();
+    showCloudSyncStatus("拿回來了：新增 "+added+" 篇、更新 "+updated+" 篇"+(missingImages?"。有 "+missingImages+" 張舊雲端圖片找不到，請重新上傳。":""));
+  }catch(error){showCloudSyncStatus("從雲端拿回來失敗："+cloudSaveErrorMessage(error),true)}
+  finally{setCloudSyncBusy(false)}
+}
+async function clearLocalPosts(){
+  localStorage.removeItem(STORAGE_KEYS.savedPosts);
+  localStorage.removeItem(STORAGE_KEYS.draft);
+  await imageStoreAction("readwrite",store=>store.clear());
+  startNewPost();localStorage.removeItem(STORAGE_KEYS.draft);
+  renderSavedList();updateStorageUsage();
+}
+async function saveCurrentPost(){
+  const state=collectState(),savedAt=Date.now(),id=currentSavedId||("post-"+Date.now()+"-"+Math.random().toString(16).slice(2)),statusVersion=++saveStatusVersion;
   const record={...state,id,name:makeSavedName(state.materials),savedAt};
   const items=readSavedPosts(),existingIndex=items.findIndex(item=>item.id===id);
   if(existingIndex>=0)items[existingIndex]=record;else items.push(record);
-  try{writeSavedPosts(items);updateStorageUsage()}catch(error){updateStorageUsage(true);saveFeedback.textContent="存檔空間不足，請移除圖片或刪除舊貼文。";return}
-  currentSavedId=id;persistDraft();saveFeedback.textContent="已存檔｜"+new Date(savedAt).toLocaleString("zh-TW",{hour12:false});
-  setTimeout(()=>{saveFeedback.textContent=""},2500);
+  try{writeSavedPosts(items);updateStorageUsage()}catch(error){updateStorageUsage(true);showSaveFeedback("存檔空間不足，請移除圖片或刪除舊貼文。",true);return}
+  currentSavedId=id;persistDraft();
+  if(!sb||!me){showSaveFeedback("只存在這台電腦。🔐 登入以後，會同時存到雲端");return}
+  showSaveFeedback("這台電腦已存到，正在存到雲端…");
+  try{
+    await upsertCloudPost(record,me.id);
+    if(statusVersion===saveStatusVersion)showSaveFeedback("☁ 雲端也存了："+record.name);
+  }catch(error){if(statusVersion===saveStatusVersion)showSaveFeedback(cloudSaveErrorMessage(error)+"。這台電腦有存到，不會不見。",true)}
 }
 async function openSavedPost(id){
   const item=readSavedPosts().find(saved=>saved.id===id);if(!item)return;
-  try{await applyState(item);persistDraft();closeModal(libraryModal);saveFeedback.textContent="已打開｜"+item.name;setTimeout(()=>{saveFeedback.textContent=""},2500)}
+  try{await applyState(item);persistDraft();closeModal(libraryModal);saveStatusVersion++;showSaveFeedback("已打開｜"+item.name,false,2500)}
   catch(error){const notice=document.createElement("p");notice.className="image-feedback";notice.textContent=error.message||"圖片倉庫無法讀取，這篇暫時打不開。";savedList.prepend(notice)}
 }
-function deleteSavedPost(id){
-  if(!window.confirm("確定嗎？"))return;
-  const items=readSavedPosts().filter(item=>item.id!==id);writeSavedPosts(items);updateStorageUsage();
+async function deleteSavedPost(id){
+  if(!window.confirm(me?"確定嗎？雲端的也會一起刪":"確定嗎？"))return;
+  if(sb&&me){
+    try{
+      const {error}=await sb.from("posts").delete().eq("id",String(id)).eq("user_id",me.id);
+      if(error)throw error;
+      cloudPostIds.delete(String(id));
+    }catch(error){showCloudSyncStatus("刪除失敗："+cloudSaveErrorMessage(error),true);return}
+  }
+  const items=readSavedPosts().filter(item=>String(item.id)!==String(id));writeSavedPosts(items);updateStorageUsage();
   if(currentSavedId===id){currentSavedId=null;persistDraft()}
   renderSavedList();
 }
 function renderSavedList(){
-  savedList.replaceChildren();const items=readSavedPosts().sort((a,b)=>String(b.savedAt).localeCompare(String(a.savedAt)));
+  savedList.replaceChildren();const items=sortSavedPosts(readSavedPosts());
   if(!items.length){const empty=document.createElement("p");empty.className="saved-empty";empty.textContent="還沒有存檔的貼文。";savedList.append(empty);return}
-  items.forEach(item=>{const row=document.createElement("article"),info=document.createElement("div"),name=document.createElement("p"),time=document.createElement("p"),actions=document.createElement("div"),openButton=document.createElement("button"),deleteButton=document.createElement("button");row.className="saved-item";name.className="saved-name";name.textContent=item.name||"未命名貼文";time.className="saved-time";time.textContent="存檔時間｜"+new Date(item.savedAt).toLocaleString("zh-TW",{hour12:false});actions.className="saved-actions";openButton.className="library-action";openButton.type="button";openButton.textContent="打開";openButton.addEventListener("click",()=>openSavedPost(item.id));deleteButton.className="library-action delete";deleteButton.type="button";deleteButton.textContent="刪除";deleteButton.addEventListener("click",()=>deleteSavedPost(item.id));info.append(name,time);actions.append(openButton,deleteButton);row.append(info,actions);savedList.append(row)});
+  items.forEach(item=>{const row=document.createElement("article"),info=document.createElement("div"),name=document.createElement("p"),time=document.createElement("p"),actions=document.createElement("div"),openButton=document.createElement("button"),deleteButton=document.createElement("button");row.className="saved-item";name.className="saved-name";name.textContent=item.name||"未命名貼文";if(me&&cloudIdsKnown){const badge=document.createElement("span");badge.className="cloud-badge"+(cloudPostIds.has(String(item.id))?"":" is-local");badge.textContent=cloudPostIds.has(String(item.id))?"☁ 雲端有":"只在這台";name.append(badge)}time.className="saved-time";time.textContent="存檔時間｜"+(savedTime(item)?new Date(savedTime(item)).toLocaleString("zh-TW",{hour12:false}):"未記錄")+(item.publishDate?"｜📅 "+item.publishDate:"");actions.className="saved-actions";openButton.className="library-action";openButton.type="button";openButton.textContent="打開";openButton.addEventListener("click",()=>openSavedPost(item.id));deleteButton.className="library-action delete";deleteButton.type="button";deleteButton.textContent="刪除";deleteButton.addEventListener("click",()=>deleteSavedPost(item.id));info.append(name,time);actions.append(openButton,deleteButton);row.append(info,actions);savedList.append(row)});
 }
 function startNewPost(){
-  workRevision++;materialInputs.forEach(input=>{input.value=""});BRAND.platforms.forEach(platform=>{posts[platform]="";assistantHistory[platform]=[]});previousPosts=null;showingPrevious=false;postImages=[];postImageIds=[];mainImageIndex=0;currentImageIndex=0;imagePromptInput.value="";imageTextInput.value="";imageTextPosition.value="bottom";imageTextSize.value="medium";imageTextStyle.value="white";downloadSizeInput.value="platform";downloadImageStatus.textContent="";showGenerateImageStatus("");renderImageControl();currentSavedId=null;currentPlatform=BRAND.platforms[0];assistantInput.value="";showAssistantStatus("");showCurrentPlatform();persistDraft();aiResult.hidden=true;aiResult.textContent="";imageFeedback.textContent="圖片會縮小後保存在這個瀏覽器。";saveFeedback.textContent="已建立新的一篇";setTimeout(()=>{saveFeedback.textContent=""},1800);
+  workRevision++;saveStatusVersion++;materialInputs.forEach(input=>{input.value=""});cur.publishDate="";publishDateInput.value="";BRAND.platforms.forEach(platform=>{posts[platform]="";assistantHistory[platform]=[]});previousPosts=null;showingPrevious=false;postImages=[];postImageIds=[];mainImageIndex=0;currentImageIndex=0;imagePromptInput.value="";imageTextInput.value="";imageTextPosition.value="bottom";imageTextSize.value="medium";imageTextStyle.value="white";downloadSizeInput.value="platform";downloadImageStatus.textContent="";showGenerateImageStatus("");renderImageControl();currentSavedId=null;currentPlatform=BRAND.platforms[0];assistantInput.value="";showAssistantStatus("");showCurrentPlatform();persistDraft();aiResult.hidden=true;aiResult.textContent="";imageFeedback.textContent="圖片會縮小後保存在這個瀏覽器。";showSaveFeedback("已建立新的一篇",false,1800);
 }
 async function restoreDraft(){const draft=readJSON(STORAGE_KEYS.draft,null);if(draft&&typeof draft==="object"){await applyState(draft);persistDraft()}}
 function formatDateWithWeekday(value){
@@ -765,6 +1139,7 @@ imageCustomModelInput.value=localStorage.getItem(STORAGE_KEYS.imageCustomModel)|
 imageSpecInput.value=localStorage.getItem(STORAGE_KEYS.imageSpec)||"";
 aiOrderInput.value=localStorage.getItem(STORAGE_KEYS.aiOrder)||"openrouter-then-gemini";if(!aiOrderInput.value)aiOrderInput.value="openrouter-then-gemini";
 BRAND.materialFields.forEach((field,index)=>{const wrapper=document.createElement("div"),inputId=`material-${index}`,label=document.createElement("label"),input=document.createElement(field.type==="textarea"?"textarea":"input");wrapper.className="field";label.htmlFor=inputId;label.append(field.label);if(field.required){const required=document.createElement("span");required.className="required";required.textContent="必填";label.append(required)}input.id=inputId;input.name=inputId;input.placeholder=field.placeholder;input.required=field.required;if(field.type!=="textarea")input.type="text";if(index===0)input.addEventListener("input",renderPreview);input.addEventListener("input",persistDraft);materialInputs.push(input);wrapper.append(label,input);materialForm.append(wrapper)});
+const publishDateField=document.createElement("div"),publishDateLabel=document.createElement("label");publishDateField.className="field";publishDateLabel.htmlFor="publish-date";publishDateLabel.textContent="📅 預計發佈日";publishDateInput.id="publish-date";publishDateInput.type="date";publishDateInput.addEventListener("input",()=>{cur.publishDate=publishDateInput.value;persistDraft()});publishDateField.append(publishDateLabel,publishDateInput);materialForm.append(publishDateField);
 BRAND.platforms.forEach((platform,index)=>{const button=document.createElement("button");button.type="button";button.dataset.platform=platform;button.className=`platform-tab${index===0?" is-active":""}`;button.textContent=platform;button.setAttribute("aria-pressed",String(index===0));button.addEventListener("click",()=>switchPlatform(platform));platformTabs.append(button)});
 postContent.addEventListener("input",()=>{posts[currentPlatform]=postContent.value;wordCount.textContent=postContent.value.length+" 字";renderPreview();persistDraft()});
 undoButton.addEventListener("click",togglePreviousVersion);
@@ -779,12 +1154,23 @@ Object.entries(SIZES).forEach(([key,size])=>{const option=document.createElement
 imageTextInput.addEventListener("input",()=>{renderPreview();persistDraft()});
 downloadSizeInput.addEventListener("change",persistDraft);
 downloadImageButton.addEventListener("click",downloadCurrentImage);
+richMenuBackgroundInput.addEventListener("change",()=>{richMenuState.background=richMenuBackgroundInput.value;saveRichMenu();refreshRichMenu()});
+richMenuBarInput.addEventListener("input",()=>{richMenuState.chatBarText=Array.from(richMenuBarInput.value).slice(0,14).join("");saveRichMenu();refreshRichMenu()});
+document.getElementById("open-rich-menu").addEventListener("click",()=>{renderRichMenuFields();openModal(richMenuModal)});
+richMenuDownloadButton.addEventListener("click",downloadRichMenu);
+document.getElementById("copy-rich-menu").addEventListener("click",copyRichMenuSettings);
 generateImageButton.addEventListener("click",generateImage);
 imagineImageButton.addEventListener("click",imagineAndDraw);
 document.getElementById("save-post").addEventListener("click",saveCurrentPost);
 document.getElementById("new-post").addEventListener("click",startNewPost);
 document.getElementById("open-library").addEventListener("click",()=>{renderSavedList();openModal(libraryModal)});
+uploadAllButton.addEventListener("click",uploadAllCloudPosts);
+downloadCloudButton.addEventListener("click",()=>pullCloudPosts(false));
 document.getElementById("open-settings").addEventListener("click",()=>openModal(settingsModal));
+authHeaderButton.addEventListener("click",()=>{showAuthStatus(sb?(me?"已登入："+me.email:"請輸入 Email 與密碼。"):"還沒接雲端："+sbProblem,!sb);openModal(authModal)});
+authForm.addEventListener("submit",event=>{event.preventDefault();runAuth("signin")});
+authSignUpButton.addEventListener("click",()=>runAuth("signup"));
+authSignOutButton.addEventListener("click",()=>runAuth("out"));
 document.getElementById("save-settings").addEventListener("click",()=>{localStorage.setItem(STORAGE_KEYS.brandSpec,brandSpecInput.value);localStorage.setItem(STORAGE_KEYS.checklist,checklistInput.value);localStorage.setItem(STORAGE_KEYS.aiKey,aiKeyInput.value);localStorage.setItem(STORAGE_KEYS.openrouterModel,openrouterModelInput.value);localStorage.setItem(STORAGE_KEYS.openrouterCustomModel,openrouterCustomModelInput.value);localStorage.setItem(STORAGE_KEYS.openrouterReasoning,openrouterReasoningInput.value);localStorage.setItem(STORAGE_KEYS.geminiKey,geminiKeyInput.value);localStorage.setItem(STORAGE_KEYS.geminiModel,geminiModelInput.value);localStorage.setItem(STORAGE_KEYS.imageModel,imageModelInput.value);localStorage.setItem(STORAGE_KEYS.imageCustomModel,imageCustomModelInput.value);localStorage.setItem(STORAGE_KEYS.imageSpec,imageSpecInput.value);localStorage.setItem(STORAGE_KEYS.aiOrder,aiOrderInput.value);updateStorageUsage();closeModal(settingsModal)});
 aiButton.addEventListener("click",handleAIButton);
 document.getElementById("compose-prompt").addEventListener("click",()=>{promptOutput.value=buildPrompt();pasteResponse.value="";pasteFeedback.textContent="";openModal(promptModal)});
@@ -792,8 +1178,8 @@ document.getElementById("paste-back").addEventListener("click",()=>{const respon
 document.querySelectorAll("[data-close]").forEach(button=>button.addEventListener("click",()=>closeModal(document.getElementById(button.dataset.close))));
 document.querySelectorAll(".modal-backdrop").forEach(modal=>modal.addEventListener("click",event=>{if(event.target===modal)closeModal(modal)}));
 document.getElementById("copy-prompt").addEventListener("click",async event=>{try{await navigator.clipboard.writeText(promptOutput.value)}catch(error){promptOutput.select();document.execCommand("copy")}event.currentTarget.textContent="已複製";setTimeout(()=>{event.currentTarget.textContent="複製"},1200)});
-renderImageControl();renderPreview();renderAssistantHistory();updateUndoButton();updateStorageUsage();
-(async()=>{
+initSupabaseAuth();enablePreviewDragScroll();renderRichMenuFields();renderImageControl();renderPreview();renderAssistantHistory();updateUndoButton();updateStorageUsage();
+localReady=(async()=>{
   try{await migrateSavedPosts()}catch(error){saveFeedback.textContent="舊貼文圖片還沒搬完："+(error.message||"圖片倉庫無法使用。")}
   try{await restoreDraft()}catch(error){imageFeedback.textContent="舊暫存圖片還沒搬完："+(error.message||"圖片倉庫無法使用。")}
   updateStorageUsage();
